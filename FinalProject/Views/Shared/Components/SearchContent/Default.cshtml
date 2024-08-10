@@ -1,0 +1,72 @@
+﻿@using FinalProject.ViewModels.Search;
+
+@{
+    Layout = null;
+}
+
+@model SearchViewModel
+
+<div class="post-content tab-pane fade show active" id="Top">
+    @if (ViewBag.TabId == "Lists")
+    {
+        @await Component.InvokeAsync("SearchList", new{Lists = Model.Lists})
+    }
+
+    @if (ViewBag.TabId != "Lists")
+    {
+        @if (ViewBag.TabId != "Latest")
+        {
+            @if (Model.Users != null && Model.Users.Any())
+            {
+                <div class="who-to-follow">
+                    <div class="follows-title">
+                        Who to follow
+                    </div>
+
+                    @await Component.InvokeAsync("SearchFollow", new{TabId = Model.TabId, Users = Model.Users})
+
+
+                    @if (ViewBag.TabId != "People")
+                    {
+                        <div class="show-more hover-light bottom-border">
+                            <a asp-action="WhoToFollow" asp-controller="Show">
+                                <span>
+                                    View all
+                                </span>
+                            </a>
+                        </div>
+                    }
+                    
+                </div>
+                
+            }
+        }
+
+        @if (ViewBag.TabId != "People")
+        {
+            @if (Model.Posts != null && Model.Posts.Any())
+            {
+                <div class="content-post">
+
+                    @await Component.InvokeAsync("SearchPost", new{TabId = Model.TabId, Posts = Model.Posts})
+
+                </div>
+            }
+        }
+
+        @if (Model.Users != null && Model.Users.Any() || Model.Posts != null && Model.Posts.Any())
+        {
+
+        }
+        else
+        {
+            <h3 class="d-flex" style="transform: translate(200px, 25px);">
+                No result found
+            </h3>
+        }
+    }
+
+
+
+</div>
+

@@ -1,0 +1,72 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="content">
+    <div class="top-side">
+        <div class="search-side">
+            <div class="custom-container">
+                <div class="responsive-top">
+                    <a data-bs-toggle="offcanvas" href="#offcanvas" role="button"
+                       aria-controls="offcanvasExample">
+                        <div class="image">
+                            <img src="https://w7.pngwing.com/pngs/858/581/png-transparent-profile-icon-user-computer-icons-system-chinese-wind-title-column-miscellaneous-service-logo.png"
+                                 alt="">
+
+                        </div>
+                    </a>
+                </div>
+                <div class="text">
+                    <span>Notifications</span>
+                </div>
+                <div class="explore-settings disable">
+                    <a>
+                        <i class="fa-solid fa-gear"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="for-side">
+            <div class="for-you">
+                <div class="elements list-group">
+                    <a class="element active" asp-action="Filter" asp-route-TabId="All">
+                        <div class="element-inside">
+                            <div class="text @(ViewBag.TabId == "All" ? "active" : "")">
+                                <span>All</span>
+                                <div class="bottom-line"></div>
+                            </div>
+                        </div>
+                    </a>
+                    <a class="element" asp-action="Filter" asp-route-TabId="Verified">
+                        <div class="element-inside">
+                            <div class="text @(ViewBag.TabId == "Verified" ? "active" : "")">
+                                <span> Verified</span>
+                                <div class="bottom-line"></div>
+                            </div>
+                        </div>
+                    </a>
+                    <a class="element" asp-action="Filter" asp-route-TabId="Replys">
+                        <div class="element-inside">
+                            <div class="text @(ViewBag.TabId == "Replys" ? "active" : "")">
+                                <span> Replies</span>
+                                <div class="bottom-line"></div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="">
+        <div class="notification-content post-content tab-pane fade show active">
+            
+            @await Component.InvokeAsync("Notification")
+
+        </div>
+       
+    </div>
+
+
+</div>
+

@@ -1,0 +1,124 @@
+﻿@using FinalProject.ViewModels.List;
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@model CreateListViewModel
+
+<div class="content list-content">
+    <div class="top-side blur">
+        <div class="search-side">
+            <div class="custom-container">
+                <div class="responsive-top">
+                    <a data-bs-toggle="offcanvas" href="#offcanvas" role="button"
+                       aria-controls="offcanvasExample">
+                        <div class="image">
+                            <img src="/assets/images/ProfileImages/default.png"
+                                 alt="">
+
+                        </div>
+                    </a>                   
+
+
+                    <div class="image disable">
+                        <img src="/assets/images/ProfileImages/default.png"
+                             alt="">
+
+                    </div>
+                </div>
+                <form method="post" class="searchbar" asp-controller="Search" asp-action="Index">
+                    <div class="searchbar">
+                        <div class="search-icon">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </div>
+                        <div class="search-input">
+                            <input asp-for="Search" type="text" placeholder="Search">
+
+                        </div>
+                    </div>
+                </form>
+                
+                <div class="lists-settings">
+                    <a data-bs-toggle="modal" data-bs-target="#ReplyModal">
+                        <i class="fa-regular fa-square-plus"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="ReplyModal" tabindex="-1" aria-labelledby="CommentModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content background-black" style="width: 600px;">
+                <div class="modal-body">
+                    <form method="post" id="postForm">
+                        <div class="post-area">
+                            <div class="d-flex" style="flex-direction:column;">
+                                <div class="text-area" style="flex:1; padding:12px;">
+                                    <input asp-for="Name" name="Name" class="textarea w-100 background-black cool-border border-radius-0 text-light active-none" style="min-width:100%; max-height:750px; resize:none; font-size:20px; padding:8px 8px 8px 8px;" placeholder="Name"></input>
+                                </div>
+                                <div class="" style="flex:1; padding:12px;">
+                                    <textarea asp-for="Description" name="Description" class="w-100 background-black cool-border border-radius-0 text-light active-none" style="min-width:100%;min-height:100px; max-height:750px; resize:none; font-size:20px; padding:12px 8px 8px 8px;" placeholder="Description"></textarea>
+                                </div>
+                                <div style="display:flex; justify-content:space-between; padding:12px;">
+                                    <div style="display:flex; flex-direction:column;">
+                                        <span>
+                                            Make private
+                                        </span>
+                                        <span class="" style="font-size:small; color: rgb(113, 118, 123);">
+                                            When you make a List private, only you can see it.
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <input asp-for="IsPrivate" name="IsPrivate" class="form-check-input" style="background-color:black; width:20px; height:20px; border:2px solid rgb(113, 118, 123);" type="checkbox" id="flexCheckDefault">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="modal-footer" style="border:none;">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary post-submit" id="ReplyModal-button" disabled asp-action="CreateList">
+                                    <span>Create</span>
+                                </button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="discover-new-lists">
+        <div class="follows-title">
+            Discover new Lists
+        </div>
+                      
+        @await Component.InvokeAsync("ListDiscover")
+
+        <div class="show-more hover-light">
+            <a href="C:\Users\user\Desktop\Frontend\FinalProject-Front-ReddiX\Doc\suggestedLists.html">
+                <span>
+                    Show more
+                </span>
+            </a>
+        </div>
+
+
+
+    </div>
+
+    <div class="your-lists">
+        <div class="follows-title">
+            Your Lists
+        </div>              
+        
+        <div class="followed-list">
+            @await Component.InvokeAsync("ListYour")
+        </div>
+
+    </div>
+
+</div>
+

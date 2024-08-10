@@ -1,0 +1,195 @@
+﻿@model List<Post>
+
+@foreach (var post in Model)
+{
+    <div class="post">
+        <div class="profile-icon post-icon">
+            <div class="image">
+                <img src="https://w7.pngwing.com/pngs/858/581/png-transparent-profile-icon-user-computer-icons-system-chinese-wind-title-column-miscellaneous-service-logo.png"
+                     alt="Profile Icon">
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="post-info">
+                <div class="info">
+                    <div class="username">
+                        @post.User.Name
+                    </div>
+                    <div class="name-date">
+                        <div class="name">
+                            @@@post.User.UserName
+                        </div>
+                        <div class="dot">
+                            ·
+                        </div>
+                        <div class="date">
+                            @post.CreatedDate.ToString("MMM dd, yyyy")
+                        </div>
+                    </div>
+                </div>
+                <div class="more btn-group dropstart">
+                    <button class="default-button more-button hover-none" type="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-solid fa-ellipsis default-icon"></i>
+                    </button>
+                    <ul class="dropdown-menu menu-border menu-transform post-menu">
+                        @if (post.User.UserName == User.Identity.Name)
+                        {
+                            <li>
+                                <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center" asp-action="DeletePost" asp-controller="Home" asp-route-postId="@post.Id">
+                                    <div class="logo hover-none">
+                                        <i class="fa-solid fa-trash-can text-danger"></i>
+                                    </div>
+                                    <span class="text text-danger">Delete</span>
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li>
+                                <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center" href="#">
+                                    <div class="logo hover-none">
+                                        <i class="hover-none fa-solid fa-face-frown"></i>
+
+                                    </div>
+                                    <span class="text">Not interested in this post</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center" href="#">
+                                    <div class="logo hover-none">
+                                        <i class="hover-none logo fa-solid fa-user-xmark"></i>
+                                    </div>
+                                    <span class="text">Unfollow @@@post.User.UserName</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center" href="#">
+                                    <div class="logo hover-none">
+                                        <i class="hover-none fa-solid fa-square-plus"></i>
+                                    </div>
+                                    <span class="text">Add/remove @@@post.User.UserName from Lists</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center" href="#">
+                                    <div class="logo hover-none">
+                                        <i class="hover-none fa-solid fa-volume-xmark"></i>
+                                    </div>
+                                    <span class="text">Mute @@@post.User.UserName</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center" href="#">
+                                    <div class="logo hover-none">
+                                        <i class="hover-none fa-solid fa-ban"></i>
+                                    </div>
+                                    <span class="text">Block @@@post.User.UserName</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center" href="#">
+                                    <div class="logo hover-none">
+                                        <i class="hover-none fa-solid fa-chart-simple"></i>
+                                    </div>
+                                    <span class="text">View post engagements</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center" href="#">
+                                    <div class="logo hover-none">
+                                        <i class="hover-none fa-solid fa-flag"></i>
+                                    </div>
+                                    <span class="text">Report Post</span>
+                                </a>
+                            </li>
+                        }
+
+                    </ul>
+                </div>
+            </div>
+            <div class="post-text">
+                <pre>@post.Content</pre>
+                @* @post.Content *@
+            </div>
+            @* @if (post.Image != null && post.Image.Any())
+        {
+        <div class="post-image cool-border">
+        @foreach (var image in post.Image)
+        {
+        <div class="image">
+        <img src="@image.Url" alt="Post Image">
+        </div>
+        }
+        </div>
+        } *@
+
+
+
+
+            <div class="post-likes">
+                <ul>
+                    <li>
+                        <div class="like">
+                            <a class="like-button comment-blue">
+                                <div class="icon">
+                                    <div class="bg-color"></div>
+                                    <i class="fa-regular fa-comment"></i>
+                                </div>
+                                <div class="count">
+                                    <span>1.7k</span>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="like">
+                            <a class="like-button retweet-green" type="submit" asp-action="Repost" asp-controller="Home" asp-route-postId="@post.Id">
+                                @await Html.PartialAsync("_RepostPartial", post)
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="like">
+                            <a class="like-button like-red" type="submit" asp-action="Like" asp-controller="Home" asp-route-postId="@post.Id">
+                                @await Html.PartialAsync("_LikePartial", post)
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="like">
+                            <button class="like-button comment-blue">
+                                <div class="icon">
+                                    <div class="bg-color"></div>
+                                    <i class="fa-solid fa-chart-simple"></i>
+                                </div>
+                                <div class="count">
+                                    <span>1.7k</span>
+                                </div>
+                            </button>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="sidemark">
+                            <button class="like-button bookmark-blue">
+                                <div class="bg-color"></div>
+                                <i class="fa-regular fa-bookmark"></i>
+                            </button>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="sidemark">
+                            <button class="like-button bookmark-blue">
+                                <div class="bg-color"></div>
+                                <i class="fa-solid fa-arrow-up-from-bracket"></i>
+                            </button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+
+        </div>
+    </div>
+}

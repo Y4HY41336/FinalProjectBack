@@ -1,0 +1,42 @@
+﻿@using FinalProject.ViewModels.HomeViewModels;
+@using FinalProject.ViewModels.ProfileViewModels;
+@{
+    ViewData["Title"] = "Status";
+}
+
+
+<div class="content">
+    <div class="top-side">
+        <div class="search-side">
+            <div class="custom-container">
+                <div class="back-names">
+                    <div class="back-container">
+                        <button class="go-back" id="backButton">
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </button>
+                    </div>
+                    <div class="text d-flex align-items-center">
+                        <span>Post</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="posts tab-content">
+        <div class="post-content">
+
+            <div class="mainpost-container">
+                @await Component.InvokeAsync("StatusMainPost")
+            </div>
+
+            @await Component.InvokeAsync("StatusTextArea")
+
+            <div class="post-content tab-pane">
+                @await Component.InvokeAsync("CustomUserStatus")
+            </div>
+
+            
+        </div>
+    </div>
+</div>
+

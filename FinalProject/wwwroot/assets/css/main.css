@@ -1,0 +1,3533 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: TwitterChirp, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    scrollbar-color: rgb(62, 65, 68) rgb(22, 24, 28);
+    line-height: normal;
+}
+
+body {
+    background-color: black;
+    scrollbar-color: rgb(62, 65, 68) rgb(22, 24, 28);
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    font-size: 16px;
+    overflow-y: scroll;
+    transition: none;
+}
+
+a {
+    text-decoration: none !important;
+    color: #0f1419;
+}
+
+    a:hover {
+        color: #0f1419;
+    }
+
+ul {
+    margin: 0;
+}
+
+.post .content {
+    width: 93% !important;
+}
+
+    .post .content .post-text pre {
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        overflow: hidden;
+    }
+
+.tab-content > .active {
+    display: block !important;
+}
+
+.tab-content > .tab-pane {
+    display: none;
+}
+
+pre {
+    font-family: inherit;
+    margin: 0;
+    font-size: inherit;
+    overflow: inherit;
+    display: inherit;
+}
+
+.image {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+    .image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+
+.image-square {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+}
+
+    .image-square img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+
+.comment-blue .icon i {
+    color: rgb(113, 118, 123);
+    font-size: 17px;
+    border: 0px solid transparent;
+    border-radius: 50%;
+}
+
+.comment-blue .icon .bg-color {
+    position: absolute;
+    display: block;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    transform: translate(-9px, -6px);
+}
+
+.comment-blue .count {
+    color: rgb(113, 118, 123);
+    font-size: 13px;
+    padding: 0 4px;
+}
+
+.comment-blue:hover .icon i {
+    color: rgb(29, 155, 240) !important;
+}
+
+.comment-blue:hover .bg-color {
+    background-color: rgba(29, 155, 240, 0.1) !important;
+}
+
+.comment-blue:hover .count {
+    color: rgb(29, 155, 240) !important;
+    transition: none;
+}
+
+.comment-blue:active .bg-color {
+    background-color: rgba(29, 155, 240, 0.2) !important;
+}
+
+.retweet-green .icon i {
+    color: rgb(113, 118, 123);
+    font-size: 17px;
+    border: 0px solid transparent;
+    border-radius: 50%;
+}
+
+.retweet-green .icon .bg-color {
+    position: absolute;
+    display: block;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    transform: translate(-9px, -6px);
+}
+
+.retweet-green .count {
+    color: rgb(113, 118, 123);
+    font-size: 13px;
+    padding: 0 4px;
+}
+
+.retweet-green:hover .icon i {
+    color: rgb(0, 186, 124) !important;
+}
+
+.retweet-green:hover .bg-color {
+    background-color: rgba(0, 186, 124, 0.1) !important;
+}
+
+.retweet-green:hover .count {
+    color: rgb(0, 186, 124) !important;
+    transition: none;
+}
+
+.retweet-green:active .bg-color {
+    background-color: rgba(0, 186, 124, 0.2) !important;
+}
+
+.retweet-green-active .icon i {
+    color: rgb(0, 186, 124) !important;
+    font-size: 17px;
+    border: 0px solid transparent;
+    border-radius: 50%;
+}
+
+.retweet-green-active .icon .bg-color {
+    position: absolute;
+    display: block;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    transform: translate(-9px, -6px);
+}
+
+.retweet-green-active .count {
+    color: rgb(0, 186, 124) !important;
+    font-size: 13px;
+    padding: 0 4px;
+}
+
+.retweet-green-active:hover .icon i {
+    color: rgb(0, 186, 124) !important;
+}
+
+.retweet-green-active:hover .bg-color {
+    background-color: rgba(0, 186, 124, 0.1) !important;
+}
+
+.retweet-green-active:hover .count {
+    color: rgb(0, 186, 124) !important;
+    transition: none;
+}
+
+.retweet-green-active:active .bg-color {
+    background-color: rgba(0, 186, 124, 0.2) !important;
+}
+
+.like-red .icon i {
+    color: rgb(113, 118, 123);
+    font-size: 17px;
+    border: 0px solid transparent;
+    border-radius: 50%;
+}
+
+.like-red .icon .bg-color {
+    position: absolute;
+    display: block;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    transform: translate(-9px, -6px);
+}
+
+.like-red:hover .icon i {
+    color: rgb(249, 24, 128) !important;
+}
+
+.like-red:hover .bg-color {
+    background-color: rgba(249, 24, 128, 0.1) !important;
+}
+
+.like-red:hover .count {
+    color: rgb(249, 24, 128) !important;
+    transition: none;
+}
+
+.like-red:active .bg-color {
+    background-color: rgba(249, 24, 128, 0.2) !important;
+}
+
+.like-red-active .icon i {
+    color: rgb(249, 24, 128) !important;
+    font-size: 17px;
+    border: 0px solid transparent;
+    border-radius: 50%;
+}
+
+.like-red-active .icon .bg-color {
+    position: absolute;
+    display: block;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    transform: translate(-9px, -6px);
+}
+
+.like-red-active .count {
+    color: rgb(249, 24, 128) !important;
+    transition: none;
+}
+
+.like-red-active:hover .icon i {
+    color: rgb(249, 24, 128) !important;
+}
+
+.like-red-active:hover .bg-color {
+    background-color: rgba(249, 24, 128, 0.1) !important;
+}
+
+.like-red-active:hover .count {
+    color: rgb(249, 24, 128) !important;
+    transition: none;
+}
+
+.like-red-active:active .bg-color {
+    background-color: rgba(249, 24, 128, 0.2) !important;
+}
+
+.bookmark-blue i {
+    color: rgb(113, 118, 123);
+    font-size: 17px;
+    border: 0px solid transparent;
+    border-radius: 50%;
+}
+
+.bookmark-blue .bg-color {
+    position: absolute;
+    display: block;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    transform: translate(0px, 0px);
+}
+
+.bookmark-blue .count {
+    color: rgb(113, 118, 123);
+    font-size: 13px;
+    padding: 0 4px;
+}
+
+.bookmark-blue:hover i {
+    color: rgb(29, 155, 240) !important;
+}
+
+.bookmark-blue:hover .bg-color {
+    background-color: rgba(29, 155, 240, 0.1) !important;
+}
+
+.bookmark-blue:hover .count {
+    color: rgb(29, 155, 240) !important;
+    transition: none;
+}
+
+.bookmark-blue:active .bg-color {
+    background-color: rgba(29, 155, 240, 0.2) !important;
+}
+
+.bookmark-blue-active i {
+    color: rgb(29, 155, 240) !important;
+    font-size: 17px;
+    border: 0px solid transparent;
+    border-radius: 50%;
+}
+
+.bookmark-blue-active .bg-color {
+    position: absolute;
+    display: block;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    transform: translate(0px, 0px);
+}
+
+.bookmark-blue-active .count {
+    color: rgb(29, 155, 240) !important;
+    font-size: 13px;
+    padding: 0 4px;
+}
+
+.bookmark-blue-active:hover i {
+    color: rgb(29, 155, 240) !important;
+}
+
+.bookmark-blue-active:hover .bg-color {
+    background-color: rgba(29, 155, 240, 0.1) !important;
+}
+
+.bookmark-blue-active:hover .count {
+    color: rgb(29, 155, 240) !important;
+    transition: none;
+}
+
+.bookmark-blue-active:active .bg-color {
+    background-color: rgba(29, 155, 240, 0.2) !important;
+}
+
+.profile-icon {
+    width: 40px;
+    padding: 9px 0;
+    margin-right: 8px;
+}
+
+.show-more {
+    padding: 16px;
+}
+
+    .show-more a {
+        color: #1989d4;
+    }
+
+.cool-border {
+    width: 100%;
+    border: 1px solid;
+    border-radius: 16px;
+    border-color: rgb(47, 51, 54);
+}
+
+.bottom-border {
+    border-bottom: 1px solid;
+    border-color: rgb(47, 51, 54);
+}
+
+.bottom-padding {
+    padding-bottom: 12px !important;
+}
+
+.no-border {
+    border: 0 !important;
+}
+
+.no-padding {
+    padding: 0 !important;
+}
+
+
+.default-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    background-color: black;
+}
+
+.default-icon {
+    color: rgb(113, 118, 123);
+}
+
+:hover {
+    transition-duration: 0.2s;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.hover-light:hover {
+    background-color: rgba(255, 255, 255, 0.03);
+    cursor: pointer;
+}
+
+.hover-medium:hover {
+    background-color: rgba(231, 233, 234, 0.1) !important;
+    cursor: pointer !important;
+}
+
+.hover-blue:hover {
+    background-color: rgb(26, 140, 216) !important;
+    cursor: pointer;
+}
+
+.hover-lightblue:hover {
+    background-color: rgba(29, 155, 240, 0.1) !important;
+    cursor: pointer;
+}
+
+.hover-blue:active {
+    background-color: rgb(26, 140, 216) !important;
+    cursor: pointer;
+}
+
+.active-lightblue:active {
+    background-color: rgba(29, 155, 240, 0.2) !important;
+}
+
+.sticky {
+    position: sticky;
+    top: 0px;
+}
+
+.transparent {
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+}
+
+.list-group {
+    flex-direction: row !important;
+}
+
+.dark {
+    background-color: black !important;
+    border: none !important;
+    border-radius: 20px;
+    z-index: -1 !important;
+}
+
+.menu-border {
+    background-color: black !important;
+    border: 1px solid rgb(47, 51, 54) !important;
+    border-radius: 14px !important;
+    box-shadow: 0px 0px 10px 2px rgb(47, 51, 54);
+    z-index: 10 !important;
+}
+
+.menu-transform {
+    transform: translate(0px, 0px) !important;
+}
+
+.menu-transform-up {
+    transform: translate(0px, -90px) !important;
+    right: -10% !important;
+}
+
+.menu-header-transform {
+    transform: translate(0px, -200px) !important;
+}
+
+.min-width-300 {
+    min-width: 302px;
+}
+
+.post-menu a {
+    padding: 12px 16px !important;
+}
+
+    .post-menu a .logo {
+        width: 32px;
+    }
+
+        .post-menu a .logo i {
+            padding-right: 12px;
+        }
+
+.hover-none:hover {
+    background-color: transparent !important;
+}
+
+.active-none:focus {
+    outline: none !important;
+}
+
+.check-icon {
+    color: #00ba7c;
+}
+
+.straight-line {
+    height: 1px;
+    width: 100%;
+    margin: 12px 0;
+    background-color: rgb(47, 51, 54);
+}
+
+.straight-vertical-line {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 1px;
+    margin: 0 50%;
+    background-color: rgb(47, 51, 54);
+}
+
+.border-radius-0 {
+    border-radius: 0 !important;
+}
+
+.blur {
+    background-color: rgba(0, 0, 0, 0.7) !important;
+    backdrop-filter: blur(4px) !important;
+}
+
+.swiper-button-prev {
+    display: flex;
+    align-items: center;
+    color: white;
+    background-color: rgba(39, 44, 48, 0.75);
+    padding: 18px;
+    border: 0px solid rgb(47, 51, 54);
+    border-radius: 50%;
+    z-index: 20 !important;
+    --swiper-navigation-size: 15px;
+    --swiper-navigation-top-offset: 23%;
+    --swiper-navigation-sides-offset: 10px;
+}
+
+    .swiper-button-prev:hover {
+        border: 0px solid rgb(47, 51, 54);
+        background-color: rgba(39, 44, 48, 0.75) !important;
+        border-radius: 50%;
+    }
+
+.swiper-button-next {
+    display: flex;
+    align-items: center;
+    color: white;
+    background-color: rgba(39, 44, 48, 0.75);
+    padding: 18px;
+    border: 0px solid rgb(47, 51, 54);
+    border-radius: 50%;
+    z-index: 20 !important;
+    --swiper-navigation-size: 15px;
+    --swiper-navigation-top-offset: 23%;
+    --swiper-navigation-sides-offset: 10px;
+}
+
+    .swiper-button-next:hover {
+        border: 0px solid rgb(47, 51, 54);
+        background-color: rgba(39, 44, 48, 0.75) !important;
+        border-radius: 50%;
+    }
+
+.swiper-button-disabled {
+    opacity: 0 !important;
+}
+
+.verify-icon {
+    margin-left: 4px;
+}
+
+    .verify-icon .back {
+        position: absolute;
+        z-index: 1;
+        color: #1d9bf0;
+        font-size: 15px;
+    }
+
+    .verify-icon .check {
+        position: absolute;
+        z-index: 2;
+        color: black;
+        font-size: 11px;
+        transform: translate(2.5px, 3px);
+    }
+
+.verify-icon-yellow {
+    margin-left: 4px;
+}
+
+    .verify-icon-yellow .back {
+        position: relative;
+        z-index: 1;
+        color: gold;
+        font-size: 15px;
+    }
+
+    .verify-icon-yellow .check {
+        position: absolute;
+        z-index: 2;
+        color: black;
+        font-size: 11px;
+        transform: translate(2.5px, -16.5px);
+    }
+
+.verify-icon-blue {
+    color: #1d9bf0;
+    margin-left: 4px;
+    font-size: 18px;
+    display: flex;
+    align-items: flex-end;
+}
+
+.verify-icon-yellow {
+    color: gold;
+    margin-left: 4px;
+    font-size: 18px;
+    display: flex;
+    align-items: flex-end;
+}
+
+.back-names {
+    display: flex;
+}
+
+    .back-names .back-container {
+        width: 56px;
+        height: 53px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+        .back-names .back-container .go-back {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgb(231, 233, 234);
+            background-color: black;
+            border: 0px solid rgb(47, 51, 54) !important;
+            border-radius: 50%;
+            z-index: 20 !important;
+            height: 36px;
+            width: 36px;
+        }
+
+            .back-names .back-container .go-back:hover {
+                border: 0px solid rgb(47, 51, 54);
+                background-color: rgba(39, 44, 48, 0.75) !important;
+                border-radius: 50%;
+            }
+
+.follow-button {
+    display: flex;
+    align-items: center;
+    color: black;
+    font-size: 16px;
+    min-width: 78px;
+    user-select: none;
+    cursor: pointer;
+}
+
+    .follow-button .follow {
+        display: none;
+        align-items: center;
+        padding: 0 16px;
+        border-radius: 20px;
+        min-height: 32px;
+        border: 0px solid white;
+        background-color: rgb(239, 243, 244);
+    }
+
+        .follow-button .follow span {
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .follow-button .follow:hover {
+            background-color: rgb(215, 219, 220);
+        }
+
+        .follow-button .follow:active {
+            background-color: rgb(191, 194, 195);
+        }
+
+    .follow-button .unfollow {
+        display: none;
+        align-items: center;
+        padding: 0 16px;
+        border-radius: 20px;
+        min-height: 32px;
+        width: 100px;
+        background-color: black;
+        border: 1px solid rgb(83, 100, 113);
+        color: white;
+    }
+
+        .follow-button .unfollow span {
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .follow-button .unfollow:hover {
+            border-color: rgb(103, 7, 15);
+            color: rgb(244, 33, 46);
+            background-color: rgba(244, 33, 46, 0.1);
+            transition: none;
+        }
+
+        .follow-button .unfollow:active {
+            background-color: rgba(244, 33, 46, 0.2);
+        }
+
+    .follow-button .active {
+        display: flex;
+    }
+
+.follow-button {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    color: black;
+    font-size: 16px;
+    min-width: 44px;
+}
+
+    .follow-button .plus {
+        display: none;
+        align-items: center;
+        justify-content: center;
+        border: 0px solid white;
+        border-radius: 50%;
+        background-color: rgb(239, 243, 244);
+        min-height: 32px;
+        min-width: 32px;
+    }
+
+        .follow-button .plus span {
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .follow-button .plus:hover {
+            background-color: rgb(215, 219, 220);
+        }
+
+        .follow-button .plus:active {
+            background-color: rgb(191, 194, 195);
+        }
+
+    .follow-button .check {
+        display: none;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgb(83, 100, 113);
+        border-radius: 50%;
+        background-color: black;
+        min-height: 32px;
+        min-width: 32px;
+        color: white;
+    }
+
+        .follow-button .check span {
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .follow-button .check:hover {
+            border-color: rgb(103, 7, 15);
+            color: rgb(244, 33, 46);
+            background-color: rgba(244, 33, 46, 0.1);
+            transition: none;
+        }
+
+        .follow-button .check:active {
+            background-color: rgba(244, 33, 46, 0.2);
+        }
+
+    .follow-button .active {
+        display: flex;
+    }
+
+.premium-follow-button {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    color: black;
+    font-size: 16px;
+    min-width: 44px;
+    cursor: pointer;
+}
+
+    .premium-follow-button .plus {
+        display: none;
+        align-items: center;
+        justify-content: center;
+        border: 0px solid white;
+        border-radius: 50%;
+        background-color: rgb(201, 54, 204);
+        min-height: 32px;
+        min-width: 32px;
+    }
+
+        .premium-follow-button .plus span {
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .premium-follow-button .plus:hover {
+            background-color: rgb(188, 51, 190);
+        }
+
+        .premium-follow-button .plus:active {
+            background-color: rgb(170, 50, 190);
+        }
+
+    .premium-follow-button .check {
+        display: none;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgb(201, 54, 204);
+        border-radius: 50%;
+        background-color: black;
+        min-height: 32px;
+        min-width: 32px;
+        color: rgb(201, 54, 204);
+    }
+
+        .premium-follow-button .check span {
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .premium-follow-button .check:hover {
+            border-color: rgb(201, 54, 204);
+            color: rgb(201, 54, 204);
+            background-color: rgba(244, 33, 46, 0.1);
+            transition: none;
+        }
+
+        .premium-follow-button .check:active {
+            background-color: rgba(244, 33, 46, 0.2);
+        }
+
+    .premium-follow-button .active {
+        display: flex;
+    }
+
+.follows-content {
+    cursor: pointer;
+}
+
+    .follows-content button {
+        cursor: pointer;
+        background-color: black;
+        border: 0 solid black;
+        padding: 12px 16px;
+        border-radius: 35px;
+        transition-duration: 0.2s;
+        width: 100%;
+    }
+
+        .follows-content button:hover {
+            background-color: rgba(255, 255, 255, 0.03);
+        }
+
+        .follows-content button .profile {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            width: 100%;
+        }
+
+            .follows-content button .profile .names-follow-bio .bio {
+                display: flex;
+                justify-content: flex-start;
+                text-align: left;
+                color: rgb(231, 233, 234);
+                font-size: 16px;
+                font-weight: 400;
+                padding: 4px 0 0 12px;
+            }
+
+            .follows-content button .profile .names-follow-bio .names-follow {
+                flex: 1;
+                display: flex;
+                justify-content: space-between;
+            }
+
+                .follows-content button .profile .names-follow-bio .names-follow .names {
+                    margin: 0 12px;
+                }
+
+                    .follows-content button .profile .names-follow-bio .names-follow .names .username {
+                        display: flex;
+                        align-items: center;
+                        color: rgb(231, 233, 234);
+                        font-size: 16px;
+                        font-weight: 700;
+                    }
+
+                    .follows-content button .profile .names-follow-bio .names-follow .names .name {
+                        display: flex;
+                        color: rgb(113, 118, 123);
+                        font-size: 16px;
+                        font-weight: 400;
+                    }
+
+                .follows-content button .profile .names-follow-bio .names-follow .follow-button {
+                    display: flex;
+                    align-items: center;
+                    color: black;
+                    font-size: 16px;
+                    min-width: 78px;
+                }
+
+                    .follows-content button .profile .names-follow-bio .names-follow .follow-button .follow {
+                        display: none;
+                        align-items: center;
+                        padding: 0 16px;
+                        border-radius: 20px;
+                        min-height: 32px;
+                        border: 0px solid white;
+                        background-color: rgb(239, 243, 244);
+                    }
+
+                        .follows-content button .profile .names-follow-bio .names-follow .follow-button .follow span {
+                            font-size: 15px;
+                            font-weight: 500;
+                        }
+
+                        .follows-content button .profile .names-follow-bio .names-follow .follow-button .follow:hover {
+                            background-color: rgb(215, 219, 220);
+                        }
+
+                        .follows-content button .profile .names-follow-bio .names-follow .follow-button .follow:active {
+                            background-color: rgb(191, 194, 195);
+                        }
+
+                    .follows-content button .profile .names-follow-bio .names-follow .follow-button .unfollow {
+                        display: none;
+                        align-items: center;
+                        padding: 0 16px;
+                        border-radius: 20px;
+                        min-height: 32px;
+                        width: 100px;
+                        background-color: black;
+                        border: 1px solid rgb(83, 100, 113);
+                        color: white;
+                    }
+
+                        .follows-content button .profile .names-follow-bio .names-follow .follow-button .unfollow span {
+                            font-size: 15px;
+                            font-weight: 500;
+                        }
+
+                        .follows-content button .profile .names-follow-bio .names-follow .follow-button .unfollow:hover {
+                            border-color: rgb(103, 7, 15);
+                            color: rgb(244, 33, 46);
+                            background-color: rgba(244, 33, 46, 0.1);
+                            transition: none;
+                        }
+
+                        .follows-content button .profile .names-follow-bio .names-follow .follow-button .unfollow:active {
+                            background-color: rgba(244, 33, 46, 0.2);
+                        }
+
+                    .follows-content button .profile .names-follow-bio .names-follow .follow-button .active {
+                        display: flex;
+                    }
+
+.flex-1 {
+    flex: 1 !important;
+}
+
+.post-details {
+    color: rgb(113, 118, 123);
+    font-size: 15px;
+    padding: 16px 0;
+}
+
+.bright-text {
+    color: rgb(231, 233, 234);
+}
+
+.background-black {
+    background-color: black !important;
+}
+
+.top-side .responsive-top {
+    padding: 10px 10px 10px 0px !important;
+}
+
+.responsive-top {
+    display: none;
+    justify-content: space-between;
+    padding: 10px 16px;
+}
+
+    .responsive-top .logo {
+        display: flex;
+        align-items: center;
+        color: rgb(231, 233, 234);
+    }
+
+        .responsive-top .logo .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+            .responsive-top .logo .logo-container i {
+                font-size: 28px;
+            }
+
+            .responsive-top .logo .logo-container:hover {
+                background-color: rgba(231, 233, 234, 0.1);
+                cursor: pointer;
+            }
+
+    .responsive-top .disable {
+        opacity: 0;
+    }
+
+.responsive-header {
+    z-index: 3;
+    align-items: flex-start;
+    flex-grow: 1;
+    flex: 1;
+    position: relative;
+    flex-direction: column;
+    display: flex;
+    width: 100%;
+}
+
+    .responsive-header .header-content {
+        flex: 1;
+        max-width: 275px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: fixed;
+    }
+
+        .responsive-header .header-content .header-buttons .sidebar ul li {
+            display: flex;
+            padding: 4px 0;
+        }
+
+            .responsive-header .header-content .header-buttons .sidebar ul li .content-button {
+                width: 100%;
+                height: 100%;
+                color: rgb(231, 233, 234);
+                text-decoration: none;
+                font-size: 20px;
+                font-weight: 400;
+                border: 0;
+            }
+
+                .responsive-header .header-content .header-buttons .sidebar ul li .content-button .content {
+                    display: flex;
+                    padding: 12px 12px;
+                    border-radius: 30px;
+                    width: fit-content;
+                }
+
+                    .responsive-header .header-content .header-buttons .sidebar ul li .content-button .content:hover {
+                        background-color: rgba(231, 233, 234, 0.1);
+                    }
+
+                    .responsive-header .header-content .header-buttons .sidebar ul li .content-button .content .icon {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 27px;
+                        height: 27px;
+                        font-size: 22px;
+                    }
+
+                        .responsive-header .header-content .header-buttons .sidebar ul li .content-button .content .icon i {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                        }
+
+                        .responsive-header .header-content .header-buttons .sidebar ul li .content-button .content .icon .bold {
+                            font-weight: 900;
+                        }
+
+                    .responsive-header .header-content .header-buttons .sidebar ul li .content-button .content .text {
+                        margin: 0 16px 0 20px;
+                    }
+
+                .responsive-header .header-content .header-buttons .sidebar ul li .content-button .home {
+                    padding: 9.5px 9.5px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                    .responsive-header .header-content .header-buttons .sidebar ul li .content-button .home .icon {
+                        width: auto;
+                        height: auto;
+                    }
+
+                    .responsive-header .header-content .header-buttons .sidebar ul li .content-button .home .text {
+                        margin: 0 16px 0 18px;
+                    }
+
+                .responsive-header .header-content .header-buttons .sidebar ul li .content-button .more {
+                    border: 2px solid rgb(231, 233, 234);
+                    border-radius: 50%;
+                }
+
+                    .responsive-header .header-content .header-buttons .sidebar ul li .content-button .more i {
+                        font-size: 16px;
+                    }
+
+                .responsive-header .header-content .header-buttons .sidebar ul li .content-button .active {
+                    color: rgb(231, 233, 234);
+                    font-weight: 700;
+                }
+
+        .responsive-header .header-content .header-buttons .sidebar .post a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #1d9bf0;
+            border: 0 solid;
+            border-radius: 25px;
+            margin: 16px 0;
+            padding: 1px 32px;
+            width: 90%;
+            height: 50px;
+        }
+
+            .responsive-header .header-content .header-buttons .sidebar .post a span {
+                font-size: 16px;
+                color: white;
+                font-weight: 700;
+                user-select: none;
+            }
+
+            .responsive-header .header-content .header-buttons .sidebar .post a .post-icon {
+                display: none;
+            }
+
+.offcanvas {
+    display: none;
+    --bs-offcanvas-width: 280px !important;
+    --bs-offcanvas-padding-x: 5px !important;
+    --bs-offcanvas-padding-y: 5px !important;
+}
+
+.offcanvas-backdrop {
+    display: none;
+}
+
+.modal-backdrop {
+    --bs-backdrop-bg: rgba(91, 112, 131);
+}
+
+.main-container {
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100vw;
+    min-height: 100dvh;
+}
+
+    .main-container ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .main-container header {
+        z-index: 3;
+        align-items: flex-end;
+        flex-grow: 1;
+        flex: 1;
+        position: relative;
+        flex-direction: column;
+        display: flex;
+    }
+
+        .main-container header .header-content {
+            flex: 1;
+            padding: 0 8px;
+            max-width: 275px;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: fixed;
+        }
+
+            .main-container header .header-content .header-buttons .logo {
+                display: flex;
+                align-items: center;
+                color: rgb(231, 233, 234);
+            }
+
+                .main-container header .header-content .header-buttons .logo .logo-container {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    height: 52px;
+                    width: 52px;
+                    border-radius: 50%;
+                }
+
+                    .main-container header .header-content .header-buttons .logo .logo-container i {
+                        font-size: 28px;
+                    }
+
+                    .main-container header .header-content .header-buttons .logo .logo-container:hover {
+                        background-color: rgba(231, 233, 234, 0.1);
+                        cursor: pointer;
+                    }
+
+            .main-container header .header-content .header-buttons .sidebar ul li {
+                display: flex;
+                padding: 4px 0;
+            }
+
+                .main-container header .header-content .header-buttons .sidebar ul li .content-button {
+                    width: 100%;
+                    height: 100%;
+                    color: rgb(231, 233, 234);
+                    text-decoration: none;
+                    font-size: 20px;
+                    font-weight: 400;
+                    border: 0;
+                }
+
+                    .main-container header .header-content .header-buttons .sidebar ul li .content-button .content {
+                        display: flex;
+                        padding: 12px 12px;
+                        border-radius: 30px;
+                        width: fit-content;
+                    }
+
+                        .main-container header .header-content .header-buttons .sidebar ul li .content-button .content:hover {
+                            background-color: rgba(231, 233, 234, 0.1);
+                        }
+
+                        .main-container header .header-content .header-buttons .sidebar ul li .content-button .content .icon {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            width: 27px;
+                            height: 27px;
+                            font-size: 22px;
+                        }
+
+                            .main-container header .header-content .header-buttons .sidebar ul li .content-button .content .icon i {
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                            }
+
+                            .main-container header .header-content .header-buttons .sidebar ul li .content-button .content .icon .bold {
+                                font-weight: 900;
+                            }
+
+                        .main-container header .header-content .header-buttons .sidebar ul li .content-button .content .text {
+                            margin: 0 16px 0 20px;
+                        }
+
+                    .main-container header .header-content .header-buttons .sidebar ul li .content-button .home {
+                        padding: 9.5px 9.5px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+
+                        .main-container header .header-content .header-buttons .sidebar ul li .content-button .home .icon {
+                            width: auto;
+                            height: auto;
+                        }
+
+                        .main-container header .header-content .header-buttons .sidebar ul li .content-button .home .text {
+                            margin: 0 16px 0 18px;
+                        }
+
+                    .main-container header .header-content .header-buttons .sidebar ul li .content-button .more {
+                        border: 2px solid rgb(231, 233, 234);
+                        border-radius: 50%;
+                    }
+
+                        .main-container header .header-content .header-buttons .sidebar ul li .content-button .more i {
+                            font-size: 16px;
+                        }
+
+                    .main-container header .header-content .header-buttons .sidebar ul li .content-button .active {
+                        color: rgb(231, 233, 234);
+                        font-weight: 700;
+                    }
+
+            .main-container header .header-content .header-buttons .sidebar .post a {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: #1d9bf0;
+                border: 0 solid;
+                border-radius: 25px;
+                margin: 16px 0;
+                padding: 1px 32px;
+                width: 90%;
+                height: 50px;
+            }
+
+                .main-container header .header-content .header-buttons .sidebar .post a span {
+                    font-size: 16px;
+                    color: white;
+                    font-weight: 700;
+                    user-select: none;
+                }
+
+                .main-container header .header-content .header-buttons .sidebar .post a .post-icon {
+                    display: none;
+                }
+
+            .main-container header .header-content .header-profile {
+                background-color: black;
+            }
+
+                .main-container header .header-content .header-profile .profile-button {
+                    background-color: black;
+                    border: 0 solid black;
+                    margin: 12px 0;
+                    padding: 12px;
+                    border-radius: 35px;
+                    transition-duration: 0.2s;
+                }
+
+                    .main-container header .header-content .header-profile .profile-button:hover {
+                        background-color: rgba(231, 233, 234, 0.1);
+                    }
+
+                    .main-container header .header-content .header-profile .profile-button:active {
+                        background-color: rgba(231, 233, 234, 0.2);
+                    }
+
+                    .main-container header .header-content .header-profile .profile-button .profile {
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                    }
+
+                        .main-container header .header-content .header-profile .profile-button .profile .names {
+                            margin: 0 12px;
+                        }
+
+                            .main-container header .header-content .header-profile .profile-button .profile .names .username {
+                                color: rgb(231, 233, 234);
+                                font-size: 16px;
+                                font-weight: 700;
+                            }
+
+                            .main-container header .header-content .header-profile .profile-button .profile .names .name {
+                                color: rgb(113, 118, 123);
+                                font-size: 16px;
+                                font-weight: 400;
+                            }
+
+                        .main-container header .header-content .header-profile .profile-button .profile .more {
+                            display: flex;
+                            justify-content: flex-end;
+                            width: 107px;
+                            color: rgb(231, 233, 234);
+                            font-size: 16px;
+                        }
+
+                .main-container header .header-content .header-profile .dropdown-menu {
+                    padding: 12px 0;
+                }
+
+                    .main-container header .header-content .header-profile .dropdown-menu .profile-button {
+                        width: 100%;
+                        min-width: 300px;
+                        display: flex;
+                        margin: 0 !important;
+                    }
+
+                        .main-container header .header-content .header-profile .dropdown-menu .profile-button .profile {
+                            display: flex;
+                            flex: 1;
+                        }
+
+                            .main-container header .header-content .header-profile .dropdown-menu .profile-button .profile .image {
+                                min-width: 40px;
+                            }
+
+                            .main-container header .header-content .header-profile .dropdown-menu .profile-button .profile .names-icon {
+                                width: 100%;
+                                display: flex;
+                                align-items: center;
+                                justify-content: space-between;
+                            }
+
+    .main-container main {
+        width: 100%;
+        flex: 2;
+    }
+
+        .main-container main .main-content {
+            width: 1050px;
+            height: 101%;
+            display: flex;
+            justify-content: space-between;
+            align-items: stretch;
+        }
+
+            .main-container main .main-content .content {
+                max-width: 600px;
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                border-left: 1px solid rgb(47, 51, 54);
+                border-right: 1px solid rgb(47, 51, 54);
+            }
+
+                .main-container main .main-content .content .for-you {
+                    position: sticky;
+                    width: 100%;
+                    top: 0px;
+                    background-color: rgba(0, 0, 0, 0.7);
+                    backdrop-filter: blur(4px);
+                    border-bottom: 1px solid rgb(47, 51, 54);
+                }
+
+                    .main-container main .main-content .content .for-you .elements {
+                        display: flex;
+                        justify-content: space-around;
+                        transition: none;
+                        min-height: 54px;
+                    }
+
+                        .main-container main .main-content .content .for-you .elements .element {
+                            display: flex;
+                            align-items: flex-end;
+                            justify-content: center;
+                            font-size: 15px;
+                            flex: 1;
+                        }
+
+                            .main-container main .main-content .content .for-you .elements .element:hover {
+                                background-color: rgba(231, 233, 234, 0.1);
+                            }
+
+                            .main-container main .main-content .content .for-you .elements .element .element-inside {
+                                color: rgb(113, 118, 123);
+                                padding: 0 16px;
+                            }
+
+                                .main-container main .main-content .content .for-you .elements .element .element-inside .text {
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    flex-direction: column;
+                                    font-weight: 500;
+                                    cursor: pointer;
+                                }
+
+                                    .main-container main .main-content .content .for-you .elements .element .element-inside .text .bottom-line {
+                                        align-self: flex-end;
+                                        z-index: 10;
+                                        min-width: 56px;
+                                        width: 100%;
+                                        height: 4px;
+                                        background-color: rgb(29, 155, 240);
+                                        opacity: 0;
+                                        border-radius: 25px;
+                                        margin-top: 12px;
+                                    }
+
+                                .main-container main .main-content .content .for-you .elements .element .element-inside .active {
+                                    color: rgb(231, 233, 234);
+                                    font-weight: 700;
+                                    padding: 16px 0 0 0;
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    flex-direction: column;
+                                }
+
+                                    .main-container main .main-content .content .for-you .elements .element .element-inside .active .bottom-line {
+                                        align-self: flex-end;
+                                        z-index: 10;
+                                        min-width: 56px;
+                                        width: 100%;
+                                        height: 4px;
+                                        background-color: rgb(29, 155, 240);
+                                        opacity: 1;
+                                        border-radius: 25px;
+                                        margin-top: 12px;
+                                    }
+
+                .main-container main .main-content .content .post-box {
+                    display: flex;
+                    padding: 0 16px;
+                    border-bottom: 1px solid rgb(47, 51, 54);
+                }
+
+                    .main-container main .main-content .content .post-box .profile-icon {
+                        width: 40px;
+                        padding: 12px 0;
+                        margin-right: 8px;
+                    }
+
+                    .main-container main .main-content .content .post-box .post-area .text-area textarea {
+                        color: white;
+                        background-color: black;
+                        outline: none;
+                        border: none;
+                        border-bottom: 1px solid rgb(47, 51, 54);
+                        width: 514px;
+                        padding: 15px 0;
+                        font-size: 21px;
+                        max-height: 744px;
+                        resize: none;
+                        overflow-y: hidden;
+                    }
+
+                    .main-container main .main-content .content .post-box .post-area .buttons {
+                        margin-top: 8px;
+                        padding-bottom: 8px;
+                        display: flex;
+                        justify-content: space-between;
+                    }
+
+                        .main-container main .main-content .content .post-box .post-area .buttons .media-buttons {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                        }
+
+                            .main-container main .main-content .content .post-box .post-area .buttons .media-buttons ul {
+                                display: flex;
+                                flex-direction: row;
+                                font-size: 16px;
+                                gap: 18px;
+                            }
+
+                                .main-container main .main-content .content .post-box .post-area .buttons .media-buttons ul li a {
+                                    color: #1d9bf0;
+                                    text-decoration: none;
+                                }
+
+                        .main-container main .main-content .content .post-box .post-area .buttons .post-button button {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            background-color: #1d9bf0;
+                            border: 0px solid;
+                            border-radius: 25px;
+                            padding: 7px 17px;
+                        }
+
+                            .main-container main .main-content .content .post-box .post-area .buttons .post-button button:hover {
+                                background-color: rgb(26, 140, 216);
+                            }
+
+                            .main-container main .main-content .content .post-box .post-area .buttons .post-button button:active {
+                                background-color: rgb(23, 124, 192);
+                            }
+
+                            .main-container main .main-content .content .post-box .post-area .buttons .post-button button span {
+                                font-size: 16px;
+                                color: white;
+                                font-weight: 500;
+                            }
+
+                .main-container main .main-content .content .posts {
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                }
+
+                    .main-container main .main-content .content .posts .show-posts {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 100%;
+                        height: 50px;
+                        border-bottom: 1px solid;
+                        border-color: rgb(47, 51, 54);
+                    }
+
+                        .main-container main .main-content .content .posts .show-posts:hover {
+                            background-color: rgba(255, 255, 255, 0.03);
+                        }
+
+                        .main-container main .main-content .content .posts .show-posts:active {
+                            background-color: rgba(255, 255, 255, 0.07);
+                        }
+
+                        .main-container main .main-content .content .posts .show-posts button {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            border: 0;
+                            background-color: black;
+                            color: #1d9bf0;
+                            font-size: 15px;
+                        }
+
+                    .main-container main .main-content .content .posts .post-content {
+                        width: 100%;
+                    }
+
+                        .main-container main .main-content .content .posts .post-content .post {
+                            display: flex;
+                            width: 100%;
+                            padding: 12px 16px;
+                            border-bottom: 1px solid rgb(47, 51, 54);
+                        }
+
+                            .main-container main .main-content .content .posts .post-content .post .content {
+                                display: flex;
+                                border: 0;
+                            }
+
+                                .main-container main .main-content .content .posts .post-content .post .content .post-info {
+                                    display: flex;
+                                    justify-content: space-between;
+                                    align-items: center;
+                                }
+
+                                    .main-container main .main-content .content .posts .post-content .post .content .post-info .info {
+                                        display: flex;
+                                        justify-content: space-between;
+                                    }
+
+                                        .main-container main .main-content .content .posts .post-content .post .content .post-info .info .username {
+                                            display: flex;
+                                            align-items: center;
+                                            color: rgb(231, 233, 234);
+                                            font-size: 16px;
+                                            font-weight: 700;
+                                        }
+
+                                        .main-container main .main-content .content .posts .post-content .post .content .post-info .info .name-date {
+                                            display: flex;
+                                            margin-left: 4px;
+                                            font-size: 15px;
+                                            color: rgb(113, 118, 123);
+                                        }
+
+                                            .main-container main .main-content .content .posts .post-content .post .content .post-info .info .name-date .dot {
+                                                padding: 0 4px;
+                                            }
+
+                                    .main-container main .main-content .content .posts .post-content .post .content .post-info .more {
+                                        display: flex;
+                                        justify-content: flex-end;
+                                        align-items: center;
+                                        width: 107px;
+                                        font-size: 16px;
+                                        color: rgb(113, 118, 123);
+                                        max-height: 17px;
+                                    }
+
+                                        .main-container main .main-content .content .posts .post-content .post .content .post-info .more i {
+                                            font-size: 17px;
+                                            display: flex;
+                                            align-items: center;
+                                            justify-content: center;
+                                            position: relative;
+                                            border: 0px;
+                                            border-radius: 50%;
+                                            width: 35px;
+                                            height: 35px;
+                                        }
+
+                                            .main-container main .main-content .content .posts .post-content .post .content .post-info .more i:hover {
+                                                cursor: pointer;
+                                                display: flex;
+                                                align-items: center;
+                                                justify-content: center;
+                                                position: relative;
+                                                color: rgb(29, 155, 240);
+                                                border: 0px;
+                                                border-radius: 50%;
+                                                background-color: rgba(29, 155, 240, 0.1);
+                                                width: 35px;
+                                                height: 35px;
+                                                transition-duration: 0.2s;
+                                            }
+
+                                            .main-container main .main-content .content .posts .post-content .post .content .post-info .more i:active {
+                                                background-color: rgba(29, 155, 240, 0.2);
+                                            }
+
+                                .main-container main .main-content .content .posts .post-content .post .content .post-text {
+                                    color: rgb(231, 233, 234);
+                                }
+
+                                .main-container main .main-content .content .posts .post-content .post .content .post-image {
+                                    width: 100%;
+                                    margin-top: 12px;
+                                    display: flex;
+                                    overflow: hidden;
+                                }
+
+                                    .main-container main .main-content .content .posts .post-content .post .content .post-image .image {
+                                        width: 100%;
+                                        height: 100%;
+                                        min-height: 300px;
+                                    }
+
+                                        .main-container main .main-content .content .posts .post-content .post .content .post-image .image img {
+                                            width: 100%;
+                                            height: 100%;
+                                            object-fit: cover;
+                                            border-radius: 0px;
+                                        }
+
+                                .main-container main .main-content .content .posts .post-content .post .content .post-likes {
+                                    margin-top: 12px;
+                                }
+
+                                    .main-container main .main-content .content .posts .post-content .post .content .post-likes ul {
+                                        display: flex;
+                                    }
+
+                                        .main-container main .main-content .content .posts .post-content .post .content .post-likes ul li {
+                                            color: rgb(113, 118, 123);
+                                        }
+
+                                            .main-container main .main-content .content .posts .post-content .post .content .post-likes ul li .like {
+                                                display: flex;
+                                                align-items: center;
+                                                width: 113px;
+                                            }
+
+                                                .main-container main .main-content .content .posts .post-content .post .content .post-likes ul li .like .like-button {
+                                                    display: flex;
+                                                    align-items: center;
+                                                    justify-content: center;
+                                                    border: 0;
+                                                    background-color: black;
+                                                    min-height: 20px;
+                                                }
+
+                                                    .main-container main .main-content .content .posts .post-content .post .content .post-likes ul li .like .like-button .icon i {
+                                                        color: rgb(113, 118, 123);
+                                                        font-size: 17px;
+                                                        border: 0px solid transparent;
+                                                        border-radius: 50%;
+                                                    }
+
+                                                    .main-container main .main-content .content .posts .post-content .post .content .post-likes ul li .like .like-button .icon .bg-color {
+                                                        position: absolute;
+                                                        display: block;
+                                                        width: 34px;
+                                                        height: 34px;
+                                                        border-radius: 50%;
+                                                        transform: translate(-9px, -6px);
+                                                    }
+
+                                                    .main-container main .main-content .content .posts .post-content .post .content .post-likes ul li .like .like-button .count {
+                                                        color: rgb(113, 118, 123);
+                                                        font-size: 13px;
+                                                        padding: 0 4px;
+                                                    }
+
+                                                    .main-container main .main-content .content .posts .post-content .post .content .post-likes ul li .like .like-button:hover .count {
+                                                        transition: none;
+                                                    }
+
+                                            .main-container main .main-content .content .posts .post-content .post .content .post-likes ul li .sidemark {
+                                                width: 35px;
+                                                display: flex;
+                                                align-items: center;
+                                            }
+
+                                                .main-container main .main-content .content .posts .post-content .post .content .post-likes ul li .sidemark .like-button {
+                                                    display: flex;
+                                                    align-items: center;
+                                                    justify-content: center;
+                                                    border: 0;
+                                                    background-color: black;
+                                                    min-height: 20px;
+                                                }
+
+                                                    .main-container main .main-content .content .posts .post-content .post .content .post-likes ul li .sidemark .like-button i {
+                                                        color: rgb(113, 118, 123);
+                                                        font-size: 17px;
+                                                    }
+
+                .main-container main .main-content .content .top-side {
+                    background-color: black;
+                    position: sticky;
+                    top: 0px;
+                    z-index: 10;
+                    border-bottom: 1px solid .main-container main .main-content .content .top-side border;
+                }
+
+                    .main-container main .main-content .content .top-side .search-side .custom-container {
+                        display: flex;
+                        align-items: center;
+                        padding: 0 16px;
+                        height: 54px !important;
+                        justify-content: space-between;
+                    }
+
+                        .main-container main .main-content .content .top-side .search-side .custom-container .disable {
+                            opacity: 0;
+                        }
+
+                        .main-container main .main-content .content .top-side .search-side .custom-container .searchbar {
+                            flex: 1;
+                        }
+
+                        .main-container main .main-content .content .top-side .search-side .custom-container .explore-settings {
+                            height: 100%;
+                            min-width: 56px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: flex-end;
+                        }
+
+                            .main-container main .main-content .content .top-side .search-side .custom-container .explore-settings a {
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                width: 34px;
+                                height: 34px;
+                                font-size: 18px;
+                                border: 2px solid transparent;
+                                border-radius: 50%;
+                                color: white;
+                            }
+
+                                .main-container main .main-content .content .top-side .search-side .custom-container .explore-settings a:hover {
+                                    background-color: rgba(239, 243, 244, 0.1);
+                                }
+
+                                .main-container main .main-content .content .top-side .search-side .custom-container .explore-settings a:active {
+                                    background-color: rgba(239, 243, 244, 0.2);
+                                }
+
+                .main-container main .main-content .content .post-content {
+                    width: 100%;
+                }
+
+                    .main-container main .main-content .content .post-content .post {
+                        display: flex;
+                        width: 100%;
+                        padding: 12px 16px;
+                        border-bottom: 1px solid rgb(47, 51, 54);
+                    }
+
+                        .main-container main .main-content .content .post-content .post .content {
+                            display: flex;
+                            border: 0;
+                        }
+
+                            .main-container main .main-content .content .post-content .post .content .post-info {
+                                display: flex;
+                                justify-content: space-between;
+                            }
+
+                                .main-container main .main-content .content .post-content .post .content .post-info .info {
+                                    display: flex;
+                                    justify-content: space-between;
+                                }
+
+                                    .main-container main .main-content .content .post-content .post .content .post-info .info .username {
+                                        display: flex;
+                                        align-items: center;
+                                        color: rgb(231, 233, 234);
+                                        font-size: 16px;
+                                        font-weight: 700;
+                                    }
+
+                                    .main-container main .main-content .content .post-content .post .content .post-info .info .name-date {
+                                        display: flex;
+                                        margin-left: 4px;
+                                        font-size: 15px;
+                                        color: rgb(113, 118, 123);
+                                    }
+
+                                        .main-container main .main-content .content .post-content .post .content .post-info .info .name-date .dot {
+                                            padding: 0 4px;
+                                        }
+
+                                .main-container main .main-content .content .post-content .post .content .post-info .more {
+                                    display: flex;
+                                    justify-content: flex-end;
+                                    align-items: center;
+                                    width: 107px;
+                                    font-size: 16px;
+                                    color: rgb(113, 118, 123);
+                                    max-height: 17px;
+                                }
+
+                                    .main-container main .main-content .content .post-content .post .content .post-info .more i {
+                                        font-size: 17px;
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                        position: relative;
+                                        border: 0px;
+                                        border-radius: 50%;
+                                        width: 35px;
+                                        height: 35px;
+                                    }
+
+                                        .main-container main .main-content .content .post-content .post .content .post-info .more i:hover {
+                                            cursor: pointer;
+                                            display: flex;
+                                            align-items: center;
+                                            justify-content: center;
+                                            position: relative;
+                                            color: rgb(29, 155, 240);
+                                            border: 0px;
+                                            border-radius: 50%;
+                                            background-color: rgba(29, 155, 240, 0.1);
+                                            width: 35px;
+                                            height: 35px;
+                                            transition-duration: 0.2s;
+                                        }
+
+                                        .main-container main .main-content .content .post-content .post .content .post-info .more i:active {
+                                            background-color: rgba(29, 155, 240, 0.2);
+                                        }
+
+                            .main-container main .main-content .content .post-content .post .content .post-text {
+                                color: rgb(231, 233, 234);
+                            }
+
+                            .main-container main .main-content .content .post-content .post .content .post-image {
+                                width: 100%;
+                                margin-top: 12px;
+                                display: flex;
+                                overflow: hidden;
+                            }
+
+                                .main-container main .main-content .content .post-content .post .content .post-image .image {
+                                    width: 100%;
+                                    height: 100%;
+                                    min-height: 300px;
+                                }
+
+                                    .main-container main .main-content .content .post-content .post .content .post-image .image img {
+                                        width: 100%;
+                                        height: 100%;
+                                        object-fit: cover;
+                                        border-radius: 0px;
+                                    }
+
+                            .main-container main .main-content .content .post-content .post .content .post-likes {
+                                margin-top: 12px;
+                            }
+
+                                .main-container main .main-content .content .post-content .post .content .post-likes ul {
+                                    display: flex;
+                                }
+
+                                    .main-container main .main-content .content .post-content .post .content .post-likes ul li {
+                                        color: rgb(113, 118, 123);
+                                    }
+
+                                        .main-container main .main-content .content .post-content .post .content .post-likes ul li .like {
+                                            display: flex;
+                                            align-items: center;
+                                            width: 113px;
+                                        }
+
+                                            .main-container main .main-content .content .post-content .post .content .post-likes ul li .like .like-button {
+                                                display: flex;
+                                                align-items: center;
+                                                justify-content: center;
+                                                border: 0;
+                                                background-color: black;
+                                                min-height: 20px;
+                                            }
+
+                                                .main-container main .main-content .content .post-content .post .content .post-likes ul li .like .like-button .icon i {
+                                                    color: rgb(113, 118, 123);
+                                                    font-size: 17px;
+                                                    border: 0px solid transparent;
+                                                    border-radius: 50%;
+                                                }
+
+                                                .main-container main .main-content .content .post-content .post .content .post-likes ul li .like .like-button .icon .bg-color {
+                                                    position: absolute;
+                                                    display: block;
+                                                    width: 34px;
+                                                    height: 34px;
+                                                    border-radius: 50%;
+                                                    transform: translate(-9px, -6px);
+                                                }
+
+                                                .main-container main .main-content .content .post-content .post .content .post-likes ul li .like .like-button .count {
+                                                    color: rgb(113, 118, 123);
+                                                    font-size: 13px;
+                                                    padding: 0 4px;
+                                                }
+
+                                                .main-container main .main-content .content .post-content .post .content .post-likes ul li .like .like-button:hover .count {
+                                                    transition: none;
+                                                }
+
+                                        .main-container main .main-content .content .post-content .post .content .post-likes ul li .sidemark {
+                                            width: 35px;
+                                            display: flex;
+                                            align-items: center;
+                                        }
+
+                                            .main-container main .main-content .content .post-content .post .content .post-likes ul li .sidemark .like-button {
+                                                display: flex;
+                                                align-items: center;
+                                                justify-content: center;
+                                                border: 0;
+                                                background-color: black;
+                                                min-height: 20px;
+                                            }
+
+                                                .main-container main .main-content .content .post-content .post .content .post-likes ul li .sidemark .like-button i {
+                                                    color: rgb(113, 118, 123);
+                                                    font-size: 17px;
+                                                }
+
+                .main-container main .main-content .content .searchbar {
+                    display: flex;
+                    align-items: center;
+                    border: 0px solid black;
+                    border-radius: 30px;
+                    background-color: rgb(32, 35, 39);
+                }
+
+                    .main-container main .main-content .content .searchbar:focus-within {
+                        background-color: black;
+                        outline: solid;
+                        outline-color: #1d9bf0;
+                        border-radius: 30px;
+                        transition: none !important;
+                        outline-width: 2px !important;
+                    }
+
+                    .main-container main .main-content .content .searchbar .search-icon {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 42px;
+                        height: 44px;
+                        padding-left: 12px;
+                    }
+
+                        .main-container main .main-content .content .searchbar .search-icon i {
+                            color: rgb(113, 118, 123);
+                        }
+
+                    .main-container main .main-content .content .searchbar .search-input {
+                        display: flex;
+                        flex: 1;
+                    }
+
+                        .main-container main .main-content .content .searchbar .search-input input {
+                            flex: 1;
+                            border: 0;
+                            padding: 12px;
+                            background-color: rgb(32, 35, 39);
+                            color: white;
+                            border-radius: 30px;
+                        }
+
+                            .main-container main .main-content .content .searchbar .search-input input:focus {
+                                outline: none;
+                                outline-color: none;
+                                background-color: black;
+                                transition: none !important;
+                            }
+
+                        .main-container main .main-content .content .searchbar .search-input ::placeholder {
+                            font-size: 16px;
+                        }
+
+                .main-container main .main-content .content .trends-for-you {
+                    margin-bottom: 12px;
+                    border-bottom: 1px solid rgb(47, 51, 54);
+                }
+
+                    .main-container main .main-content .content .trends-for-you .trends-title {
+                        color: rgb(231, 233, 234);
+                        padding: 12px 16px;
+                        font-size: 21px;
+                        font-weight: 700;
+                    }
+
+                    .main-container main .main-content .content .trends-for-you .trends-content {
+                        cursor: pointer;
+                    }
+
+                        .main-container main .main-content .content .trends-for-you .trends-content .trend {
+                            padding: 12px 16px;
+                        }
+
+                            .main-container main .main-content .content .trends-for-you .trends-content .trend .text {
+                                font-weight: 500;
+                            }
+
+                            .main-container main .main-content .content .trends-for-you .trends-content .trend .tags {
+                                display: flex;
+                                justify-content: space-between;
+                                font-size: small;
+                                color: rgb(113, 118, 123);
+                            }
+
+                                .main-container main .main-content .content .trends-for-you .trends-content .trend .tags .more {
+                                    max-height: 17px;
+                                }
+
+                                    .main-container main .main-content .content .trends-for-you .trends-content .trend .tags .more i {
+                                        font-size: 17px;
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                        position: relative;
+                                        border: 0px;
+                                        border-radius: 50%;
+                                        width: 35px;
+                                        height: 35px;
+                                    }
+
+                                        .main-container main .main-content .content .trends-for-you .trends-content .trend .tags .more i:hover {
+                                            cursor: pointer;
+                                            display: flex;
+                                            align-items: center;
+                                            justify-content: center;
+                                            position: relative;
+                                            color: rgb(29, 155, 240);
+                                            border: 0px;
+                                            border-radius: 50%;
+                                            background-color: rgba(29, 155, 240, 0.1);
+                                            width: 35px;
+                                            height: 35px;
+                                            transition-duration: 0.2s;
+                                        }
+
+                                        .main-container main .main-content .content .trends-for-you .trends-content .trend .tags .more i:active {
+                                            background-color: rgba(29, 155, 240, 0.2);
+                                        }
+
+                .main-container main .main-content .content .who-to-follow .follows-title {
+                    color: rgb(231, 233, 234);
+                    padding: 12px 16px;
+                    font-size: 21px;
+                    font-weight: 700;
+                }
+
+                .main-container main .main-content .content .who-to-follow .follows-content {
+                    cursor: pointer;
+                }
+
+                    .main-container main .main-content .content .who-to-follow .follows-content button {
+                        cursor: pointer;
+                        background-color: black;
+                        border: 0 solid black;
+                        padding: 12px 16px;
+                        border-radius: 35px;
+                        transition-duration: 0.2s;
+                        width: 100%;
+                    }
+
+                        .main-container main .main-content .content .who-to-follow .follows-content button:hover {
+                            background-color: rgba(255, 255, 255, 0.03);
+                        }
+
+                        .main-container main .main-content .content .who-to-follow .follows-content button .profile {
+                            display: flex;
+                            flex-direction: row;
+                            align-items: flex-start;
+                            width: 100%;
+                        }
+
+                            .main-container main .main-content .content .who-to-follow .follows-content button .profile .names-follow-bio .bio {
+                                display: flex;
+                                justify-content: flex-start;
+                                text-align: left;
+                                color: rgb(231, 233, 234);
+                                font-size: 16px;
+                                font-weight: 400;
+                                padding: 4px 0 0 12px;
+                            }
+
+                            .main-container main .main-content .content .who-to-follow .follows-content button .profile .names-follow-bio .names-follow {
+                                flex: 1;
+                                display: flex;
+                                justify-content: space-between;
+                            }
+
+                                .main-container main .main-content .content .who-to-follow .follows-content button .profile .names-follow-bio .names-follow .names {
+                                    margin: 0 12px;
+                                }
+
+                                    .main-container main .main-content .content .who-to-follow .follows-content button .profile .names-follow-bio .names-follow .names .username {
+                                        display: flex;
+                                        align-items: center;
+                                        color: rgb(231, 233, 234);
+                                        font-size: 16px;
+                                        font-weight: 700;
+                                    }
+
+                                    .main-container main .main-content .content .who-to-follow .follows-content button .profile .names-follow-bio .names-follow .names .name {
+                                        display: flex;
+                                        color: rgb(113, 118, 123);
+                                        font-size: 16px;
+                                        font-weight: 400;
+                                    }
+
+                                .main-container main .main-content .content .who-to-follow .follows-content button .profile .names-follow-bio .names-follow .follow-button {
+                                    display: flex;
+                                    align-items: center;
+                                    color: black;
+                                    font-size: 16px;
+                                    min-width: 78px;
+                                }
+
+                                    .main-container main .main-content .content .who-to-follow .follows-content button .profile .names-follow-bio .names-follow .follow-button .follow {
+                                        display: none;
+                                        align-items: center;
+                                        padding: 0 16px;
+                                        border-radius: 20px;
+                                        min-height: 32px;
+                                        border: 0px solid white;
+                                        background-color: rgb(239, 243, 244);
+                                    }
+
+                                        .main-container main .main-content .content .who-to-follow .follows-content button .profile .names-follow-bio .names-follow .follow-button .follow span {
+                                            font-size: 15px;
+                                            font-weight: 500;
+                                        }
+
+                                        .main-container main .main-content .content .who-to-follow .follows-content button .profile .names-follow-bio .names-follow .follow-button .follow:hover {
+                                            background-color: rgb(215, 219, 220);
+                                        }
+
+                                        .main-container main .main-content .content .who-to-follow .follows-content button .profile .names-follow-bio .names-follow .follow-button .follow:active {
+                                            background-color: rgb(191, 194, 195);
+                                        }
+
+                                    .main-container main .main-content .content .who-to-follow .follows-content button .profile .names-follow-bio .names-follow .follow-button .unfollow {
+                                        display: none;
+                                        align-items: center;
+                                        padding: 0 16px;
+                                        border-radius: 20px;
+                                        min-height: 32px;
+                                        width: 100px;
+                                        background-color: black;
+                                        border: 1px solid rgb(83, 100, 113);
+                                        color: white;
+                                    }
+
+                                        .main-container main .main-content .content .who-to-follow .follows-content button .profile .names-follow-bio .names-follow .follow-button .unfollow span {
+                                            font-size: 15px;
+                                            font-weight: 500;
+                                        }
+
+                                        .main-container main .main-content .content .who-to-follow .follows-content button .profile .names-follow-bio .names-follow .follow-button .unfollow:hover {
+                                            border-color: rgb(103, 7, 15);
+                                            color: rgb(244, 33, 46);
+                                            background-color: rgba(244, 33, 46, 0.1);
+                                            transition: none;
+                                        }
+
+                                        .main-container main .main-content .content .who-to-follow .follows-content button .profile .names-follow-bio .names-follow .follow-button .unfollow:active {
+                                            background-color: rgba(244, 33, 46, 0.2);
+                                        }
+
+                                    .main-container main .main-content .content .who-to-follow .follows-content button .profile .names-follow-bio .names-follow .follow-button .active {
+                                        display: flex;
+                                    }
+
+                .main-container main .main-content .content .top-side .custom-container span {
+                    font-size: 20px;
+                    color: rgb(231, 233, 234);
+                    font-weight: 700;
+                }
+
+                .main-container main .main-content .content .notification-content {
+                    width: 100%;
+                }
+
+                    .main-container main .main-content .content .notification-content .post {
+                        display: flex;
+                        width: 100%;
+                        padding: 12px 16px;
+                        border-bottom: 1px solid rgb(47, 51, 54);
+                    }
+
+                        .main-container main .main-content .content .notification-content .post .post-icon {
+                            min-width: 40px;
+                            margin-right: 8px;
+                            display: flex;
+                            justify-content: flex-end;
+                        }
+
+                            .main-container main .main-content .content .notification-content .post .post-icon .image {
+                                display: flex;
+                                align-items: center;
+                                justify-content: flex-end;
+                                width: 30px;
+                                height: 30px;
+                                margin-right: 4px;
+                                font-size: 24px;
+                                color: #1d9bf0;
+                            }
+
+                        .main-container main .main-content .content .notification-content .post .content {
+                            display: flex;
+                            border: 0;
+                        }
+
+                            .main-container main .main-content .content .notification-content .post .content .post-info {
+                                display: flex;
+                                justify-content: space-between;
+                                margin-bottom: 12px;
+                            }
+
+                                .main-container main .main-content .content .notification-content .post .content .post-info .post-profile-icon {
+                                    margin-right: 4px;
+                                }
+
+                                    .main-container main .main-content .content .notification-content .post .content .post-info .post-profile-icon .image {
+                                        width: 32px;
+                                        height: 32px;
+                                    }
+
+                                .main-container main .main-content .content .notification-content .post .content .post-info .more {
+                                    display: flex;
+                                    justify-content: flex-end;
+                                    align-items: center;
+                                    width: 107px;
+                                    font-size: 16px;
+                                    color: rgb(113, 118, 123);
+                                    max-height: 17px;
+                                }
+
+                                    .main-container main .main-content .content .notification-content .post .content .post-info .more i {
+                                        font-size: 17px;
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                        position: relative;
+                                        border: 0px;
+                                        border-radius: 50%;
+                                        width: 35px;
+                                        height: 35px;
+                                    }
+
+                                        .main-container main .main-content .content .notification-content .post .content .post-info .more i:hover {
+                                            cursor: pointer;
+                                            display: flex;
+                                            align-items: center;
+                                            justify-content: center;
+                                            position: relative;
+                                            color: rgb(29, 155, 240);
+                                            border: 0px;
+                                            border-radius: 50%;
+                                            background-color: rgba(29, 155, 240, 0.1);
+                                            width: 35px;
+                                            height: 35px;
+                                            transition-duration: 0.2s;
+                                        }
+
+                                        .main-container main .main-content .content .notification-content .post .content .post-info .more i:active {
+                                            background-color: rgba(29, 155, 240, 0.2);
+                                        }
+
+                            .main-container main .main-content .content .notification-content .post .content .post-username {
+                                color: rgb(231, 233, 234);
+                            }
+
+                            .main-container main .main-content .content .notification-content .post .content .post-text {
+                                color: rgb(113, 118, 123);
+                                margin-top: 12px;
+                            }
+
+                            .main-container main .main-content .content .notification-content .post .content .post-image {
+                                width: 100%;
+                                margin-top: 12px;
+                                border-radius: 18px;
+                                display: flex;
+                            }
+
+                                .main-container main .main-content .content .notification-content .post .content .post-image .image {
+                                    width: auto;
+                                    height: auto;
+                                    min-height: 300px;
+                                }
+
+                                    .main-container main .main-content .content .notification-content .post .content .post-image .image img {
+                                        width: 100%;
+                                        height: 100%;
+                                        border-radius: 18px;
+                                        object-fit: cover;
+                                    }
+
+                .main-container main .main-content .content .top-side .custom-container span {
+                    font-size: 20px;
+                    color: rgb(231, 233, 234);
+                    font-weight: 700;
+                }
+
+                .main-container main .main-content .content .top-side .custom-container .lists-settings {
+                    height: 100%;
+                    min-width: 56px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-end;
+                }
+
+                    .main-container main .main-content .content .top-side .custom-container .lists-settings a {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 34px;
+                        height: 34px;
+                        font-size: 18px;
+                        border: 2px solid transparent;
+                        border-radius: 50%;
+                        color: white;
+                    }
+
+                        .main-container main .main-content .content .top-side .custom-container .lists-settings a:hover {
+                            background-color: rgba(239, 243, 244, 0.1);
+                        }
+
+                        .main-container main .main-content .content .top-side .custom-container .lists-settings a:active {
+                            background-color: rgba(239, 243, 244, 0.2);
+                        }
+
+                .main-container main .main-content .content .discover-new-lists {
+                    border-bottom: 1px solid rgb(47, 51, 54);
+                }
+
+                    .main-container main .main-content .content .discover-new-lists .follows-title {
+                        color: rgb(231, 233, 234);
+                        padding: 12px 16px;
+                        font-size: 21px;
+                        font-weight: 700;
+                    }
+
+                    .main-container main .main-content .content .discover-new-lists .follows-content {
+                        cursor: pointer;
+                    }
+
+                        .main-container main .main-content .content .discover-new-lists .follows-content button {
+                            cursor: pointer;
+                            background-color: black;
+                            border: 0 solid black;
+                            padding: 12px 16px;
+                            border-radius: 35px;
+                            transition-duration: 0.2s;
+                            width: 100%;
+                        }
+
+                            .main-container main .main-content .content .discover-new-lists .follows-content button:hover {
+                                background-color: rgba(255, 255, 255, 0.03);
+                            }
+
+                            .main-container main .main-content .content .discover-new-lists .follows-content button .profile {
+                                display: flex;
+                                flex-direction: row;
+                                align-items: flex-start;
+                                width: 100%;
+                            }
+
+                                .main-container main .main-content .content .discover-new-lists .follows-content button .profile .names-follow {
+                                    flex: 1;
+                                    display: flex;
+                                    justify-content: space-between;
+                                }
+
+                                    .main-container main .main-content .content .discover-new-lists .follows-content button .profile .names-follow .names {
+                                        margin: 0 12px;
+                                    }
+
+                                        .main-container main .main-content .content .discover-new-lists .follows-content button .profile .names-follow .names .username {
+                                            display: flex;
+                                            align-items: center;
+                                            color: rgb(231, 233, 234);
+                                            font-size: 16px;
+                                            font-weight: 700;
+                                        }
+
+                                            .main-container main .main-content .content .discover-new-lists .follows-content button .profile .names-follow .names .username .members {
+                                                display: flex;
+                                                color: rgb(113, 118, 123);
+                                                font-size: 14px;
+                                                font-weight: 400;
+                                                margin-left: 5px;
+                                            }
+
+                                        .main-container main .main-content .content .discover-new-lists .follows-content button .profile .names-follow .names .name {
+                                            display: flex;
+                                            color: rgb(113, 118, 123);
+                                            font-size: 14px;
+                                            font-weight: 400;
+                                        }
+
+                                    .main-container main .main-content .content .discover-new-lists .follows-content button .profile .names-follow .follow-button {
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: flex-end;
+                                        color: black;
+                                        font-size: 16px;
+                                        min-width: 44px;
+                                    }
+
+                                        .main-container main .main-content .content .discover-new-lists .follows-content button .profile .names-follow .follow-button .plus {
+                                            display: none;
+                                            align-items: center;
+                                            justify-content: center;
+                                            border: 0px solid white;
+                                            border-radius: 50%;
+                                            background-color: rgb(239, 243, 244);
+                                            min-height: 32px;
+                                            min-width: 32px;
+                                        }
+
+                                            .main-container main .main-content .content .discover-new-lists .follows-content button .profile .names-follow .follow-button .plus span {
+                                                font-size: 15px;
+                                                font-weight: 500;
+                                            }
+
+                                            .main-container main .main-content .content .discover-new-lists .follows-content button .profile .names-follow .follow-button .plus:hover {
+                                                background-color: rgb(215, 219, 220);
+                                            }
+
+                                            .main-container main .main-content .content .discover-new-lists .follows-content button .profile .names-follow .follow-button .plus:active {
+                                                background-color: rgb(191, 194, 195);
+                                            }
+
+                                        .main-container main .main-content .content .discover-new-lists .follows-content button .profile .names-follow .follow-button .check {
+                                            display: none;
+                                            align-items: center;
+                                            justify-content: center;
+                                            border: 1px solid rgb(83, 100, 113);
+                                            border-radius: 50%;
+                                            background-color: black;
+                                            min-height: 32px;
+                                            min-width: 32px;
+                                            color: white;
+                                        }
+
+                                            .main-container main .main-content .content .discover-new-lists .follows-content button .profile .names-follow .follow-button .check span {
+                                                font-size: 15px;
+                                                font-weight: 500;
+                                            }
+
+                                            .main-container main .main-content .content .discover-new-lists .follows-content button .profile .names-follow .follow-button .check:hover {
+                                                border-color: rgb(103, 7, 15);
+                                                color: rgb(244, 33, 46);
+                                                background-color: rgba(244, 33, 46, 0.1);
+                                                transition: none;
+                                            }
+
+                                            .main-container main .main-content .content .discover-new-lists .follows-content button .profile .names-follow .follow-button .check:active {
+                                                background-color: rgba(244, 33, 46, 0.2);
+                                            }
+
+                                        .main-container main .main-content .content .discover-new-lists .follows-content button .profile .names-follow .follow-button .active {
+                                            display: flex;
+                                        }
+
+                .main-container main .main-content .content .your-lists .follows-title {
+                    color: rgb(231, 233, 234);
+                    padding: 12px 16px;
+                    font-size: 21px;
+                    font-weight: 700;
+                }
+
+                .main-container main .main-content .content .your-lists .follows-content {
+                    cursor: pointer;
+                }
+
+                    .main-container main .main-content .content .your-lists .follows-content button {
+                        cursor: pointer;
+                        background-color: black;
+                        border: 0 solid black;
+                        padding: 12px 16px;
+                        border-radius: 35px;
+                        transition-duration: 0.2s;
+                        width: 100%;
+                    }
+
+                        .main-container main .main-content .content .your-lists .follows-content button:hover {
+                            background-color: rgba(255, 255, 255, 0.03);
+                        }
+
+                        .main-container main .main-content .content .your-lists .follows-content button .profile {
+                            display: flex;
+                            flex-direction: row;
+                            align-items: flex-start;
+                            width: 100%;
+                        }
+
+                            .main-container main .main-content .content .your-lists .follows-content button .profile .names-follow {
+                                flex: 1;
+                                display: flex;
+                                justify-content: space-between;
+                            }
+
+                                .main-container main .main-content .content .your-lists .follows-content button .profile .names-follow .names {
+                                    margin: 0 12px;
+                                }
+
+                                    .main-container main .main-content .content .your-lists .follows-content button .profile .names-follow .names .username {
+                                        display: flex;
+                                        align-items: center;
+                                        color: rgb(231, 233, 234);
+                                        font-size: 16px;
+                                        font-weight: 700;
+                                    }
+
+                                        .main-container main .main-content .content .your-lists .follows-content button .profile .names-follow .names .username .members {
+                                            display: flex;
+                                            color: rgb(113, 118, 123);
+                                            font-size: 14px;
+                                            font-weight: 400;
+                                            margin-left: 5px;
+                                        }
+
+                                    .main-container main .main-content .content .your-lists .follows-content button .profile .names-follow .names .name {
+                                        display: flex;
+                                        color: rgb(113, 118, 123);
+                                        font-size: 14px;
+                                        font-weight: 400;
+                                    }
+
+                                .main-container main .main-content .content .your-lists .follows-content button .profile .names-follow .follow-button {
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: flex-end;
+                                    color: black;
+                                    font-size: 16px;
+                                    min-width: 44px;
+                                }
+
+                                    .main-container main .main-content .content .your-lists .follows-content button .profile .names-follow .follow-button a {
+                                        display: none;
+                                        align-items: center;
+                                        justify-content: center;
+                                        border: 0px solid white;
+                                        border-radius: 50%;
+                                        min-height: 36px;
+                                        min-width: 36px;
+                                        color: rgb(29, 155, 240);
+                                    }
+
+                                        .main-container main .main-content .content .your-lists .follows-content button .profile .names-follow .follow-button a span {
+                                            font-size: 15px;
+                                            font-weight: 500;
+                                        }
+
+                                        .main-container main .main-content .content .your-lists .follows-content button .profile .names-follow .follow-button a:hover {
+                                            background-color: rgba(29, 155, 240, 0.1);
+                                        }
+
+                                        .main-container main .main-content .content .your-lists .follows-content button .profile .names-follow .follow-button a:active {
+                                            background-color: rgba(29, 155, 240, 0.2);
+                                        }
+
+                                    .main-container main .main-content .content .your-lists .follows-content button .profile .names-follow .follow-button .active {
+                                        display: flex;
+                                    }
+
+                .main-container main .main-content .content .top-side .custom-container {
+                    height: fit-content !important;
+                }
+
+                    .main-container main .main-content .content .top-side .custom-container .name span {
+                        font-size: 13px;
+                        color: rgb(113, 118, 123);
+                        font-weight: 400;
+                    }
+
+                    .main-container main .main-content .content .top-side .custom-container .bookmarks-settings {
+                        height: 100%;
+                        min-width: 56px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: flex-end;
+                    }
+
+                        .main-container main .main-content .content .top-side .custom-container .bookmarks-settings a {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            width: 34px;
+                            height: 34px;
+                            font-size: 18px;
+                            border: 2px solid transparent;
+                            border-radius: 50%;
+                            color: white;
+                        }
+
+                            .main-container main .main-content .content .top-side .custom-container .bookmarks-settings a:hover {
+                                background-color: rgba(239, 243, 244, 0.1);
+                            }
+
+                            .main-container main .main-content .content .top-side .custom-container .bookmarks-settings a:active {
+                                background-color: rgba(239, 243, 244, 0.2);
+                            }
+
+                    .main-container main .main-content .content .top-side .custom-container span {
+                        font-size: 20px;
+                        color: rgb(231, 233, 234);
+                        font-weight: 700;
+                    }
+
+                    .main-container main .main-content .content .top-side .custom-container .communities-settings {
+                        height: 100%;
+                        min-width: 56px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: flex-end;
+                    }
+
+                        .main-container main .main-content .content .top-side .custom-container .communities-settings a {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            width: 34px;
+                            height: 34px;
+                            font-size: 18px;
+                            border: 2px solid transparent;
+                            border-radius: 50%;
+                            color: white;
+                        }
+
+                        .main-container main .main-content .content .top-side .custom-container .communities-settings .plus {
+                            transform: translate(0px, 3px);
+                        }
+
+                .main-container main .main-content .content .post-content .straight-line {
+                    margin: 0 0 8px 0 !important;
+                }
+
+                .main-container main .main-content .content .post-content .communities-container {
+                    margin-bottom: 12px;
+                    max-width: 100%;
+                }
+
+                    .main-container main .main-content .content .post-content .communities-container .swiper-button-next {
+                        opacity: 0;
+                    }
+
+                    .main-container main .main-content .content .post-content .communities-container .swiper-button-prev {
+                        opacity: 0;
+                    }
+
+                    .main-container main .main-content .content .post-content .communities-container:hover .swiper-button-next {
+                        opacity: 0.75;
+                    }
+
+                    .main-container main .main-content .content .post-content .communities-container:hover .swiper-button-prev {
+                        opacity: 0.75;
+                    }
+
+                .main-container main .main-content .content .post-content .communities {
+                    width: 100%;
+                    height: 36px !important;
+                    white-space: nowrap;
+                    padding-left: 10px;
+                }
+
+                    .main-container main .main-content .content .post-content .communities .select-button {
+                        width: auto !important;
+                        background-color: black;
+                        border: 1px solid rgb(47, 51, 54);
+                        border-radius: 20px;
+                        padding: 4px 16px;
+                        width: fit-content;
+                        margin: 0 2px;
+                    }
+
+                        .main-container main .main-content .content .post-content .communities .select-button span {
+                            color: rgb(231, 233, 234);
+                            font-size: 15px;
+                            font-weight: 700;
+                            border: 0px solid;
+                        }
+
+                .main-container main .main-content .content .post-content .background-photo .background-image {
+                    max-width: 598px;
+                    height: 200px;
+                    z-index: -2;
+                    object-fit: cover;
+                }
+
+                    .main-container main .main-content .content .post-content .background-photo .background-image img {
+                        width: 100%;
+                        height: 100%;
+                    }
+
+                .main-container main .main-content .content .post-content .profile-info {
+                    padding: 12px 16px;
+                }
+
+                    .main-container main .main-content .content .post-content .profile-info .image-button {
+                        display: flex;
+                        justify-content: space-between;
+                    }
+
+                        .main-container main .main-content .content .post-content .profile-info .image-button .profile-image {
+                            margin-top: -15%;
+                            margin-bottom: 12px;
+                        }
+
+                            .main-container main .main-content .content .post-content .profile-info .image-button .profile-image .image {
+                                width: 140px !important;
+                                height: 140px !important;
+                            }
+
+                                .main-container main .main-content .content .post-content .profile-info .image-button .profile-image .image img {
+                                    width: 100%;
+                                    height: 100%;
+                                }
+
+                        .main-container main .main-content .content .post-content .profile-info .image-button .profile-button {
+                            width: auto !important;
+                            max-height: 36px;
+                            background-color: black;
+                            border: 1px solid rgb(83, 100, 113);
+                            border-radius: 20px;
+                            padding: 4px 16px;
+                            width: fit-content;
+                            margin-bottom: 12px;
+                        }
+
+                            .main-container main .main-content .content .post-content .profile-info .image-button .profile-button span {
+                                color: rgb(231, 233, 234);
+                                font-size: 15px;
+                                font-weight: 700;
+                                border: 0px solid;
+                            }
+
+                    .main-container main .main-content .content .post-content .profile-info .names {
+                        margin: 4px 0 12px 0;
+                    }
+
+                        .main-container main .main-content .content .post-content .profile-info .names .username {
+                            display: flex;
+                            align-items: center;
+                            color: rgb(231, 233, 234);
+                            font-size: 20px;
+                            font-weight: 700;
+                        }
+
+                        .main-container main .main-content .content .post-content .profile-info .names .name {
+                            display: flex;
+                            color: rgb(113, 118, 123);
+                            font-size: 15px;
+                            font-weight: 400;
+                        }
+
+                    .main-container main .main-content .content .post-content .profile-info .profile-bio {
+                        color: rgb(231, 233, 234);
+                        font-size: 15px;
+                        margin-bottom: 12px;
+                    }
+
+                    .main-container main .main-content .content .post-content .profile-info .location-date {
+                        margin-bottom: 12px;
+                    }
+
+                        .main-container main .main-content .content .post-content .profile-info .location-date .location {
+                            display: flex;
+                            font-size: 15px;
+                            color: rgb(113, 118, 123);
+                        }
+
+                            .main-container main .main-content .content .post-content .profile-info .location-date .location .icon {
+                                min-width: 18px;
+                            }
+
+                                .main-container main .main-content .content .post-content .profile-info .location-date .location .icon i {
+                                    margin-right: 4px;
+                                }
+
+                        .main-container main .main-content .content .post-content .profile-info .location-date .create-date {
+                            display: flex;
+                            font-size: 15px;
+                            color: rgb(113, 118, 123);
+                        }
+
+                            .main-container main .main-content .content .post-content .profile-info .location-date .create-date .icon {
+                                min-width: 18px;
+                            }
+
+                                .main-container main .main-content .content .post-content .profile-info .location-date .create-date .icon i {
+                                    margin-right: 4px;
+                                }
+
+                    .main-container main .main-content .content .post-content .profile-info .counts {
+                        display: flex;
+                    }
+
+                        .main-container main .main-content .content .post-content .profile-info .counts .follow-count {
+                            font-size: 15px;
+                            margin-right: 20px;
+                        }
+
+                            .main-container main .main-content .content .post-content .profile-info .counts .follow-count .count {
+                                color: rgb(231, 233, 234);
+                            }
+
+                            .main-container main .main-content .content .post-content .profile-info .counts .follow-count .text {
+                                color: rgb(113, 118, 123);
+                            }
+
+                .main-container main .main-content .content .post-content .media-container {
+                    margin: 4px 4px 0 4px;
+                    padding: 0;
+                }
+
+                    .main-container main .main-content .content .post-content .media-container .media {
+                        width: 193px;
+                        height: 193px;
+                        padding: 0;
+                        margin-bottom: 4px;
+                    }
+
+                        .main-container main .main-content .content .post-content .media-container .media .media-image {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                        }
+
+                            .main-container main .main-content .content .post-content .media-container .media .media-image img {
+                                width: 100%;
+                                height: 100%;
+                            }
+
+                .main-container main .main-content .content .post-content .row-container {
+                    margin: 0 0 0 0;
+                    padding: 0;
+                }
+
+            .main-container main .main-content .trending {
+                width: 350px;
+                height: fit-content;
+                margin-right: 70px;
+                padding: 6px 0;
+                position: sticky;
+            }
+
+                .main-container main .main-content .trending .searchbar-container {
+                    position: sticky;
+                    top: 0px;
+                    background-color: black;
+                    height: 54px;
+                    margin-bottom: 12px;
+                    padding-top: 4px;
+                    z-index: 10;
+                }
+
+                .main-container main .main-content .trending .searchbar {
+                    display: flex;
+                    align-items: center;
+                    border: 0px solid black;
+                    border-radius: 30px;
+                    background-color: rgb(32, 35, 39);
+                    margin-bottom: 12px;
+                }
+
+                    .main-container main .main-content .trending .searchbar:focus-within {
+                        background-color: black;
+                        outline: solid;
+                        outline-width: 2px;
+                        outline-color: #1d9bf0;
+                        border-radius: 30px;
+                        transition: none !important;
+                    }
+
+                    .main-container main .main-content .trending .searchbar .search-icon {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 42px;
+                        height: 44px;
+                        padding-left: 12px;
+                    }
+
+                        .main-container main .main-content .trending .searchbar .search-icon i {
+                            color: rgb(113, 118, 123);
+                        }
+
+                    .main-container main .main-content .trending .searchbar .search-input {
+                        display: flex;
+                        flex: 1;
+                    }
+
+                        .main-container main .main-content .trending .searchbar .search-input input {
+                            flex: 1;
+                            border: 0;
+                            padding: 12px;
+                            background-color: rgb(32, 35, 39);
+                            color: white;
+                            border-radius: 30px;
+                        }
+
+                            .main-container main .main-content .trending .searchbar .search-input input:focus {
+                                background-color: black;
+                                outline: none;
+                                outline-color: none;
+                                transition: none !important;
+                            }
+
+                        .main-container main .main-content .trending .searchbar .search-input ::placeholder {
+                            font-size: 16px;
+                        }
+
+                .main-container main .main-content .trending .premium {
+                    margin-bottom: 16px;
+                    padding: 12px 16px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 6px;
+                    color: rgb(231, 233, 234);
+                }
+
+                    .main-container main .main-content .trending .premium .premium-title {
+                        font-size: 22px;
+                        font-weight: 700;
+                    }
+
+                    .main-container main .main-content .trending .premium .subscribe-button a {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        background-color: #1d9bf0;
+                        border: 0 solid;
+                        border-radius: 25px;
+                        padding: 1px 16px;
+                        height: 36px;
+                        margin-top: 4px;
+                        width: fit-content;
+                    }
+
+                        .main-container main .main-content .trending .premium .subscribe-button a:hover {
+                            background-color: rgb(26, 140, 216);
+                        }
+
+                        .main-container main .main-content .trending .premium .subscribe-button a span {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            font-size: 16px;
+                            color: white;
+                            font-weight: 700;
+                            user-select: none;
+                        }
+
+                .main-container main .main-content .trending .trends-for-you {
+                    margin-bottom: 12px;
+                }
+
+                    .main-container main .main-content .trending .trends-for-you .trends-title {
+                        color: rgb(231, 233, 234);
+                        padding: 12px 16px;
+                        font-size: 21px;
+                        font-weight: 700;
+                    }
+
+                    .main-container main .main-content .trending .trends-for-you .trends-content {
+                        cursor: pointer;
+                    }
+
+                        .main-container main .main-content .trending .trends-for-you .trends-content .trend {
+                            padding: 12px 16px;
+                        }
+
+                            .main-container main .main-content .trending .trends-for-you .trends-content .trend .text {
+                                font-weight: 500;
+                            }
+
+                            .main-container main .main-content .trending .trends-for-you .trends-content .trend .tags {
+                                display: flex;
+                                justify-content: space-between;
+                                font-size: small;
+                                color: rgb(113, 118, 123);
+                            }
+
+                                .main-container main .main-content .trending .trends-for-you .trends-content .trend .tags .more {
+                                    max-height: 17px;
+                                }
+
+                                    .main-container main .main-content .trending .trends-for-you .trends-content .trend .tags .more i {
+                                        font-size: 17px;
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                        position: relative;
+                                        border: 0px;
+                                        border-radius: 50%;
+                                        width: 35px;
+                                        height: 35px;
+                                    }
+
+                                        .main-container main .main-content .trending .trends-for-you .trends-content .trend .tags .more i:hover {
+                                            cursor: pointer;
+                                            display: flex;
+                                            align-items: center;
+                                            justify-content: center;
+                                            position: relative;
+                                            color: rgb(29, 155, 240);
+                                            border: 0px;
+                                            border-radius: 50%;
+                                            background-color: rgba(29, 155, 240, 0.1);
+                                            width: 35px;
+                                            height: 35px;
+                                            transition-duration: 0.2s;
+                                        }
+
+                                        .main-container main .main-content .trending .trends-for-you .trends-content .trend .tags .more i:active {
+                                            background-color: rgba(29, 155, 240, 0.2);
+                                        }
+
+                .main-container main .main-content .trending .who-to-follow .follows-title {
+                    color: rgb(231, 233, 234);
+                    padding: 12px 16px;
+                    font-size: 20px;
+                    font-weight: 700;
+                }
+
+                .main-container main .main-content .trending .who-to-follow .follows-content {
+                    cursor: pointer;
+                }
+
+                    .main-container main .main-content .trending .who-to-follow .follows-content button {
+                        cursor: pointer;
+                        background-color: black;
+                        border: 0 solid black;
+                        padding: 12px 16px;
+                        border-radius: 35px;
+                        transition-duration: 0.2s;
+                        width: 100%;
+                    }
+
+                        .main-container main .main-content .trending .who-to-follow .follows-content button:hover {
+                            background-color: rgba(255, 255, 255, 0.03);
+                        }
+
+                        .main-container main .main-content .trending .who-to-follow .follows-content button .profile {
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            width: 100%;
+                        }
+
+                            .main-container main .main-content .trending .who-to-follow .follows-content button .profile .names-follow {
+                                flex: 1;
+                                display: flex;
+                                justify-content: space-between;
+                            }
+
+                                .main-container main .main-content .trending .who-to-follow .follows-content button .profile .names-follow .names {
+                                    margin: 0 12px;
+                                }
+
+                                    .main-container main .main-content .trending .who-to-follow .follows-content button .profile .names-follow .names .username {
+                                        display: flex;
+                                        align-items: center;
+                                        color: rgb(231, 233, 234);
+                                        font-size: 16px;
+                                        font-weight: 700;
+                                    }
+
+                                    .main-container main .main-content .trending .who-to-follow .follows-content button .profile .names-follow .names .name {
+                                        display: flex;
+                                        color: rgb(113, 118, 123);
+                                        font-size: 16px;
+                                        font-weight: 400;
+                                    }
+
+                                .main-container main .main-content .trending .who-to-follow .follows-content button .profile .names-follow .follow-button {
+                                    display: flex;
+                                    align-items: center;
+                                    color: black;
+                                    font-size: 16px;
+                                    min-width: 78px;
+                                }
+
+                                    .main-container main .main-content .trending .who-to-follow .follows-content button .profile .names-follow .follow-button .follow {
+                                        display: none;
+                                        align-items: center;
+                                        padding: 0 16px;
+                                        border-radius: 20px;
+                                        min-height: 32px;
+                                        border: 0px solid white;
+                                        background-color: rgb(239, 243, 244);
+                                    }
+
+                                        .main-container main .main-content .trending .who-to-follow .follows-content button .profile .names-follow .follow-button .follow span {
+                                            font-size: 15px;
+                                            font-weight: 500;
+                                        }
+
+                                        .main-container main .main-content .trending .who-to-follow .follows-content button .profile .names-follow .follow-button .follow:hover {
+                                            background-color: rgb(215, 219, 220);
+                                        }
+
+                                        .main-container main .main-content .trending .who-to-follow .follows-content button .profile .names-follow .follow-button .follow:active {
+                                            background-color: rgb(191, 194, 195);
+                                        }
+
+                                    .main-container main .main-content .trending .who-to-follow .follows-content button .profile .names-follow .follow-button .unfollow {
+                                        display: none;
+                                        align-items: center;
+                                        padding: 0 16px;
+                                        border-radius: 20px;
+                                        min-height: 32px;
+                                        width: 100px;
+                                        background-color: black;
+                                        border: 1px solid rgb(83, 100, 113);
+                                        color: white;
+                                    }
+
+                                        .main-container main .main-content .trending .who-to-follow .follows-content button .profile .names-follow .follow-button .unfollow span {
+                                            font-size: 15px;
+                                            font-weight: 500;
+                                        }
+
+                                        .main-container main .main-content .trending .who-to-follow .follows-content button .profile .names-follow .follow-button .unfollow:hover {
+                                            border-color: rgb(103, 7, 15);
+                                            color: rgb(244, 33, 46);
+                                            background-color: rgba(244, 33, 46, 0.1);
+                                            transition: none;
+                                        }
+
+                                        .main-container main .main-content .trending .who-to-follow .follows-content button .profile .names-follow .follow-button .unfollow:active {
+                                            background-color: rgba(244, 33, 46, 0.2);
+                                        }
+
+                                    .main-container main .main-content .trending .who-to-follow .follows-content button .profile .names-follow .follow-button .active {
+                                        display: flex;
+                                    }
+
+@media only screen and (min-width: 688px) and (max-width: 1400px) {
+    main {
+        width: auto !important;
+        flex: 0 !important;
+        margin-right: -60px;
+    }
+
+    html {
+        overflow-x: hidden;
+    }
+}
+
+@media only screen and (min-width: 1093px) and (max-width: 1400px) {
+    .main-content {
+        width: 990px !important;
+    }
+
+    .trending {
+        margin-right: 10px !important;
+    }
+}
+
+@media only screen and (min-width: 1000px) and (max-width: 1093px) {
+    .main-content {
+        width: 920px !important;
+    }
+
+    .trending {
+        width: 290px !important;
+        margin-right: 10px !important;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .trending {
+        display: none !important;
+    }
+}
+
+@media only screen and (min-width: 500px) and (max-width: 1000px) {
+    .main-content {
+        width: 600px !important;
+    }
+}
+
+@media only screen and (min-width: 500px) and (max-width: 1280px) {
+    header {
+        flex-grow: 0 !important;
+        flex: 0 !important;
+        flex-shrink: 0 !important;
+    }
+
+        header .header-content {
+            padding: 0 !important;
+            min-width: 88px !important;
+            width: 68px !important;
+            height: 100dvh !important;
+            display: flex;
+            position: fixed !important;
+            flex-direction: column;
+            align-items: flex-end;
+            flex-grow: 1 !important;
+            flex-shrink: 0;
+        }
+
+            header .header-content .profile-button .responsive-profile .names {
+                display: none !important;
+            }
+
+            header .header-content .profile-button .responsive-profile .more {
+                display: none !important;
+            }
+
+            header .header-content .header-buttons {
+                width: 72px !important;
+                height: auto !important;
+                justify-content: center;
+                align-items: center;
+                display: flex;
+                flex-direction: column;
+            }
+
+                header .header-content .header-buttons .logo {
+                    display: flex !important;
+                    justify-content: flex-end !important;
+                    align-items: flex-start !important;
+                    height: fit-content !important;
+                }
+
+                header .header-content .header-buttons .sidebar ul li {
+                    display: flex !important;
+                    justify-content: flex-end !important;
+                }
+
+                    header .header-content .header-buttons .sidebar ul li .content-button {
+                        width: auto !important;
+                    }
+
+                        header .header-content .header-buttons .sidebar ul li .content-button .content .text {
+                            display: none !important;
+                        }
+
+                header .header-content .header-buttons .sidebar .post a {
+                    display: flex !important;
+                    justify-content: flex-end !important;
+                    width: auto !important;
+                    padding: 0 !important;
+                }
+
+                    header .header-content .header-buttons .sidebar .post a span {
+                        display: none !important;
+                    }
+
+                    header .header-content .header-buttons .sidebar .post a .post-icon {
+                        width: 100%;
+                        height: 100%;
+                        font-size: 17px;
+                        display: flex !important;
+                        align-items: center;
+                        justify-content: center;
+                    }
+}
+
+@media only screen and (min-width: 500px) and (max-width: 688px) {
+    html {
+        overflow-x: hidden !important;
+    }
+
+    .main-container {
+        flex-direction: column !important;
+    }
+
+    main {
+        width: 100% !important;
+    }
+
+    header {
+        display: none !important;
+    }
+
+    .main-content {
+        width: 100% !important;
+    }
+
+    .content {
+        width: 100%;
+    }
+
+    .post-area {
+        width: 100% !important;
+    }
+
+    textarea {
+        width: 100% !important;
+    }
+
+    .post-likes ul {
+        display: flex !important;
+        justify-content: space-between !important;
+    }
+
+        .post-likes ul li .like {
+            width: auto !important;
+        }
+
+    .responsive-top {
+        display: flex !important;
+    }
+
+    .offcanvas {
+        display: flex;
+    }
+
+    .offcanvas-backdrop {
+        display: flex;
+    }
+
+    .custom-container .text {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    .post-box {
+        display: none !important;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    html {
+        overflow-x: hidden !important;
+    }
+
+    .main-container {
+        flex-direction: column !important;
+    }
+
+    header {
+        display: none !important;
+    }
+
+    .main-content {
+        width: 100% !important;
+    }
+
+    .post-area {
+        width: 100% !important;
+    }
+
+    textarea {
+        width: 100% !important;
+    }
+
+    .post-likes ul {
+        display: flex !important;
+        justify-content: space-between !important;
+    }
+
+        .post-likes ul li .like {
+            width: auto !important;
+        }
+
+    .responsive-top {
+        display: flex !important;
+    }
+
+    .offcanvas {
+        display: flex;
+        --bs-offcanvas-width: 45%;
+    }
+
+    .offcanvas-backdrop {
+        display: flex;
+    }
+
+    .post-info .name-date {
+        display: none !important;
+    }
+
+    .post-info .more {
+        width: auto !important;
+    }
+
+    .post-box {
+        display: none !important;
+    }
+
+    .custom-container .text {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+}
+
+@media only screen and (max-width: 350px) {
+    .offcanvas {
+        --bs-offcanvas-width: 190px !important;
+    }
+
+    .offcanvas-backdrop {
+        width: 100% !important;
+    }
+
+    .post .post-likes {
+        display: none !important;
+    }
+}
+
+/*# sourceMappingURL=main.css.map */

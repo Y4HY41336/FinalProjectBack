@@ -1,0 +1,240 @@
+﻿@using FinalProject.ViewModels.ProfileViewModels;
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@model ProfileInfoViewModel
+
+<div class="content">
+    <div class="top-side blur">
+        <div class="search-side">
+            <div class="custom-container">
+                
+                <div class="responsive-top">
+                    <a data-bs-toggle="offcanvas" href="#offcanvas" role="button"
+                       aria-controls="offcanvasExample">
+                        <div class="image">
+                            <img src="/assets/images/ProfileImages/@Model.CurrentUser.ProfilePhoto"
+                                 alt="">
+
+                        </div>
+                    </a>
+                </div>
+                <div class="back-names">
+                    <div class="back-container">
+                        <button class="go-back" id="backButton">
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </button>
+                    </div>
+                    <div class="text">
+                        <div class="bookmarks">
+                            <span>@Model.CurrentUser.Name</span>
+                        </div>
+                        <div class="name">
+                            <span>@Model.Posts.Count posts</span>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                
+                
+                
+                <div class="disable">
+                    <div>
+                        <div class="image">
+                            <img src="/assets/images/ProfileImages/@Model.CurrentUser.ProfilePhoto"
+                                 alt="">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-content">
+        <a class="background-photo" href="#">
+            <div class="background-image">
+                <img src="/assets/images/ProfileImages/HeaderPhotos/@Model.CurrentUser.HeaderPhoto"
+                     alt="">
+            </div>
+        </a>
+
+        <div class="profile-info">
+            <div class="image-button">
+                <a href="#" class="profile-image">
+                    <div class="image">
+                        <img src="/assets/images/ProfileImages/@Model.CurrentUser.ProfilePhoto"
+                             alt="">
+                    </div>
+                </a>
+
+                <div class="d-flex">
+                    
+                    <div class="follow-button d-flex align-items-start">
+                        <a class="switch on follow follow-unfollow @(Model.Follows.FirstOrDefault(f => f.FollowedId == Model.CurrentUser.Id) == null ? "active" : "")" asp-action="Follow" asp-controller="home" asp-route-userId="@Model.CurrentUser.Id">
+                            <span>
+                                Follow
+                            </span>
+                        </a>
+                        <a class="switch off unfollow follow-unfollow @(Model.Follows.FirstOrDefault(f => f.FollowedId == Model.CurrentUser.Id) == null ? "" : "active")" asp-action="Follow" asp-controller="home" asp-route-userId="@Model.CurrentUser.Id">
+                            <span>
+                                Following
+                            </span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="names">
+                <div class="username">
+                    <span>@Model.CurrentUser.Name</span>
+                    @if (Model.CurrentUser.IsPremium)
+                    {
+                        <div class="verify-icon-blue">
+                            <i class='bx bxs-badge-check'></i>
+                        </div>
+                    }
+                    else if (Model.CurrentUser.IsVerified)
+                    {
+                        <div class="verify-icon-yellow">
+                            <i class='bx bxs-badge-check'></i>
+                        </div>
+                    }
+                    else if (Model.CurrentUser.IsGovermentVerified)
+                    {
+                        <div class="verify-icon-blue" style="color:#839aaa">
+                            <i class='bx bxs-badge-check'></i>
+                        </div>
+                    }
+                    else
+                    {
+
+                    }
+                </div>
+                <div class="name">
+                    <span>@@@Model.CurrentUser.UserName</span>
+                </div>
+            </div>
+
+            <div class="profile-bio">
+                <span>@Model.CurrentUser.Bio</span>
+            </div>
+
+            <div class="location-date">
+                @if (Model.CurrentUser.Location.Any())
+                {
+                    <div class="location">
+                        <div class="icon">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <span>@Model.CurrentUser.Location</span>
+                    </div>
+                }
+                <div class="create-date">
+                    <div class="icon">
+                        <i class="fa-solid fa-calendar-days"></i>
+                    </div>
+                    <span>Joined @Model.CurrentUser.CreatedDate.ToString("MMM dd, yyyy")</span>
+                </div>
+            </div>
+
+            <div class="counts">
+                <a asp-action="Followers" asp-route-userId="@Model.CurrentUser.Id" asp-route-TabId="Following" class="follow-count">
+                    <span class="count">@Model.CurrentUser.FollowingCount</span>
+                    <span class="text">Following</span>
+                </a>
+                <a asp-action="Followers" asp-route-userId="@Model.CurrentUser.Id" asp-route-TabId="Followers" class="follow-count">
+                    <span class="count">@Model.CurrentUser.FollowerCount</span>
+                    <span class="text">Followers</span>
+                </a>
+            </div>
+
+        </div>
+
+
+
+        <div class="for-side">
+            <div class="for-you">
+                <div class="elements list-group">
+                    <a class="element active" asp-action="Filter" asp-route-TabId="Posts" asp-route-userId="@Model.CurrentUser.Id">
+                        <div class="element-inside">
+                            <div class="text @(ViewBag.TabId == "Posts" ? "active" : "")">
+                                <span>Posts</span>
+                                <div class="bottom-line"></div>
+                            </div>
+                        </div>
+                    </a>
+                    <a class="element" asp-action="Filter" asp-route-TabId="Replies" asp-route-userId="@Model.CurrentUser.Id">
+                        <div class="element-inside">
+                            <div class="text @(ViewBag.TabId == "Replies" ? "active" : "")">
+                                <span>Replies</span>
+                                <div class="bottom-line"></div>
+                            </div>
+                        </div>
+                    </a>                 
+                </div>
+            </div>
+        </div>
+
+        <div class="post-content tab-pane" id="nav-tabContent">
+            <div class="post-content tab-pane fade show active" id="Posts" role="tabpanel">
+
+                @await Component.InvokeAsync("CustomUserPost")
+
+            </div>
+            @* <div class="post-content tab-pane fade show" id="Media" role="tabpanel">
+                <div class="container-flued media-container
+                                d-flex justify-content-between">
+                    <div class="row row-cols-3 row-container justify-content-between align-items-start
+                                    justify-content-start">
+                        <div class="media col-4">
+                            <div class="media-image">
+                                <img src="https://pbs.twimg.com/media/GPaC1yLXAAAQS-t?format=jpg&name=4096x4096" alt="">
+                            </div>
+                        </div>
+                        <div class="media col-4">
+                            <div class="media-image">
+                                <img src="https://pbs.twimg.com/media/GPaC1yLXAAAQS-t?format=jpg&name=4096x4096" alt="">
+                            </div>
+                        </div>
+                        <div class="media col-4">
+                            <div class="media-image">
+                                <img src="https://pbs.twimg.com/media/GPaC1yLXAAAQS-t?format=jpg&name=4096x4096" alt="">
+                            </div>
+                        </div>
+                        <div class="media col-4">
+                            <div class="media-image">
+                                <img src="https://pbs.twimg.com/media/GPaC1yLXAAAQS-t?format=jpg&name=4096x4096" alt="">
+                            </div>
+                        </div>
+                        <div class="media col-4">
+                            <div class="media-image">
+                                <img src="https://pbs.twimg.com/media/GPaC1yLXAAAQS-t?format=jpg&name=4096x4096" alt="">
+                            </div>
+                        </div>
+                        <div class="media col-4">
+                            <div class="media-image">
+                                <img src="https://pbs.twimg.com/media/GPaC1yLXAAAQS-t?format=jpg&name=4096x4096" alt="">
+                            </div>
+                        </div>
+                        <div class="media col-4">
+                            <div class="media-image">
+                                <img src="https://pbs.twimg.com/media/GPaC1yLXAAAQS-t?format=jpg&name=4096x4096" alt="">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+ *@
+        </div>
+    </div>
+
+
+</div>
+

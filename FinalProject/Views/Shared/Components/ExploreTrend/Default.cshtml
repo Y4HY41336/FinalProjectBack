@@ -1,0 +1,96 @@
+﻿@using FinalProject.ViewModels.Explore;
+@{
+    Layout = null;
+}
+
+@model ExploreTrendsViewModel
+
+<div class="trends-for-you @(Model.TabId == "ForYou" || Model.TabId == null  ? "" : "no-border")">
+    @if (Model.TabId == "ForYou" || Model.TabId == null)
+    {
+        <div class="trends-title">
+            Trends for you
+        </div>
+    }
+    else if (Model.TabId == "Trending")
+    {
+        <div class="trends-title">
+            Trending in World
+        </div>
+    }
+    else
+    {
+
+    }
+    <div class="trends-content">
+
+        @foreach (var trend in Model.Trends)
+        {
+            <div class="trend hover-light">
+                <div class="tags">
+                    Trending in World
+                    <div class="more btn-group dropstart">
+                        <button class="default-button more-button hover-none " type="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-ellipsis default-icon"></i>
+
+                        </button>
+                        <ul class="dropdown-menu menu-border menu-transform">
+                            <li>
+                                <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                   href="#">
+                                    <i class="fa-regular fa-face-frown fs-6"></i>Not
+                                    interested in
+                                    this
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                   href="#">
+                                    <i class="fa-regular fa-face-frown fs-6"></i>This
+                                    trend
+                                    is
+                                    harmful or spammy
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="text">
+                    <span>
+                        @trend.TrendName
+                    </span>
+                </div>
+                <div class="tags post-count">
+                    @trend.PostCount
+                </div>
+            </div>
+
+        }
+        @if (Model.TabId == "ForYou" || Model.TabId == null)
+        {
+            <div class="show-more hover-light">
+                <a asp-action="Trends" asp-controller="Show">
+                    <span>
+                        Show more
+                    </span>
+                </a>
+            </div>
+        }
+        
+    </div>
+</div>
+
+@if (Model.TabId == "ForYou" || Model.TabId == null)
+{
+    @await Component.InvokeAsync("ExploreFollow")
+}
+
+
+
+
+
+
+
+
+

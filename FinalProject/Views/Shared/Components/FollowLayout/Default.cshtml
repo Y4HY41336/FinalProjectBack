@@ -1,0 +1,72 @@
+﻿@using FinalProject.ViewModels.LayoutViewModels;
+
+@{
+    Layout = null;
+}
+
+@model FollowUserViewModel
+
+
+<div class="follows-content">
+    @foreach (var user in Model.Users)
+    {
+        <button class="content">
+            <div class="profile">
+                <div class="image">
+                    <a asp-action="Index" asp-controller="customuser" asp-route-userId="@user.Id">
+                        <img src="/assets/images/ProfileImages/@user.ProfilePhoto"
+                             alt="Profile Icon">
+                    </a>
+                </div>
+
+                <div class="names-follow">
+                    <div class="names">
+                        <div class="username">
+                            <span>@user.Name</span>
+                            @if (user.IsPremium)
+                            {
+                                <div class="verify-icon-blue">
+                                    <i class='bx bxs-badge-check'></i>
+                                </div>
+                            }
+                            else if (user.IsVerified)
+                            {
+                                <div class="verify-icon-yellow">
+                                    <i class='bx bxs-badge-check'></i>
+                                </div>
+                            }
+                            else if (user.IsGovermentVerified)
+                            {
+                                <div class="verify-icon-blue" style="color:#839aaa">
+                                    <i class='bx bxs-badge-check'></i>
+                                </div>
+                            }
+                            else
+                            {
+
+                            }
+                        </div>
+                        <div class="name">
+                            <span>@@@user.UserName</span>
+                        </div>
+                    </div>
+
+                    <div class="follow-button">
+                        <a class="switch on follow follow-unfollow @(Model.Follows.FirstOrDefault(f => f.FollowedId == user.Id) == null ? "active" : "")" asp-action="Follow" asp-controller="Home" asp-route-userId="@user.Id">
+                            <span>
+                                Follow
+                            </span>
+                        </a>
+                        <a class="switch off unfollow follow-unfollow @(Model.Follows.FirstOrDefault(f => f.FollowedId == user.Id) == null ? "" : "active")" asp-action="Follow" asp-controller="Home" asp-route-userId="@user.Id">
+                            <span>
+                                Following
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </button>
+
+    }
+</div>
+

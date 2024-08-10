@@ -1,0 +1,73 @@
+﻿
+@{
+    Layout = null;
+}
+
+@model List<Notification>
+
+@foreach (var notification in Model)
+{
+    <a asp-action="Status" asp-controller="CustomUser" asp-route-postId="@notification.PostId">
+        <div class="post">
+            <div class="post-icon">
+                @if (notification.Type == "Like")
+                {
+                    <div class="image text-danger">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                }
+                @if (notification.Type == "Repost")
+                {
+                    <div class="image">
+                        <i class="fa-solid fa-retweet" style="color:rgb(0, 186, 124) !important;"></i>
+                    </div>
+                }
+                @if (notification.Type == "Reply")
+                {
+                    <div class="image">
+                        <i class="fa-solid fa-comment"></i>
+                    </div>
+                }
+                @if (notification.Type == "Follow")
+                {
+                    <div class="image">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                }
+            </div>
+
+            <div class="content">
+                <div class="post-info">
+                    <div class="post-profile-icon">
+                        <div class="image">
+                            <img src="/assets/images/ProfileImages/@notification.User.ProfilePhoto"
+                                 alt="">
+
+                        </div>
+                    </div>
+                    @* <div class="more">
+                        <i class="fa-solid fa-ellipsis"></i>
+                    </div> *@
+                </div>
+                @if (notification.Type == "Like" || notification.Type == "Repost" || notification.Type == "Follow")
+                {
+                    <div class="username" style="color:white;">
+                        @notification.Message
+                    </div>
+                }
+                else
+                {
+                    <div class="username" style="color:white;">
+                        @notification.User.Name replied your post
+                    </div>
+                }
+                @if (notification.Type == "Reply")
+                {
+                    <div class="post-text">
+                        @notification.Message
+                    </div>
+                }
+            </div>
+        </div>
+    </a>
+}

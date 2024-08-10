@@ -1,0 +1,720 @@
+﻿@{
+    var controllerName = ViewContext.RouteData.Values["controller"].ToString().ToLower();
+    var actionName = ViewContext.RouteData.Values["action"].ToString().ToLower();
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>X</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+          integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="~/assets\css\main.css" asp-append-version="true">
+</head>
+
+<body>
+
+    <input type="hidden" id="previousUrl" value="@ViewContext.HttpContext.Request.Headers["Referer"].ToString()" />
+
+
+    <div class="modal fade" id="PostModal" tabindex="-1" aria-labelledby="PostModalLabel" aria-hidden="true">
+        <div class="modal-dialog mt-5">
+            <div class="modal-content background-black" style="width: 600px;">
+                <div class="modal-body">
+                    <form method="post" id="postForm">
+                        <div class="post-area">
+                            <div class="d-flex">
+                                <div class="image" style="margin-right:12px;">
+                                    <img src="/assets/images/ProfileImages/default.png"
+                                         alt="">
+                                </div>
+                                <div class="text-area" style="flex:1;">
+                                    <textarea name="Content" class="textarea auto-resize w-100 background-black no-border text-light active-none" style="min-width:100%;min-height:100px; max-height:750px; resize:none; font-size:20px;" placeholder="What is happening?!"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="modal-footer" style="border:none;">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary post-submit" id="layout-post-button" disabled asp-action="CreatePost">
+                                    <span>Post</span>
+                                </button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <header>
+            <div class="header-content">
+                <div class="header-buttons">
+                    <a class="logo" asp-controller="home" asp-action="index">
+                        <div class="logo-container">
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </div>
+                    </a>
+                    <div class="sidebar">
+                        <nav>
+                            <ul>
+                                <li>
+                                    <a class="content-button" asp-controller="home" asp-action="index">
+                                        <div class="content home">
+                                            @if (controllerName == "home")
+                                            {
+                                                <div class="icon">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" height="32px"
+                                                         viewBox="0 -960 960 960" width="32px"
+                                                         fill="rgba(231, 233, 234, 1.00)">
+                                                        <path d="M160-120v-480l320-240 320 240v480H560v-280H400v280H160Z" />
+                                                    </svg>
+                                                </div>
+                                                <div class="text active">
+                                                    <div>
+                                                        <span>
+                                                            Home
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <div class="icon">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" height="32px"
+                                                         viewBox="0 -960 960 960" width="32px"
+                                                         fill="rgba(231, 233, 234, 1.00)">
+                                                        <path d="M220-180h150v-250h220v250h150v-390L480-765 220-570v390Zm-60 60v-480l320-240 320 240v480H530v-250H430v250H160Zm320-353Z" />
+                                                    </svg>
+                                                </div>
+
+                                                <div class="text">
+                                                    <div>
+                                                        <span>
+                                                            Home
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            }
+
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="content-button"
+                                       asp-controller="explore" asp-action="index">
+                                        <div class="content">
+                                            @if (controllerName == "explore")
+                                            {
+                                                <div class="icon">
+                                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                                </div>
+                                                <div class="text active">
+                                                    <div>
+                                                        <span>
+                                                            Explore
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <div class="icon">
+                                                    <i class="bi bi-search"></i>
+                                                </div>
+                                                <div class="text">
+                                                    <div>
+                                                        <span>
+                                                            Explore
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            }
+
+
+
+
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="content-button"
+                                       asp-controller="notifications" asp-action="index">
+                                        <div class="content">
+                                            @if (controllerName == "notifications")
+                                            {
+                                                <div class="icon">
+                                                    <i class="fa-solid fa-bell"></i>
+                                                </div>
+                                                <div class="text active">
+                                                    <div>
+                                                        <span>
+                                                            Notifications
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <div class="icon">
+                                                    <i class="fa-regular fa-bell"></i>                                                   
+
+                                                    @await Component.InvokeAsync("NotificationCount")
+
+                                                </div>
+                                                <div class="text">
+                                                    <div>
+                                                        <span>
+                                                            Notifications
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            }
+
+                                        </div>
+                                    </a>
+                                </li>                              
+                                <li>
+                                    <a class="content-button"
+                                       asp-controller="lists" asp-action="index">
+                                        <div class="content">
+                                            @if (controllerName == "lists" && actionName == "index")
+                                            {
+                                                <div class="icon">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" height="32px"
+                                                         viewBox="0 -960 960 960" width="32px"
+                                                         fill="rgba(231, 233, 234, 1.00)">
+                                                        <path d="M320-280q17 0 28.5-11.5T360-320q0-17-11.5-28.5T320-360q-17 0-28.5 11.5T280-320q0 17 11.5 28.5T320-280Zm0-160q17 0 28.5-11.5T360-480q0-17-11.5-28.5T320-520q-17 0-28.5 11.5T280-480q0 17 11.5 28.5T320-440Zm0-160q17 0 28.5-11.5T360-640q0-17-11.5-28.5T320-680q-17 0-28.5 11.5T280-640q0 17 11.5 28.5T320-600Zm120 320h240v-80H440v80Zm0-160h240v-80H440v80Zm0-160h240v-80H440v80ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Z" />
+                                                    </svg>
+                                                </div>
+                                                <div class="text active">
+                                                    <div>
+                                                        <span>
+                                                            Lists
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <div class="icon">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" height="32px"
+                                                         viewBox="0 -960 960 960" width="32px"
+                                                         fill="rgba(231, 233, 234, 1.00)">
+                                                        <path d="M320-280q17 0 28.5-11.5T360-320q0-17-11.5-28.5T320-360q-17 0-28.5 11.5T280-320q0 17 11.5 28.5T320-280Zm0-160q17 0 28.5-11.5T360-480q0-17-11.5-28.5T320-520q-17 0-28.5 11.5T280-480q0 17 11.5 28.5T320-440Zm0-160q17 0 28.5-11.5T360-640q0-17-11.5-28.5T320-680q-17 0-28.5 11.5T280-640q0 17 11.5 28.5T320-600Zm120 320h240v-80H440v80Zm0-160h240v-80H440v80Zm0-160h240v-80H440v80ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm0-560v560-560Z" />
+                                                    </svg>
+                                                </div>
+                                                <div class="text">
+                                                    <div>
+                                                        <span>
+                                                            Lists
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            }
+
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="content-button"
+                                       asp-controller="bookmarks" asp-action="index">
+                                        <div class="content">
+                                            @if (controllerName == "bookmarks")
+                                            {
+                                                <div class="icon">
+                                                    <i class="fa-solid fa-bookmark"></i>
+                                                </div>
+                                                <div class="text active">
+                                                    <div>
+                                                        <span>
+                                                            Bookmarks
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <div class="icon">
+                                                    <i class="fa-regular fa-bookmark"></i>
+                                                </div>
+                                                <div class="text">
+                                                    <div>
+                                                        <span>
+                                                            Bookmarks
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            }
+
+                                        </div>
+                                    </a>
+                                </li>                                
+                                <li>
+                                    <a class="content-button" asp-controller="premium" asp-action="index">
+                                        <div class="content">
+                                            <div class="icon">
+                                                <i class="fa-brands fa-x-twitter"></i>
+                                            </div>
+                                            <div class="text">
+                                                <div>
+                                                    <span>
+                                                        Premium
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="content-button"
+                                       asp-controller="profile" asp-action="index">
+                                        <div class="content">
+                                            @if (controllerName == "profile")
+                                            {
+                                                <div class="icon">
+                                                    <i class="fa-solid fa-user"></i>
+                                                </div>
+                                                <div class="text active">
+                                                    <div>
+                                                        <span>
+                                                            Profile
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <div class="icon">
+                                                    <i class="fa-regular fa-user"></i>
+
+                                                </div>
+                                                <div class="text">
+                                                    <div>
+                                                        <span>
+                                                            Profile
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            }
+
+                                        </div>
+                                    </a>
+                                </li>
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <li>
+                                        <a class="content-button" asp-controller="Admin" asp-action="index">
+                                            <div class="content">
+                                                <div class="icon">
+                                                    <i class="fa-brands fa-square-x-twitter"></i>
+                                                </div>
+                                                <div class="text">
+                                                    <div>
+                                                        <span>
+                                                            Admin Page
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                }
+                                
+                                <li>
+                                    <a class="content-button" asp-controller="Settings" asp-action="index">
+                                        <div class="content">
+                                            <div class="icon">
+                                                <i class="fa-solid fa-gear"></i>
+                                            </div>
+                                            <div class="text">
+                                                <div>
+                                                    <span>
+                                                        Settings
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="post">
+                                <a class="hover-blue" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#PostModal">
+                                    <span>Post</span>
+                                    <div class="post-icon">
+                                        <i class="fa-regular fa-pen-to-square"></i>
+                                    </div>
+                                </a>
+
+
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+
+
+                <div class="header-profile btn-group dropstart">
+                    @await Component.InvokeAsync("Header")
+
+                </div>
+            </div>
+        </header>
+        <main>
+            <div class="offcanvas offcanvas-start background-black" tabindex="-1" id="offcanvas"
+                 aria-labelledby="offcanvasExampleLabel">
+                <div class="offcanvas-body">
+                    <div class="responsive-header">
+                        <div class="header-content">
+                            <div class="header-buttons">
+                                <div class="sidebar">
+                                    <nav>
+                                        <ul>
+                                            <li>
+                                                <a class="content-button" asp-controller="home" asp-action="index">
+                                                    <div class="content home">
+                                                        @if (controllerName == "home")
+                                                        {
+                                                            <div class="icon">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" height="32px"
+                                                                     viewBox="0 -960 960 960" width="32px"
+                                                                     fill="rgba(231, 233, 234, 1.00)">
+                                                                    <path d="M160-120v-480l320-240 320 240v480H560v-280H400v280H160Z" />
+                                                                </svg>
+                                                            </div>
+                                                            <div class="text active">
+                                                                <div>
+                                                                    <span>
+                                                                        Home
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        }
+                                                        else
+                                                        {
+                                                            <div class="icon">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" height="32px"
+                                                                     viewBox="0 -960 960 960" width="32px"
+                                                                     fill="rgba(231, 233, 234, 1.00)">
+                                                                    <path d="M220-180h150v-250h220v250h150v-390L480-765 220-570v390Zm-60 60v-480l320-240 320 240v480H530v-250H430v250H160Zm320-353Z" />
+                                                                </svg>
+                                                            </div>
+
+                                                            <div class="text">
+                                                                <div>
+                                                                    <span>
+                                                                        Home
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        }
+
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="content-button"
+                                                   asp-controller="explore" asp-action="index">
+                                                    <div class="content">
+                                                        @if (controllerName == "explore")
+                                                        {
+                                                            <div class="icon">
+                                                                <i class="fa-solid fa-magnifying-glass"></i>
+                                                            </div>
+                                                            <div class="text active">
+                                                                <div>
+                                                                    <span>
+                                                                        Explore
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        }
+                                                        else
+                                                        {
+                                                            <div class="icon">
+                                                                <i class="bi bi-search"></i>
+                                                            </div>
+                                                            <div class="text">
+                                                                <div>
+                                                                    <span>
+                                                                        Explore
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        }
+
+
+
+
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="content-button"
+                                                   asp-controller="notifications" asp-action="index">
+                                                    <div class="content">
+                                                        @if (controllerName == "notifications")
+                                                        {
+                                                            <div class="icon">
+                                                                <i class="fa-solid fa-bell"></i>
+                                                            </div>
+                                                            <div class="text active">
+                                                                <div>
+                                                                    <span>
+                                                                        Notifications
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        }
+                                                        else
+                                                        {
+                                                            <div class="icon">
+                                                                <i class="fa-regular fa-bell"></i>
+
+                                                                @await Component.InvokeAsync("NotificationCount")
+
+                                                            </div>
+                                                            <div class="text">
+                                                                <div>
+                                                                    <span>
+                                                                        Notifications
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        }
+
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="content-button"
+                                                   asp-controller="lists" asp-action="index">
+                                                    <div class="content">
+                                                        @if (controllerName == "lists" && actionName == "index")
+                                                        {
+                                                            <div class="icon">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" height="32px"
+                                                                     viewBox="0 -960 960 960" width="32px"
+                                                                     fill="rgba(231, 233, 234, 1.00)">
+                                                                    <path d="M320-280q17 0 28.5-11.5T360-320q0-17-11.5-28.5T320-360q-17 0-28.5 11.5T280-320q0 17 11.5 28.5T320-280Zm0-160q17 0 28.5-11.5T360-480q0-17-11.5-28.5T320-520q-17 0-28.5 11.5T280-480q0 17 11.5 28.5T320-440Zm0-160q17 0 28.5-11.5T360-640q0-17-11.5-28.5T320-680q-17 0-28.5 11.5T280-640q0 17 11.5 28.5T320-600Zm120 320h240v-80H440v80Zm0-160h240v-80H440v80Zm0-160h240v-80H440v80ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Z" />
+                                                                </svg>
+                                                            </div>
+                                                            <div class="text active">
+                                                                <div>
+                                                                    <span>
+                                                                        Lists
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        }
+                                                        else
+                                                        {
+                                                            <div class="icon">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" height="32px"
+                                                                     viewBox="0 -960 960 960" width="32px"
+                                                                     fill="rgba(231, 233, 234, 1.00)">
+                                                                    <path d="M320-280q17 0 28.5-11.5T360-320q0-17-11.5-28.5T320-360q-17 0-28.5 11.5T280-320q0 17 11.5 28.5T320-280Zm0-160q17 0 28.5-11.5T360-480q0-17-11.5-28.5T320-520q-17 0-28.5 11.5T280-480q0 17 11.5 28.5T320-440Zm0-160q17 0 28.5-11.5T360-640q0-17-11.5-28.5T320-680q-17 0-28.5 11.5T280-640q0 17 11.5 28.5T320-600Zm120 320h240v-80H440v80Zm0-160h240v-80H440v80Zm0-160h240v-80H440v80ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm0-560v560-560Z" />
+                                                                </svg>
+                                                            </div>
+                                                            <div class="text">
+                                                                <div>
+                                                                    <span>
+                                                                        Lists
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        }
+
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="content-button"
+                                                   asp-controller="bookmarks" asp-action="index">
+                                                    <div class="content">
+                                                        @if (controllerName == "bookmarks")
+                                                        {
+                                                            <div class="icon">
+                                                                <i class="fa-solid fa-bookmark"></i>
+                                                            </div>
+                                                            <div class="text active">
+                                                                <div>
+                                                                    <span>
+                                                                        Bookmarks
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        }
+                                                        else
+                                                        {
+                                                            <div class="icon">
+                                                                <i class="fa-regular fa-bookmark"></i>
+                                                            </div>
+                                                            <div class="text">
+                                                                <div>
+                                                                    <span>
+                                                                        Bookmarks
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        }
+
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="content-button" asp-controller="premium" asp-action="index">
+                                                    <div class="content">
+                                                        <div class="icon">
+                                                            <i class="fa-brands fa-x-twitter"></i>
+                                                        </div>
+                                                        <div class="text">
+                                                            <div>
+                                                                <span>
+                                                                    Premium
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="content-button"
+                                                   asp-controller="profile" asp-action="index">
+                                                    <div class="content">
+                                                        @if (controllerName == "profile")
+                                                        {
+                                                            <div class="icon">
+                                                                <i class="fa-solid fa-user"></i>
+                                                            </div>
+                                                            <div class="text active">
+                                                                <div>
+                                                                    <span>
+                                                                        Profile
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        }
+                                                        else
+                                                        {
+                                                            <div class="icon">
+                                                                <i class="fa-regular fa-user"></i>
+
+                                                            </div>
+                                                            <div class="text">
+                                                                <div>
+                                                                    <span>
+                                                                        Profile
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        }
+
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <div class="post">
+                                            <a class="hover-blue" href="#">
+                                                <span>Post</span>
+                                                <div class="post-icon">
+                                                    <i class="fa-regular fa-pen-to-square"></i>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-content">
+                @RenderBody()
+
+                <div class="trending-container">
+
+                    <div class="margin-top" id="margin-top">
+                    </div>
+                    <div class="trending sticky-div sticky" id="sticky-div">
+                        @if (controllerName != "explore" && controllerName != "search")
+                        {
+                            @await Component.InvokeAsync("SearchBar")
+                        }
+
+                        @if (controllerName != "explore" && controllerName != "show" || actionName == "whotofollow")
+                        {
+                            <div class="trends-for-you cool-border">
+                                <div class="trends-title">
+                                    Trends for you
+                                </div>
+                                @await Component.InvokeAsync("TrendLayout")
+                            </div>
+
+                        }
+                        @if (actionName != "whotofollow")
+                        {
+                            <div class="who-to-follow cool-border">
+                                <div class="follows-title">
+                                    Who to follow
+                                </div>
+                                <div class="follows-content">
+                                    @await Component.InvokeAsync("FollowLayout")
+                                </div>
+                                <div class="show-more hover-light">
+                                    <a asp-action="WhoToFollow" asp-controller="Show">
+                                        <span>
+                                            Show more
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+
+
+        </main>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"
+            integrity="sha512-+k1pnlgt4F1H8L7t3z95o3/KO+o78INEcXTbnoJQ/F2VqDVhWoaiVml/OEHv9HsVgxUaVW+IbiZPUJQfF/YxZw=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"></script>
+
+    <script src="~/backend\script.js" asp-append-version="true"></script>
+    <script src="~/assets\js\main.js" asp-append-version="true"></script>
+
+    @section scripts {
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var postId = localStorage.getItem('postId');
+
+                console.log('postId:', postId);
+
+                document.getElementById('postIdElement').textContent = postId;
+            });
+        </script>
+    }
+
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+﻿@using FinalProject.ViewModels.List;
+
+@{
+    Layout = null;
+}
+
+@model ListDiscoverViewModel
+
+@if (Model.Lists != null)
+{
+    @foreach (var list in Model.Lists)
+    {
+        <div class="follows-content">
+            <form asp-action="Status" asp-route-listId="@list.Id">
+                <button type="submit" class="content list-content">
+                    <div class="profile">
+                        <div class="image-square">
+                            <img src="/assets/images/ProfileImages/ListPhotos/@list.ProfilePhoto"
+                                 alt="">
+                        </div>
+
+                        <div class="names-follow">
+                            <div class="names">
+                                <div class="username">
+                                    <span>@list.Name</span>
+                                    <span class="members">· @list.MemberCount members</span>
+                                </div>
+                                <div class="name">
+                                    <span>@list.FollowerCount followers</span>
+                                </div>
+
+                            </div>
+                            <div class="follow-button">
+                                <a asp-action="FollowList" asp-route-listId="@list.Id" class="switch on plus active list-unfollow">
+                                    <i class="fa-solid fa-plus"></i>
+                                </a>
+                                <a asp-action="FollowList" asp-route-listId="@list.Id" class="switch off check switch list-unfollow">
+                                    <i class="fa-solid fa-check"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </button>
+
+            </form>
+        </div>
+    }
+
+}
+

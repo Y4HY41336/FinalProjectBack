@@ -1,0 +1,2187 @@
+﻿@using FinalProject.ViewModels.Search;
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@model SearchViewModel
+
+<div class="content">
+    <div class="top-side">
+        <div class="search-side">
+            <div class="custom-container">
+                <form method="post" class="searchbar" asp-controller="Search" asp-action="Index">
+                    <div class="searchbar">
+                        <div class="search-icon">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </div>
+                        <div class="search-input">
+                            <input asp-for="Search" type="text" placeholder="Search">
+
+                        </div>
+                    </div>
+                </form>
+                
+            </div>
+        </div>
+        <div class="for-side">
+            <div class="for-you">
+                <div class="elements list-group">
+                    <a class="element active" asp-action="Filter" asp-route-TabId="Top">
+                        <div class="element-inside">
+                            <div class="text @(ViewBag.TabId == "Top" ? "active" : "")">
+                                <span>Top</span>
+                                <div class="bottom-line"></div>
+                            </div>
+                        </div>
+                    </a>
+                    <a class="element" asp-action="Filter" asp-route-TabId="Latest">
+                        <div class="element-inside">
+                            <div class="text @(ViewBag.TabId == "Latest" ? "active" : "")">
+                                <span>Latest</span>
+                                <div class="bottom-line"></div>
+                            </div>
+                        </div>
+                    </a>
+                    <a class="element" asp-action="Filter" asp-route-TabId="People">
+                        <div class="element-inside">
+                            <div class="text @(ViewBag.TabId == "People" ? "active" : "")">
+                                <span> People</span>
+                                <div class="bottom-line"></div>
+                            </div>
+                        </div>
+                    </a>
+                    <a class="element" asp-action="Filter" asp-route-TabId="Lists">
+                        <div class="element-inside">
+                            <div class="text @(ViewBag.TabId == "Lists" ? "active" : "")">
+                                <span> Lists</span>
+                                <div class="bottom-line"></div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-content">
+        <div class="post-content tab-pane fade show active" id="Top">
+
+            @await Component.InvokeAsync("SearchContent")       
+            
+
+        </div>
+
+        <div class="post-content tab-pane fade" id="Latest">
+            <div class="content-post">
+                <div class="post">
+                    <div class="profile-icon post-icon">
+                        <div class="image">
+                            <img src="https://w7.pngwing.com/pngs/858/581/png-transparent-profile-icon-user-computer-icons-system-chinese-wind-title-column-miscellaneous-service-logo.png"
+                                 alt="">
+
+                        </div>
+                    </div>
+
+                    <div class="content">
+                        <div class="post-info">
+                            <div class="info">
+                                <div class="username">
+                                    Replies
+                                </div>
+                                <div class="name-date">
+                                    <div class="name">
+                                        @@MrBeast
+                                    </div>
+                                    <div class="dot">
+                                        ·
+                                    </div>
+                                    <div class="date">
+                                        May 9, 2022
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="more btn-group dropstart">
+                                <button class="default-button more-button hover-none " type="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-solid fa-ellipsis default-icon"></i>
+
+                                </button>
+                                <ul class="dropdown-menu menu-border menu-transform post-menu">
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <div class="logo hover-none">
+                                                <i class="hover-none fa-solid fa-face-frown"></i></i>
+                                            </div><span class="text">
+                                                Not
+                                                interested in
+                                                this post
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <div class="logo hover-none">
+                                                <i class="hover-none logo fa-solid fa-user-xmark"></i>
+                                            </div><span class="text">
+                                                Unfollow
+                                                @@MrBeast
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <div class="logo hover-none">
+                                                <i class="hover-none fa-solid fa-square-plus"></i></i>
+                                            </div><span class="text">
+                                                Add/remove
+                                                @@MrBeast from Lists
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <div class="logo hover-none">
+                                                <i class="hover-none fa-solid fa-volume-xmark"></i>
+                                            </div><span class="text">
+                                                Mute
+                                                @@MrBeast
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <div class="logo hover-none">
+                                                <i class="hover-none fa-solid fa-ban"></i>
+                                            </div><span class="text">
+                                                Block
+                                                @@MrBeast
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <div class="logo hover-none">
+                                                <i class="hover-none fa-solid fa-chart-simple"></i>
+                                            </div><span class="text">
+                                                View
+                                                post
+                                                engagements
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <div class="logo hover-none">
+                                                <i class="hover-none fa-solid fa-flag"></i>
+                                            </div><span class="text">
+                                                Report
+                                                Post
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="post-text">
+                            Tomorrow’s video is something I’ve been working on for years.. an obstacle
+                            course in the sky lol
+                        </div>
+                        <div class="post-image cool-border">
+                            <div class="image">
+                                <img src="https://pbs.twimg.com/media/GRROnA3bgAAwlaT?format=jpg&name=small"
+                                     alt="">
+
+                            </div>
+
+
+                        </div>
+                        <div class="post-likes">
+                            <ul>
+                                <li>
+                                    <div class="like">
+                                        <button class="like-button comment-blue">
+                                            <div class="icon">
+                                                <div class="bg-color"></div>
+                                                <i class="fa-regular fa-comment"></i>
+                                            </div>
+                                            <div class="count">
+                                                <span>
+                                                    1.7k
+                                                </span>
+                                            </div>
+                                        </button>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="like">
+                                        <button class="like-button retweet-green">
+                                            <div class="icon">
+                                                <div class="bg-color"></div>
+                                                <i class="fa-solid fa-retweet"></i>
+                                            </div>
+                                            <div class="count">
+                                                <span>
+                                                    1.7k
+                                                </span>
+                                            </div>
+                                        </button>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="like">
+                                        <button class="like-button like-red">
+                                            <div class="icon">
+                                                <div class="bg-color"></div>
+                                                <i class="fa-regular fa-heart"></i>
+                                                <!-- <i class="fa-solid fa-heart"></i> -->
+                                            </div>
+                                            <div class="count">
+                                                <span>
+                                                    1.7k
+                                                </span>
+                                            </div>
+                                        </button>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="like">
+                                        <button class="like-button comment-blue">
+                                            <div class="icon">
+                                                <div class="bg-color"></div>
+                                                <i class="fa-solid fa-chart-simple"></i>
+                                            </div>
+                                            <div class="count">
+                                                <span>
+                                                    1.7k
+                                                </span>
+                                            </div>
+                                        </button>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="sidemark">
+                                        <button class="like-button bookmark-blue">
+                                            <div class="bg-color"></div>
+                                            <i class="fa-regular fa-bookmark"></i>
+                                            <!-- <i class="fa-solid fa-bookmark"></i> -->
+                                        </button>
+
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="sidemark">
+                                        <button class="like-button bookmark-blue">
+                                            <div class="bg-color"></div>
+                                            <i class="fa-solid fa-arrow-up-from-bracket"></i>
+
+                                        </button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="post">
+                    <div class="profile-icon post-icon">
+                        <div class="image">
+                            <img src="https://w7.pngwing.com/pngs/858/581/png-transparent-profile-icon-user-computer-icons-system-chinese-wind-title-column-miscellaneous-service-logo.png"
+                                 alt="">
+
+                        </div>
+                    </div>
+
+                    <div class="content">
+                        <div class="post-info">
+                            <div class="info">
+                                <div class="username">
+                                    MrBeast
+                                </div>
+                                <div class="name-date">
+                                    <div class="name">
+                                        @@MrBeast
+                                    </div>
+                                    <div class="dot">
+                                        ·
+                                    </div>
+                                    <div class="date">
+                                        May 9, 2022
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="more btn-group dropstart">
+                                <button class="default-button more-button hover-none " type="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-solid fa-ellipsis default-icon"></i>
+
+                                </button>
+                                <ul class="dropdown-menu menu-border menu-transform post-menu">
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <div class="logo hover-none">
+                                                <i class="hover-none fa-solid fa-face-frown"></i></i>
+                                            </div><span class="text">
+                                                Not
+                                                interested in
+                                                this post
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <div class="logo hover-none">
+                                                <i class="hover-none logo fa-solid fa-user-xmark"></i>
+                                            </div><span class="text">
+                                                Unfollow
+                                                @@MrBeast
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <div class="logo hover-none">
+                                                <i class="hover-none fa-solid fa-square-plus"></i></i>
+                                            </div><span class="text">
+                                                Add/remove
+                                                @@MrBeast from Lists
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <div class="logo hover-none">
+                                                <i class="hover-none fa-solid fa-volume-xmark"></i>
+                                            </div><span class="text">
+                                                Mute
+                                                @@MrBeast
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <div class="logo hover-none">
+                                                <i class="hover-none fa-solid fa-ban"></i>
+                                            </div><span class="text">
+                                                Block
+                                                @@MrBeast
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <div class="logo hover-none">
+                                                <i class="hover-none fa-solid fa-chart-simple"></i>
+                                            </div><span class="text">
+                                                View
+                                                post
+                                                engagements
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <div class="logo hover-none">
+                                                <i class="hover-none fa-solid fa-flag"></i>
+                                            </div><span class="text">
+                                                Report
+                                                Post
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="post-text">
+                            Tomorrow’s video is something I’ve been working on for years.. an obstacle
+                            course in the sky lol
+                        </div>
+                        <div class="post-image cool-border">
+                            <video class="image" controls>
+                                <source src="C:\Users\user\Desktop\Frontend\FinalProject-Front-ReddiX\Doc\assets\videos\Rick Roll.mp4"
+                                        type="video/mp4">
+                                <source src="C:\Users\user\Desktop\Frontend\FinalProject-Front-ReddiX\Doc\assets\videos\Rick Roll.mp4"
+                                        type="video/ogg">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="post-likes">
+                            <ul>
+                                <li>
+                                    <div class="like">
+                                        <button class="like-button comment-blue">
+                                            <div class="icon">
+                                                <div class="bg-color"></div>
+                                                <i class="fa-regular fa-comment"></i>
+                                            </div>
+                                            <div class="count">
+                                                <span>
+                                                    1.7k
+                                                </span>
+                                            </div>
+                                        </button>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="like">
+                                        <button class="like-button retweet-green">
+                                            <div class="icon">
+                                                <div class="bg-color"></div>
+                                                <i class="fa-solid fa-retweet"></i>
+                                            </div>
+                                            <div class="count">
+                                                <span>
+                                                    1.7k
+                                                </span>
+                                            </div>
+                                        </button>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="like">
+                                        <button class="like-button like-red">
+                                            <div class="icon">
+                                                <div class="bg-color"></div>
+                                                <i class="fa-regular fa-heart"></i>
+                                                <!-- <i class="fa-solid fa-heart"></i> -->
+                                            </div>
+                                            <div class="count">
+                                                <span>
+                                                    1.7k
+                                                </span>
+                                            </div>
+                                        </button>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="like">
+                                        <button class="like-button comment-blue">
+                                            <div class="icon">
+                                                <div class="bg-color"></div>
+                                                <i class="fa-solid fa-chart-simple"></i>
+                                            </div>
+                                            <div class="count">
+                                                <span>
+                                                    1.7k
+                                                </span>
+                                            </div>
+                                        </button>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="sidemark">
+                                        <button class="like-button bookmark-blue">
+                                            <div class="bg-color"></div>
+                                            <i class="fa-regular fa-bookmark"></i>
+                                            <!-- <i class="fa-solid fa-bookmark"></i> -->
+                                        </button>
+
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="sidemark">
+                                        <button class="like-button bookmark-blue">
+                                            <div class="bg-color"></div>
+                                            <i class="fa-solid fa-arrow-up-from-bracket"></i>
+
+                                        </button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="post">
+                    <div class="profile-icon post-icon">
+                        <div class="image">
+                            <img src="https://w7.pngwing.com/pngs/858/581/png-transparent-profile-icon-user-computer-icons-system-chinese-wind-title-column-miscellaneous-service-logo.png"
+                                 alt="">
+
+                        </div>
+                    </div>
+
+                    <div class="content">
+                        <div class="post-info">
+                            <div class="info">
+                                <div class="username">
+                                    MrBeast
+                                </div>
+                                <div class="name-date">
+                                    <div class="name">
+                                        @@MrBeast
+                                    </div>
+                                    <div class="dot">
+                                        ·
+                                    </div>
+                                    <div class="date">
+                                        May 9, 2022
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="more btn-group dropstart">
+                                <button class="default-button more-button hover-none " type="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-solid fa-ellipsis default-icon"></i>
+
+                                </button>
+                                <ul class="dropdown-menu menu-border menu-transform post-menu">
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <div class="logo hover-none">
+                                                <i class="hover-none fa-solid fa-face-frown"></i></i>
+                                            </div><span class="text">
+                                                Not
+                                                interested in
+                                                this post
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <div class="logo hover-none">
+                                                <i class="hover-none logo fa-solid fa-user-xmark"></i>
+                                            </div><span class="text">
+                                                Unfollow
+                                                @@MrBeast
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <div class="logo hover-none">
+                                                <i class="hover-none fa-solid fa-square-plus"></i></i>
+                                            </div><span class="text">
+                                                Add/remove
+                                                @@MrBeast from Lists
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <div class="logo hover-none">
+                                                <i class="hover-none fa-solid fa-volume-xmark"></i>
+                                            </div><span class="text">
+                                                Mute
+                                                @@MrBeast
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <div class="logo hover-none">
+                                                <i class="hover-none fa-solid fa-ban"></i>
+                                            </div><span class="text">
+                                                Block
+                                                @@MrBeast
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <div class="logo hover-none">
+                                                <i class="hover-none fa-solid fa-chart-simple"></i>
+                                            </div><span class="text">
+                                                View
+                                                post
+                                                engagements
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <div class="logo hover-none">
+                                                <i class="hover-none fa-solid fa-flag"></i>
+                                            </div><span class="text">
+                                                Report
+                                                Post
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="post-text">
+                            Tomorrow’s video is something I’ve been working on for years.. an obstacle
+                            course in the sky lol
+                        </div>
+                        <div class="post-image cool-border">
+                            <div class="image">
+                                <img src="https://images.pexels.com/photos/842711/pexels-photo-842711.jpeg?cs=srgb&dl=pexels-christian-heitz-285904-842711.jpg&fm=jpg"
+                                     alt="">
+
+                            </div>
+
+                        </div>
+                        <div class="post-likes">
+                            <ul>
+                                <li>
+                                    <div class="like">
+                                        <button class="like-button comment-blue">
+                                            <div class="icon">
+                                                <div class="bg-color"></div>
+                                                <i class="fa-regular fa-comment"></i>
+                                            </div>
+                                            <div class="count">
+                                                <span>
+                                                    1.7k
+                                                </span>
+                                            </div>
+                                        </button>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="like">
+                                        <button class="like-button retweet-green">
+                                            <div class="icon">
+                                                <div class="bg-color"></div>
+                                                <i class="fa-solid fa-retweet"></i>
+                                            </div>
+                                            <div class="count">
+                                                <span>
+                                                    1.7k
+                                                </span>
+                                            </div>
+                                        </button>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="like">
+                                        <button class="like-button like-red">
+                                            <div class="icon">
+                                                <div class="bg-color"></div>
+                                                <i class="fa-regular fa-heart"></i>
+                                                <!-- <i class="fa-solid fa-heart"></i> -->
+                                            </div>
+                                            <div class="count">
+                                                <span>
+                                                    1.7k
+                                                </span>
+                                            </div>
+                                        </button>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="like">
+                                        <button class="like-button comment-blue">
+                                            <div class="icon">
+                                                <div class="bg-color"></div>
+                                                <i class="fa-solid fa-chart-simple"></i>
+                                            </div>
+                                            <div class="count">
+                                                <span>
+                                                    1.7k
+                                                </span>
+                                            </div>
+                                        </button>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="sidemark">
+                                        <button class="like-button bookmark-blue">
+                                            <div class="bg-color"></div>
+                                            <i class="fa-regular fa-bookmark"></i>
+                                            <!-- <i class="fa-solid fa-bookmark"></i> -->
+                                        </button>
+
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="sidemark">
+                                        <button class="like-button bookmark-blue">
+                                            <div class="bg-color"></div>
+                                            <i class="fa-solid fa-arrow-up-from-bracket"></i>
+
+                                        </button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="post">
+                    <div class="profile-icon post-icon">
+                        <div class="image">
+                            <img src="https://w7.pngwing.com/pngs/858/581/png-transparent-profile-icon-user-computer-icons-system-chinese-wind-title-column-miscellaneous-service-logo.png"
+                                 alt="">
+
+                        </div>
+                    </div>
+
+                    <div class="content">
+                        <div class="post-info">
+                            <div class="info">
+                                <div class="username">
+                                    MrBeast
+                                </div>
+                                <div class="name-date">
+                                    <div class="name">
+                                        @@MrBeast
+                                    </div>
+                                    <div class="dot">
+                                        ·
+                                    </div>
+                                    <div class="date">
+                                        May 9, 2022
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="more btn-group dropstart">
+                                <button class="default-button more-button hover-none " type="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-solid fa-ellipsis default-icon"></i>
+
+                                </button>
+                                <ul class="dropdown-menu menu-border menu-transform post-menu">
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <div class="logo hover-none">
+                                                <i class="hover-none fa-solid fa-face-frown"></i></i>
+                                            </div><span class="text">
+                                                Not
+                                                interested in
+                                                this post
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <div class="logo hover-none">
+                                                <i class="hover-none logo fa-solid fa-user-xmark"></i>
+                                            </div><span class="text">
+                                                Unfollow
+                                                @@MrBeast
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <div class="logo hover-none">
+                                                <i class="hover-none fa-solid fa-square-plus"></i></i>
+                                            </div><span class="text">
+                                                Add/remove
+                                                @@MrBeast from Lists
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <div class="logo hover-none">
+                                                <i class="hover-none fa-solid fa-volume-xmark"></i>
+                                            </div><span class="text">
+                                                Mute
+                                                @@MrBeast
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <div class="logo hover-none">
+                                                <i class="hover-none fa-solid fa-ban"></i>
+                                            </div><span class="text">
+                                                Block
+                                                @@MrBeast
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <div class="logo hover-none">
+                                                <i class="hover-none fa-solid fa-chart-simple"></i>
+                                            </div><span class="text">
+                                                View
+                                                post
+                                                engagements
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <div class="logo hover-none">
+                                                <i class="hover-none fa-solid fa-flag"></i>
+                                            </div><span class="text">
+                                                Report
+                                                Post
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="post-text">
+                            Tomorrow’s video is something I’ve been working on for years.. an obstacle
+                            course in the sky lol
+                        </div>
+                        <div class="post-image cool-border">
+                            <div class="image">
+                                <img src="https://pbs.twimg.com/media/GQDo7VNWkAEhI8b?format=jpg&name=small"
+                                     alt="">
+
+                            </div>
+                            <div class="image">
+                                <img src="https://pbs.twimg.com/media/GQDo7VMXAAE-Wxo?format=jpg&name=small"
+                                     alt="">
+                            </div>
+
+                        </div>
+                        <div class="post-likes">
+                            <ul>
+                                <li>
+                                    <div class="like">
+                                        <button class="like-button comment-blue">
+                                            <div class="icon">
+                                                <div class="bg-color"></div>
+                                                <i class="fa-regular fa-comment"></i>
+                                            </div>
+                                            <div class="count">
+                                                <span>
+                                                    1.7k
+                                                </span>
+                                            </div>
+                                        </button>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="like">
+                                        <button class="like-button retweet-green">
+                                            <div class="icon">
+                                                <div class="bg-color"></div>
+                                                <i class="fa-solid fa-retweet"></i>
+                                            </div>
+                                            <div class="count">
+                                                <span>
+                                                    1.7k
+                                                </span>
+                                            </div>
+                                        </button>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="like">
+                                        <button class="like-button like-red">
+                                            <div class="icon">
+                                                <div class="bg-color"></div>
+                                                <i class="fa-regular fa-heart"></i>
+                                                <!-- <i class="fa-solid fa-heart"></i> -->
+                                            </div>
+                                            <div class="count">
+                                                <span>
+                                                    1.7k
+                                                </span>
+                                            </div>
+                                        </button>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="like">
+                                        <button class="like-button comment-blue">
+                                            <div class="icon">
+                                                <div class="bg-color"></div>
+                                                <i class="fa-solid fa-chart-simple"></i>
+                                            </div>
+                                            <div class="count">
+                                                <span>
+                                                    1.7k
+                                                </span>
+                                            </div>
+                                        </button>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="sidemark">
+                                        <button class="like-button bookmark-blue">
+                                            <div class="bg-color"></div>
+                                            <i class="fa-regular fa-bookmark"></i>
+                                            <!-- <i class="fa-solid fa-bookmark"></i> -->
+                                        </button>
+
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="sidemark">
+                                        <button class="like-button bookmark-blue">
+                                            <div class="bg-color"></div>
+                                            <i class="fa-solid fa-arrow-up-from-bracket"></i>
+
+                                        </button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="post-content tab-pane fade" id="People">
+            <div class="who-to-follow">
+                <div class="follows-content">
+                    <button class="content">
+                        <div class="profile">
+                            <div class="image">
+                                <img src="https://pbs.twimg.com/profile_images/1710912026929733632/qbKzAPOc_400x400.jpg"
+                                     alt="">
+                            </div>
+
+                            <div class="names-follow-bio">
+                                <div class="names-follow">
+                                    <div class="names">
+                                        <div class="username">
+                                            <span>OLLDane</span>
+                                            <div class="verify-icon-yellow">
+                                                <div class="back">
+                                                    <i class="fa-solid fa-certificate"></i>
+                                                </div>
+                                                <div class="check">
+                                                    <i class="fa-solid fa-check"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="name">
+                                            <span>@@oldane</span>
+                                        </div>
+
+                                    </div>
+                                    <div class="follow-button">
+                                        <a class="switch on follow active">
+                                            <span>
+                                                Follow
+                                            </span>
+                                        </a>
+                                        <a class="switch off unfollow">
+                                            <span>
+                                                Following
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="bio">
+                                    <span>
+                                        solcugazete Resmi Twitter Hesabı | işbirliği, reklam, telif:
+                                        info@@solcugazete.net
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+                    <button class="content">
+                        <div class="profile">
+                            <div class="image">
+                                <img src="https://w7.pngwing.com/pngs/858/581/png-transparent-profile-icon-user-computer-icons-system-chinese-wind-title-column-miscellaneous-service-logo.png"
+                                     alt="">
+                            </div>
+                            <div class="names-follow-bio">
+                                <div class="names-follow">
+                                    <div class="names">
+                                        <div class="username">
+                                            <span>OLLDane</span>
+                                        </div>
+                                        <div class="name">
+                                            <span>@@oldane</span>
+                                        </div>
+
+                                    </div>
+                                    <div class="follow-button">
+                                        <a class="switch on follow active">
+                                            <span>
+                                                Follow
+                                            </span>
+                                        </a>
+                                        <a class="switch off unfollow">
+                                            <span>
+                                                Following
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="bio">
+                                    <span>
+                                        Dünya gündemi, savunma sanayii ve teknoloji odakli haber, yurt
+                                        içi
+                                        veri ve önemli gelişme.
+                                    </span>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </button>
+                    <button class="content">
+                        <div class="profile">
+                            <div class="image">
+                                <img src="https://w7.pngwing.com/pngs/858/581/png-transparent-profile-icon-user-computer-icons-system-chinese-wind-title-column-miscellaneous-service-logo.png"
+                                     alt="">
+                            </div>
+
+                            <div class="names-follow-bio">
+                                <div class="names-follow">
+                                    <div class="names">
+                                        <div class="username">
+                                            <span>OLLDane</span>
+                                        </div>
+                                        <div class="name">
+                                            <span>@@oldane</span>
+                                        </div>
+
+                                    </div>
+                                    <div class="follow-button">
+                                        <a class="switch on follow active">
+                                            <span>
+                                                Follow
+                                            </span>
+                                        </a>
+                                        <a class="switch off unfollow">
+                                            <span>
+                                                Following
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="bio">
+                                    <span>
+                                        Dünya gündemi, savunma sanayii ve teknoloji odakli haber, yurt
+                                        içi
+                                        veri ve önemli gelişme.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+                    <button class="content">
+                        <div class="profile">
+                            <div class="image">
+                                <img src="https://w7.pngwing.com/pngs/858/581/png-transparent-profile-icon-user-computer-icons-system-chinese-wind-title-column-miscellaneous-service-logo.png"
+                                     alt="">
+                            </div>
+
+                            <div class="names-follow-bio">
+                                <div class="names-follow">
+                                    <div class="names">
+                                        <div class="username">
+                                            <span>OLLDane</span>
+                                        </div>
+                                        <div class="name">
+                                            <span>@@oldane</span>
+                                        </div>
+
+                                    </div>
+                                    <div class="follow-button">
+                                        <a class="switch on follow active">
+                                            <span>
+                                                Follow
+                                            </span>
+                                        </a>
+                                        <a class="switch off unfollow">
+                                            <span>
+                                                Following
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="bio">
+                                    <span>
+                                        Dünya gündemi, savunma sanayii ve teknoloji odakli haber, yurt
+                                        içi
+                                        veri ve önemli gelişme.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+                    <button class="content">
+                        <div class="profile">
+                            <div class="image">
+                                <img src="https://w7.pngwing.com/pngs/858/581/png-transparent-profile-icon-user-computer-icons-system-chinese-wind-title-column-miscellaneous-service-logo.png"
+                                     alt="">
+                            </div>
+
+                            <div class="names-follow-bio">
+                                <div class="names-follow">
+                                    <div class="names">
+                                        <div class="username">
+                                            <span>OLLDane</span>
+                                        </div>
+                                        <div class="name">
+                                            <span>@@oldane</span>
+                                        </div>
+
+                                    </div>
+                                    <div class="follow-button">
+                                        <a class="switch on follow active">
+                                            <span>
+                                                Follow
+                                            </span>
+                                        </a>
+                                        <a class="switch off unfollow">
+                                            <span>
+                                                Following
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="bio">
+                                    <span>
+                                        Dünya gündemi, savunma sanayii ve teknoloji odakli haber, yurt
+                                        içi
+                                        veri ve önemli gelişme.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+                    <button class="content">
+                        <div class="profile">
+                            <div class="image">
+                                <img src="https://w7.pngwing.com/pngs/858/581/png-transparent-profile-icon-user-computer-icons-system-chinese-wind-title-column-miscellaneous-service-logo.png"
+                                     alt="">
+                            </div>
+
+                            <div class="names-follow-bio">
+                                <div class="names-follow">
+                                    <div class="names">
+                                        <div class="username">
+                                            <span>OLLDane</span>
+                                        </div>
+                                        <div class="name">
+                                            <span>@@oldane</span>
+                                        </div>
+
+                                    </div>
+                                    <div class="follow-button">
+                                        <a class="switch on follow active">
+                                            <span>
+                                                Follow
+                                            </span>
+                                        </a>
+                                        <a class="switch off unfollow">
+                                            <span>
+                                                Following
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="bio">
+                                    <span>
+                                        Dünya gündemi, savunma sanayii ve teknoloji odakli haber, yurt
+                                        içi
+                                        veri ve önemli gelişme.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+                    <button class="content">
+                        <div class="profile">
+                            <div class="image">
+                                <img src="https://w7.pngwing.com/pngs/858/581/png-transparent-profile-icon-user-computer-icons-system-chinese-wind-title-column-miscellaneous-service-logo.png"
+                                     alt="">
+                            </div>
+
+                            <div class="names-follow-bio">
+                                <div class="names-follow">
+                                    <div class="names">
+                                        <div class="username">
+                                            <span>OLLDane</span>
+                                        </div>
+                                        <div class="name">
+                                            <span>@@oldane</span>
+                                        </div>
+
+                                    </div>
+                                    <div class="follow-button">
+                                        <a class="switch on follow active">
+                                            <span>
+                                                Follow
+                                            </span>
+                                        </a>
+                                        <a class="switch off unfollow">
+                                            <span>
+                                                Following
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="bio">
+                                    <span>
+                                        Dünya gündemi, savunma sanayii ve teknoloji odakli haber, yurt
+                                        içi
+                                        veri ve önemli gelişme.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+                    <button class="content">
+                        <div class="profile">
+                            <div class="image">
+                                <img src="https://w7.pngwing.com/pngs/858/581/png-transparent-profile-icon-user-computer-icons-system-chinese-wind-title-column-miscellaneous-service-logo.png"
+                                     alt="">
+                            </div>
+
+                            <div class="names-follow-bio">
+                                <div class="names-follow">
+                                    <div class="names">
+                                        <div class="username">
+                                            <span>OLLDane</span>
+                                        </div>
+                                        <div class="name">
+                                            <span>@@oldane</span>
+                                        </div>
+
+                                    </div>
+                                    <div class="follow-button">
+                                        <a class="switch on follow active">
+                                            <span>
+                                                Follow
+                                            </span>
+                                        </a>
+                                        <a class="switch off unfollow">
+                                            <span>
+                                                Following
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="bio">
+                                    <span>
+                                        Dünya gündemi, savunma sanayii ve teknoloji odakli haber, yurt
+                                        içi
+                                        veri ve önemli gelişme.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+                    <button class="content">
+                        <div class="profile">
+                            <div class="image">
+                                <img src="https://w7.pngwing.com/pngs/858/581/png-transparent-profile-icon-user-computer-icons-system-chinese-wind-title-column-miscellaneous-service-logo.png"
+                                     alt="">
+                            </div>
+
+                            <div class="names-follow-bio">
+                                <div class="names-follow">
+                                    <div class="names">
+                                        <div class="username">
+                                            <span>OLLDane</span>
+                                        </div>
+                                        <div class="name">
+                                            <span>@@oldane</span>
+                                        </div>
+
+                                    </div>
+                                    <div class="follow-button">
+                                        <a class="switch on follow active">
+                                            <span>
+                                                Follow
+                                            </span>
+                                        </a>
+                                        <a class="switch off unfollow">
+                                            <span>
+                                                Following
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="bio">
+                                    <span>
+                                        Dünya gündemi, savunma sanayii ve teknoloji odakli haber, yurt
+                                        içi
+                                        veri ve önemli gelişme.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+                    <button class="content">
+                        <div class="profile">
+                            <div class="image">
+                                <img src="https://w7.pngwing.com/pngs/858/581/png-transparent-profile-icon-user-computer-icons-system-chinese-wind-title-column-miscellaneous-service-logo.png"
+                                     alt="">
+                            </div>
+
+                            <div class="names-follow-bio">
+                                <div class="names-follow">
+                                    <div class="names">
+                                        <div class="username">
+                                            <span>OLLDane</span>
+                                        </div>
+                                        <div class="name">
+                                            <span>@@oldane</span>
+                                        </div>
+
+                                    </div>
+                                    <div class="follow-button">
+                                        <a class="switch on follow active">
+                                            <span>
+                                                Follow
+                                            </span>
+                                        </a>
+                                        <a class="switch off unfollow">
+                                            <span>
+                                                Following
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="bio">
+                                    <span>
+                                        Dünya gündemi, savunma sanayii ve teknoloji odakli haber, yurt
+                                        içi
+                                        veri ve önemli gelişme.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+                    <button class="content">
+                        <div class="profile">
+                            <div class="image">
+                                <img src="https://w7.pngwing.com/pngs/858/581/png-transparent-profile-icon-user-computer-icons-system-chinese-wind-title-column-miscellaneous-service-logo.png"
+                                     alt="">
+                            </div>
+
+                            <div class="names-follow-bio">
+                                <div class="names-follow">
+                                    <div class="names">
+                                        <div class="username">
+                                            <span>OLLDane</span>
+                                        </div>
+                                        <div class="name">
+                                            <span>@@oldane</span>
+                                        </div>
+
+                                    </div>
+                                    <div class="follow-button">
+                                        <a class="switch on follow active">
+                                            <span>
+                                                Follow
+                                            </span>
+                                        </a>
+                                        <a class="switch off unfollow">
+                                            <span>
+                                                Following
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="bio">
+                                    <span>
+                                        Dünya gündemi, savunma sanayii ve teknoloji odakli haber, yurt
+                                        içi
+                                        veri ve önemli gelişme.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+                    <button class="content">
+                        <div class="profile">
+                            <div class="image">
+                                <img src="https://w7.pngwing.com/pngs/858/581/png-transparent-profile-icon-user-computer-icons-system-chinese-wind-title-column-miscellaneous-service-logo.png"
+                                     alt="">
+                            </div>
+
+                            <div class="names-follow-bio">
+                                <div class="names-follow">
+                                    <div class="names">
+                                        <div class="username">
+                                            <span>OLLDane</span>
+                                        </div>
+                                        <div class="name">
+                                            <span>@@oldane</span>
+                                        </div>
+
+                                    </div>
+                                    <div class="follow-button">
+                                        <a class="switch on follow active">
+                                            <span>
+                                                Follow
+                                            </span>
+                                        </a>
+                                        <a class="switch off unfollow">
+                                            <span>
+                                                Following
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="bio">
+                                    <span>
+                                        Dünya gündemi, savunma sanayii ve teknoloji odakli haber, yurt
+                                        içi
+                                        veri ve önemli gelişme.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+                    <button class="content">
+                        <div class="profile">
+                            <div class="image">
+                                <img src="https://w7.pngwing.com/pngs/858/581/png-transparent-profile-icon-user-computer-icons-system-chinese-wind-title-column-miscellaneous-service-logo.png"
+                                     alt="">
+                            </div>
+
+                            <div class="names-follow-bio">
+                                <div class="names-follow">
+                                    <div class="names">
+                                        <div class="username">
+                                            <span>OLLDane</span>
+                                        </div>
+                                        <div class="name">
+                                            <span>@@oldane</span>
+                                        </div>
+
+                                    </div>
+                                    <div class="follow-button">
+                                        <a class="switch on follow active">
+                                            <span>
+                                                Follow
+                                            </span>
+                                        </a>
+                                        <a class="switch off unfollow">
+                                            <span>
+                                                Following
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="bio">
+                                    <span>
+                                        Dünya gündemi, savunma sanayii ve teknoloji odakli haber, yurt
+                                        içi
+                                        veri ve önemli gelişme.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+                    <button class="content">
+                        <div class="profile">
+                            <div class="image">
+                                <img src="https://w7.pngwing.com/pngs/858/581/png-transparent-profile-icon-user-computer-icons-system-chinese-wind-title-column-miscellaneous-service-logo.png"
+                                     alt="">
+                            </div>
+
+                            <div class="names-follow-bio">
+                                <div class="names-follow">
+                                    <div class="names">
+                                        <div class="username">
+                                            <span>OLLDane</span>
+                                        </div>
+                                        <div class="name">
+                                            <span>@@oldane</span>
+                                        </div>
+
+                                    </div>
+                                    <div class="follow-button">
+                                        <a class="switch on follow active">
+                                            <span>
+                                                Follow
+                                            </span>
+                                        </a>
+                                        <a class="switch off unfollow">
+                                            <span>
+                                                Following
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="bio">
+                                    <span>
+                                        Dünya gündemi, savunma sanayii ve teknoloji odakli haber, yurt
+                                        içi
+                                        veri ve önemli gelişme.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+                    <button class="content">
+                        <div class="profile">
+                            <div class="image">
+                                <img src="https://w7.pngwing.com/pngs/858/581/png-transparent-profile-icon-user-computer-icons-system-chinese-wind-title-column-miscellaneous-service-logo.png"
+                                     alt="">
+                            </div>
+
+                            <div class="names-follow-bio">
+                                <div class="names-follow">
+                                    <div class="names">
+                                        <div class="username">
+                                            <span>OLLDane</span>
+                                        </div>
+                                        <div class="name">
+                                            <span>@@oldane</span>
+                                        </div>
+
+                                    </div>
+                                    <div class="follow-button">
+                                        <a class="switch on follow active">
+                                            <span>
+                                                Follow
+                                            </span>
+                                        </a>
+                                        <a class="switch off unfollow">
+                                            <span>
+                                                Following
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="bio">
+                                    <span>
+                                        Dünya gündemi, savunma sanayii ve teknoloji odakli haber, yurt
+                                        içi
+                                        veri ve önemli gelişme.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+                    <button class="content">
+                        <div class="profile">
+                            <div class="image">
+                                <img src="https://w7.pngwing.com/pngs/858/581/png-transparent-profile-icon-user-computer-icons-system-chinese-wind-title-column-miscellaneous-service-logo.png"
+                                     alt="">
+                            </div>
+
+                            <div class="names-follow-bio">
+                                <div class="names-follow">
+                                    <div class="names">
+                                        <div class="username">
+                                            <span>OLLDane</span>
+                                        </div>
+                                        <div class="name">
+                                            <span>@@oldane</span>
+                                        </div>
+
+                                    </div>
+                                    <div class="follow-button">
+                                        <a class="switch on follow active">
+                                            <span>
+                                                Follow
+                                            </span>
+                                        </a>
+                                        <a class="switch off unfollow">
+                                            <span>
+                                                Following
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="bio">
+                                    <span>
+                                        Dünya gündemi, savunma sanayii ve teknoloji odakli haber, yurt
+                                        içi
+                                        veri ve önemli gelişme.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+                    <button class="content">
+                        <div class="profile">
+                            <div class="image">
+                                <img src="https://w7.pngwing.com/pngs/858/581/png-transparent-profile-icon-user-computer-icons-system-chinese-wind-title-column-miscellaneous-service-logo.png"
+                                     alt="">
+                            </div>
+
+                            <div class="names-follow-bio">
+                                <div class="names-follow">
+                                    <div class="names">
+                                        <div class="username">
+                                            <span>OLLDane</span>
+                                        </div>
+                                        <div class="name">
+                                            <span>@@oldane</span>
+                                        </div>
+
+                                    </div>
+                                    <div class="follow-button">
+                                        <a class="switch on follow active">
+                                            <span>
+                                                Follow
+                                            </span>
+                                        </a>
+                                        <a class="switch off unfollow">
+                                            <span>
+                                                Following
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="bio">
+                                    <span>
+                                        Dünya gündemi, savunma sanayii ve teknoloji odakli haber, yurt
+                                        içi
+                                        veri ve önemli gelişme.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+                    <button class="content">
+                        <div class="profile">
+                            <div class="image">
+                                <img src="https://w7.pngwing.com/pngs/858/581/png-transparent-profile-icon-user-computer-icons-system-chinese-wind-title-column-miscellaneous-service-logo.png"
+                                     alt="">
+                            </div>
+
+                            <div class="names-follow-bio">
+                                <div class="names-follow">
+                                    <div class="names">
+                                        <div class="username">
+                                            <span>OLLDane</span>
+                                        </div>
+                                        <div class="name">
+                                            <span>@@oldane</span>
+                                        </div>
+
+                                    </div>
+                                    <div class="follow-button">
+                                        <a class="switch on follow active">
+                                            <span>
+                                                Follow
+                                            </span>
+                                        </a>
+                                        <a class="switch off unfollow">
+                                            <span>
+                                                Following
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="bio">
+                                    <span>
+                                        Dünya gündemi, savunma sanayii ve teknoloji odakli haber, yurt
+                                        içi
+                                        veri ve önemli gelişme.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+                </div>
+
+            </div>
+        </div>       
+        <div class="post-content tab-pane fade" id="Lists">
+            <div class="discover-new-lists no-border">
+                <div class="follows-content">
+                    <button class="content">
+                        <div class="profile">
+                            <div class="image-square">
+                                <img src="https://pbs.twimg.com/list_banner_img/1388769348035268609/ItcBDKlg?format=jpg&name=240x240"
+                                     alt="">
+                            </div>
+
+                            <div class="names-follow">
+                                <div class="names">
+                                    <div class="username">
+                                        <span>OLLDane</span>
+                                        <span class="members">· 18 member</span>
+                                    </div>
+                                    <div class="name">
+                                        <span>1.2k followers including @@OLLDane</span>
+                                    </div>
+
+                                </div>
+                                <div class="follow-button">
+                                    <a class="switch on plus active">
+                                        <i class="fa-solid fa-plus"></i>
+                                    </a>
+                                    <a class="switch off check switch">
+                                        <i class="fa-solid fa-check"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+
+                </div>
+                <div class="follows-content">
+                    <button class="content">
+                        <div class="profile">
+                            <div class="image-square">
+                                <img src="https://pbs.twimg.com/list_banner_img/1388769348035268609/ItcBDKlg?format=jpg&name=240x240"
+                                     alt="">
+                            </div>
+
+                            <div class="names-follow">
+                                <div class="names">
+                                    <div class="username">
+                                        <span>OLLDane</span>
+                                        <span class="members">· 18 member</span>
+                                    </div>
+                                    <div class="name">
+                                        <span>1.2k followers including @@OLLDane</span>
+                                    </div>
+
+                                </div>
+                                <div class="follow-button">
+                                    <a class="switch on plus active">
+                                        <i class="fa-solid fa-plus"></i>
+                                    </a>
+                                    <a class="switch off check">
+                                        <i class="fa-solid fa-check"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+
+                </div>
+                <div class="follows-content">
+                    <button class="content">
+                        <div class="profile">
+                            <div class="image-square">
+                                <img src="https://pbs.twimg.com/list_banner_img/1388769348035268609/ItcBDKlg?format=jpg&name=240x240"
+                                     alt="">
+                            </div>
+
+                            <div class="names-follow">
+                                <div class="names">
+                                    <div class="username">
+                                        <span>OLLDane</span>
+                                        <span class="members">· 18 member</span>
+                                    </div>
+                                    <div class="name">
+                                        <span>1.2k followers including @@OLLDane</span>
+                                    </div>
+
+                                </div>
+                                <div class="follow-button">
+                                    <a class="switch on plus">
+                                        <i class="fa-solid fa-plus"></i>
+                                    </a>
+                                    <a class="switch off check active">
+                                        <i class="fa-solid fa-check"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+
+                </div>
+                <div class="follows-content">
+                    <button class="content">
+                        <div class="profile">
+                            <div class="image-square">
+                                <img src="https://pbs.twimg.com/list_banner_img/1388769348035268609/ItcBDKlg?format=jpg&name=240x240"
+                                     alt="">
+                            </div>
+
+                            <div class="names-follow">
+                                <div class="names">
+                                    <div class="username">
+                                        <span>OLLDane</span>
+                                        <span class="members">· 18 member</span>
+                                    </div>
+                                    <div class="name">
+                                        <span>1.2k followers including @@OLLDane</span>
+                                    </div>
+
+                                </div>
+                                <div class="follow-button">
+                                    <a class="switch on plus">
+                                        <i class="fa-solid fa-plus"></i>
+                                    </a>
+                                    <a class="switch off check active">
+                                        <i class="fa-solid fa-check"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+
+                </div>
+                <div class="follows-content">
+                    <button class="content">
+                        <div class="profile">
+                            <div class="image-square">
+                                <img src="https://pbs.twimg.com/list_banner_img/1388769348035268609/ItcBDKlg?format=jpg&name=240x240"
+                                     alt="">
+                            </div>
+
+                            <div class="names-follow">
+                                <div class="names">
+                                    <div class="username">
+                                        <span>OLLDane</span>
+                                        <span class="members">· 18 member</span>
+                                    </div>
+                                    <div class="name">
+                                        <span>1.2k followers including @@OLLDane</span>
+                                    </div>
+
+                                </div>
+                                <div class="follow-button">
+                                    <a class="switch on plus">
+                                        <i class="fa-solid fa-plus"></i>
+                                    </a>
+                                    <a class="switch off check active">
+                                        <i class="fa-solid fa-check"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+
+                </div>
+                <div class="follows-content">
+                    <button class="content">
+                        <div class="profile">
+                            <div class="image-square">
+                                <img src="https://pbs.twimg.com/list_banner_img/1388769348035268609/ItcBDKlg?format=jpg&name=240x240"
+                                     alt="">
+                            </div>
+
+                            <div class="names-follow">
+                                <div class="names">
+                                    <div class="username">
+                                        <span>OLLDane</span>
+                                        <span class="members">· 18 member</span>
+                                    </div>
+                                    <div class="name">
+                                        <span>1.2k followers including @@OLLDane</span>
+                                    </div>
+
+                                </div>
+                                <div class="follow-button">
+                                    <a class="switch on plus">
+                                        <i class="fa-solid fa-plus"></i>
+                                    </a>
+                                    <a class="switch off check active">
+                                        <i class="fa-solid fa-check"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+
+                </div>
+                <div class="follows-content">
+                    <button class="content">
+                        <div class="profile">
+                            <div class="image-square">
+                                <img src="https://pbs.twimg.com/list_banner_img/1388769348035268609/ItcBDKlg?format=jpg&name=240x240"
+                                     alt="">
+                            </div>
+
+                            <div class="names-follow">
+                                <div class="names">
+                                    <div class="username">
+                                        <span>OLLDane</span>
+                                        <span class="members">· 18 member</span>
+                                    </div>
+                                    <div class="name">
+                                        <span>1.2k followers including @@OLLDane</span>
+                                    </div>
+
+                                </div>
+                                <div class="follow-button">
+                                    <a class="switch on plus">
+                                        <i class="fa-solid fa-plus"></i>
+                                    </a>
+                                    <a class="switch off check active">
+                                        <i class="fa-solid fa-check"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+
+                </div>
+                <div class="follows-content">
+                    <button class="content">
+                        <div class="profile">
+                            <div class="image-square">
+                                <img src="https://pbs.twimg.com/list_banner_img/1388769348035268609/ItcBDKlg?format=jpg&name=240x240"
+                                     alt="">
+                            </div>
+
+                            <div class="names-follow">
+                                <div class="names">
+                                    <div class="username">
+                                        <span>OLLDane</span>
+                                        <span class="members">· 18 member</span>
+                                    </div>
+                                    <div class="name">
+                                        <span>1.2k followers including @@OLLDane</span>
+                                    </div>
+
+                                </div>
+                                <div class="follow-button">
+                                    <a class="switch on plus">
+                                        <i class="fa-solid fa-plus"></i>
+                                    </a>
+                                    <a class="switch off check active">
+                                        <i class="fa-solid fa-check"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+
+                </div>
+                <div class="follows-content">
+                    <button class="content">
+                        <div class="profile">
+                            <div class="image-square">
+                                <img src="https://pbs.twimg.com/list_banner_img/1388769348035268609/ItcBDKlg?format=jpg&name=240x240"
+                                     alt="">
+                            </div>
+
+                            <div class="names-follow">
+                                <div class="names">
+                                    <div class="username">
+                                        <span>OLLDane</span>
+                                        <span class="members">· 18 member</span>
+                                    </div>
+                                    <div class="name">
+                                        <span>1.2k followers including @@OLLDane</span>
+                                    </div>
+
+                                </div>
+                                <div class="follow-button">
+                                    <a class="switch on plus">
+                                        <i class="fa-solid fa-plus"></i>
+                                    </a>
+                                    <a class="switch off check active">
+                                        <i class="fa-solid fa-check"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+
+                </div>
+                <div class="follows-content">
+                    <button class="content">
+                        <div class="profile">
+                            <div class="image-square">
+                                <img src="https://pbs.twimg.com/list_banner_img/1388769348035268609/ItcBDKlg?format=jpg&name=240x240"
+                                     alt="">
+                            </div>
+
+                            <div class="names-follow">
+                                <div class="names">
+                                    <div class="username">
+                                        <span>OLLDane</span>
+                                        <span class="members">· 18 member</span>
+                                    </div>
+                                    <div class="name">
+                                        <span>1.2k followers including @@OLLDane</span>
+                                    </div>
+
+                                </div>
+                                <div class="follow-button">
+                                    <a class="switch on plus">
+                                        <i class="fa-solid fa-plus"></i>
+                                    </a>
+                                    <a class="switch off check active">
+                                        <i class="fa-solid fa-check"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+
+                </div>
+                <div class="follows-content">
+                    <button class="content">
+                        <div class="profile">
+                            <div class="image-square">
+                                <img src="https://pbs.twimg.com/list_banner_img/1388769348035268609/ItcBDKlg?format=jpg&name=240x240"
+                                     alt="">
+                            </div>
+
+                            <div class="names-follow">
+                                <div class="names">
+                                    <div class="username">
+                                        <span>OLLDane</span>
+                                        <span class="members">· 18 member</span>
+                                    </div>
+                                    <div class="name">
+                                        <span>1.2k followers including @@OLLDane</span>
+                                    </div>
+
+                                </div>
+                                <div class="follow-button">
+                                    <a class="switch on plus">
+                                        <i class="fa-solid fa-plus"></i>
+                                    </a>
+                                    <a class="switch off check active">
+                                        <i class="fa-solid fa-check"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+
+                </div>
+                <div class="follows-content">
+                    <button class="content">
+                        <div class="profile">
+                            <div class="image-square">
+                                <img src="https://pbs.twimg.com/list_banner_img/1388769348035268609/ItcBDKlg?format=jpg&name=240x240"
+                                     alt="">
+                            </div>
+
+                            <div class="names-follow">
+                                <div class="names">
+                                    <div class="username">
+                                        <span>OLLDane</span>
+                                        <span class="members">· 18 member</span>
+                                    </div>
+                                    <div class="name">
+                                        <span>1.2k followers including @@OLLDane</span>
+                                    </div>
+
+                                </div>
+                                <div class="follow-button">
+                                    <a class="switch on plus">
+                                        <i class="fa-solid fa-plus"></i>
+                                    </a>
+                                    <a class="switch off check active">
+                                        <i class="fa-solid fa-check"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+
+                </div>
+                <div class="follows-content">
+                    <button class="content">
+                        <div class="profile">
+                            <div class="image-square">
+                                <img src="https://pbs.twimg.com/list_banner_img/1388769348035268609/ItcBDKlg?format=jpg&name=240x240"
+                                     alt="">
+                            </div>
+
+                            <div class="names-follow">
+                                <div class="names">
+                                    <div class="username">
+                                        <span>OLLDane</span>
+                                        <span class="members">· 18 member</span>
+                                    </div>
+                                    <div class="name">
+                                        <span>1.2k followers including @@OLLDane</span>
+                                    </div>
+
+                                </div>
+                                <div class="follow-button">
+                                    <a class="switch on plus">
+                                        <i class="fa-solid fa-plus"></i>
+                                    </a>
+                                    <a class="switch off check active">
+                                        <i class="fa-solid fa-check"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+
+                </div>
+                <div class="follows-content">
+                    <button class="content">
+                        <div class="profile">
+                            <div class="image-square">
+                                <img src="https://pbs.twimg.com/list_banner_img/1388769348035268609/ItcBDKlg?format=jpg&name=240x240"
+                                     alt="">
+                            </div>
+
+                            <div class="names-follow">
+                                <div class="names">
+                                    <div class="username">
+                                        <span>OLLDane</span>
+                                        <span class="members">· 18 member</span>
+                                    </div>
+                                    <div class="name">
+                                        <span>1.2k followers including @@OLLDane</span>
+                                    </div>
+
+                                </div>
+                                <div class="follow-button">
+                                    <a class="switch on plus">
+                                        <i class="fa-solid fa-plus"></i>
+                                    </a>
+                                    <a class="switch off check active">
+                                        <i class="fa-solid fa-check"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+
+                </div>
+                <div class="follows-content">
+                    <button class="content">
+                        <div class="profile">
+                            <div class="image-square">
+                                <img src="https://pbs.twimg.com/list_banner_img/1388769348035268609/ItcBDKlg?format=jpg&name=240x240"
+                                     alt="">
+                            </div>
+
+                            <div class="names-follow">
+                                <div class="names">
+                                    <div class="username">
+                                        <span>OLLDane</span>
+                                        <span class="members">· 18 member</span>
+                                    </div>
+                                    <div class="name">
+                                        <span>1.2k followers including @@OLLDane</span>
+                                    </div>
+
+                                </div>
+                                <div class="follow-button">
+                                    <a class="switch on plus">
+                                        <i class="fa-solid fa-plus"></i>
+                                    </a>
+                                    <a class="switch off check active">
+                                        <i class="fa-solid fa-check"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+
+                </div>
+
+
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+</div>
+

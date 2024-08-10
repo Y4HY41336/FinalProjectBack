@@ -1,0 +1,354 @@
+﻿@using FinalProject.ViewModels.List;
+
+@{
+    ViewData["Title"] = "Status";
+}
+
+@model ListInfoViewModel
+<div class="content">
+    <div class="top-side blur">
+        <div class="search-side">
+            <div class="custom-container">
+                <div class="responsive-top">
+                    <a data-bs-toggle="offcanvas" href="#offcanvas" role="button"
+                       aria-controls="offcanvasExample">
+                        <div class="image">
+                            <img src="/assets/images/ProfileImages/@Model.Owner.ProfilePhoto"
+                                 alt="">
+
+                        </div>
+                    </a>
+                </div>
+
+                <div class="back-names">
+                    <div class="back-container">
+                        <button class="go-back" id="backButton">
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </button>
+                    </div>
+                    <div class="text">
+                        <div class="bookmarks d-flex">
+                            <span>@Model.List.Name</span>
+                            @if (Model.List.IsPrivate)
+                            {
+                                <div class="private-icon" style="margin-left:6px; font-size:18px;">
+                                    <i class="fa-solid fa-lock"></i>
+                                </div>
+                            }
+                        </div>
+                        <div class="name">
+                            <span>@@@Model.Owner.UserName</span>
+                        </div>
+                    </div>
+
+                </div>
+                @if (Model.CurrentUser.Id == Model.List.OwnerId)
+                {
+                    @* <div class="lists-settings">
+                <a asp-action="DeleteList" asp-route-listId="@Model.List.Id" style="color:red;">
+                <i class="fa-solid fa-trash"></i>
+                </a>
+                </div> *@
+
+                    <div class="more btn-group dropstart">
+                        <button class="default-button more-button hover-none" type="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-ellipsis default-icon"></i>
+
+                        </button>
+                        <ul class="dropdown-menu menu-border menu-transform" style="padding:4px 0;">
+                            <li>
+                                <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                   asp-action="DeleteList" asp-route-listId="@Model.List.Id">
+                                    <i class="fa-solid fa-trash text-danger" style="margin-right:10px"></i>
+                                    <div class="text text-danger">
+                                        Delete List
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                   href="#" data-bs-toggle="modal" data-bs-target="#AddMembers">
+                                    <i class="fa-solid fa-user-minus" style="margin-right:10px"></i>
+                                    Members
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                   href="#" data-bs-toggle="modal" data-bs-target="#Suggested">
+                                    <i class="fa-solid fa-user-plus" style="margin-right:10px"></i>
+                                    Suggested
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                }
+                else
+                {
+                    <div class="disable">
+                        <div>
+                            <div class="image">
+                                <img src="/assets/images/ProfileImages/@Model.Owner.ProfilePhoto"
+                                     alt="">
+
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+            </div>
+        </div>
+    </div>
+    <div class="post-content">
+        <a class="background-photo" href="#">
+            <div class="background-image">
+                <img src="/assets/images/ProfileImages/ListPhotos/@Model.List.ProfilePhoto"
+                     alt="">
+            </div>
+        </a>
+
+        <div class="profile-info bottom-border" style="display:flex; flex-direction:column; align-items:center">
+
+            <div class="username" style="display:flex; align-items:center; margin-bottom:12px; color:white; font-size:20px; font-weight:700;">
+                <span>
+                    @Model.List.Name
+                </span>
+                @if (Model.List.IsPrivate)
+                {
+                    <div class="private-icon" style="margin-left:4px; font-size:16px;">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
+                }
+            </div>
+
+            @if (Model.List.Description != null && Model.List.Description.Any())
+            {
+                <div class="profile-bio" style="text-align:center">
+                    <span>@Model.List.Description</span>
+                </div>
+            }
+
+            <div class="names" style="display:flex; align-items:center;">
+                <div class="username">
+                    <span>@Model.Owner.Name</span>
+                    @if (Model.Owner.IsPremium)
+                    {
+                        <div class="verify-icon-blue">
+                            <i class='bx bxs-badge-check'></i>
+                        </div>
+                    }
+                    else if (Model.Owner.IsVerified)
+                    {
+                        <div class="verify-icon-yellow">
+                            <i class='bx bxs-badge-check'></i>
+                        </div>
+                    }
+                    else if (Model.Owner.IsGovermentVerified)
+                    {
+                        <div class="verify-icon-blue" style="color:#839aaa">
+                            <i class='bx bxs-badge-check'></i>
+                        </div>
+                    }
+                    else
+                    {
+
+                    }
+                </div>
+                <div class="name" style="margin-left:4px;">
+                    <span>@@@Model.Owner.UserName</span>
+                </div>
+            </div>
+
+            <div class="counts">
+                <a data-bs-toggle="modal" data-bs-target="#AddMembers" href="#" class="follow-count">
+                    <span class="count">@Model.List.MemberCount</span>
+                    <span class="text">Members</span>
+                </a>
+                <a data-bs-toggle="modal" data-bs-target="#Followers" href="#" class="follow-count">
+                    <span class="count">@Model.List.FollowerCount</span>
+                    <span class="text">Followers</span>
+                </a>
+            </div>
+
+            @if (Model.Owner.Id == Model.CurrentUser.Id)
+            {
+                <a class="image-button" style="margin-top:20px;">
+                    <button data-bs-toggle="modal" data-bs-target="#ReplyModal" class="profile-button cool-border hover-medium">
+                        <span>Edit List</span>
+                    </button>
+                </a>
+            }
+            else
+            {
+                <div class="follow-button d-flex align-items-start" style="margin-top:20px">
+                    <a class="switch on follow follow-unfollow @(Model.Follows == null ? "active" : "")" asp-action="FollowList" asp-route-listId="@Model.List.Id">
+                        <span>
+                            Follow
+                        </span>
+                    </a>
+                    <a class="switch off unfollow follow-unfollow @(Model.Follows == null ? "" : "active")" asp-action="FollowList" asp-route-listId="@Model.List.Id">
+                        <span>
+                            Following
+                        </span>
+                    </a>
+                </div>
+            }
+
+            <div class="modal fade" id="Followers" tabindex="-1" aria-labelledby="CommentModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content background-black" style="min-height:600px; min-width:600px; max-height:650px;  max-width:600px; overflow-y:auto">
+                        <div class="modal-body">
+
+                            <h3>
+                                Suggested
+                            </h3>
+
+                            @await Component.InvokeAsync("ListFollowers", new{listId = Model.List.Id})
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="ReplyModal" tabindex="-1" aria-labelledby="CommentModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content background-black" style="min-width:600px; max-height:650px;  max-width:600px; overflow-y:auto">
+                        <div class="modal-body no-padding">
+                            <form method="post" id="postForm" enctype="multipart/form-data">
+                                <div class="post-area">
+                                    <div class="d-flex" style="flex-direction:column;">
+                                        <div>
+                                            <a id="fileButton" class="background-photo" href="#">
+                                                <div class="background-image">
+                                                    <div class="blur d-flex align-items-center justify-content-center"
+                                                         style="width:40px; height:40px; font-size:20px; color:white; background-color:black; border:0px solid black; border-radius:50% !important; position:absolute; top:90px; left:275px;">
+                                                        <i class="fa-solid fa-camera"></i>
+                                                        <input asp-for="List.ProfilePhoto" name="ProfilePhoto" type="file" class="textarea form-control" id="fileInput" accept="image/*" style="display:none;">
+                                                    </div>
+                                                    <img id="imagePreview" class="preview-img" src="/assets/images/ProfileImages/ListPhotos/@Model.List.ProfilePhoto"
+                                                         alt="">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="text-area" style="flex:1; padding:12px 16px;">
+                                            <input asp-for="List.Name" name="Name" class="textarea w-100 background-black cool-border border-radius-0 text-light active-none" style="min-width:100%; max-height:750px; resize:none; font-size:20px; padding:8px 8px 8px 8px;" placeholder="Name"></input>
+                                        </div>
+                                        <div class="text-area" style="flex:1; padding:12px 16px;">
+                                            <textarea asp-for="List.Description" name="Description" class="textarea w-100 background-black cool-border border-radius-0 text-light active-none" style="min-width:100%;min-height:100px; max-height:750px; resize:none; font-size:20px; padding:12px 8px 8px 8px;" placeholder="Description"></textarea>
+                                        </div>
+                                        <div style="display:flex; justify-content:space-between; padding:12px 16px;">
+                                            <div style="display:flex; flex-direction:column;">
+                                                <span>
+                                                    Make private
+                                                </span>
+                                                <span class="" style="font-size:small; color: rgb(113, 118, 123);">
+                                                    When you make a List private, only you can see it.
+                                                </span>
+                                            </div>
+                                            <div>
+                                                <input asp-for="List.IsPrivate" name="IsPrivate" class="form-check-input textarea" style="background-color:black; width:20px; height:20px; border:2px solid rgb(113, 118, 123);" type="checkbox" id="flexCheckDefault">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="modal-footer" style="border:none; padding:12px 16px;">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary post-submit" id="ReplyModal-button" disabled asp-action="UpdateList" asp-route-listId="@Model.List.Id">
+                                            <span>Update</span>
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="AddMembers" tabindex="-1" aria-labelledby="CommentModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content background-black" style="min-height:600px; min-width:600px; max-height:650px; max-width:600px; overflow-y:auto">
+                        <div class="modal-body">
+
+                            <h3>
+                                Members
+                            </h3>
+
+                            @await Component.InvokeAsync("ListMembers", new{listId = Model.List.Id})
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="Suggested" tabindex="-1" aria-labelledby="CommentModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content background-black" style="min-height:600px; min-width:600px; max-height:650px; max-width:600px; overflow-y:auto">
+                        <div class="modal-body">
+
+                            <h3>
+                                Suggested
+                            </h3>
+
+                            @await Component.InvokeAsync("ListSuggested", new{listId = Model.List.Id})
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="post-content tab-pane" id="nav-tabContent">
+            <div class="post-content tab-pane fade show active" id="Posts" role="tabpanel">
+
+                @await Component.InvokeAsync("ListPost")
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+<script>
+    document.getElementById('fileButton').addEventListener('click', function () {
+        document.getElementById('fileInput').click();
+    });
+
+    document.getElementById('fileInput').addEventListener('change', function (e) {
+        var fileInput = document.getElementById('fileInput');
+        var fileButton = document.getElementById('fileButton');
+
+        var file = e.target.files[0];
+        if (file) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                var img = document.getElementById('imagePreview');
+                img.src = e.target.result;
+            }
+            reader.readAsDataURL(file);
+        }
+
+        clonedInputGroup.style.display = 'flex';
+        clonedInputGroup.id = '';
+        clonedInputGroup.querySelector('input').value = file.name;
+
+
+        clonedInputGroup.querySelector('button').addEventListener('click', function () {
+            clonedInputGroup.remove();
+            checkImageCount();
+        });
+
+
+    });
+    
+</script>

@@ -1,0 +1,301 @@
+﻿@using FinalProject.ViewModels.ProfileViewModels;
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@model ProfileInfoViewModel
+<div class="content">
+    <div class="top-side blur">
+        <div class="search-side">
+            <div class="custom-container">
+                <div class="responsive-top">
+                    <a data-bs-toggle="offcanvas" href="#offcanvas" role="button"
+                       aria-controls="offcanvasExample">
+                        <div class="image">
+                            <img src="/assets/images/ProfileImages/@Model.CurrentUser.ProfilePhoto"
+                                 alt="">
+
+                        </div>
+                    </a>
+                </div>
+                <div class="text">
+                    <div class="bookmarks">
+                        <span>@Model.CurrentUser.Name</span>
+                    </div>
+                    <div class="name">
+                        <span>@Model.Posts.Count posts</span>
+                    </div>
+                </div>
+                <div class="disable">
+                    <div>
+                        <div class="image">
+                            <img src="/assets/images/ProfileImages/@Model.CurrentUser.ProfilePhoto"
+                                 alt="">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-content">
+        <a class="background-photo" href="#">
+            <div class="background-image">
+                <img src="/assets/images/ProfileImages/HeaderPhotos/@Model.CurrentUser.HeaderPhoto"
+                     alt="">
+            </div>
+        </a>
+
+        <div class="profile-info">
+            <a class="image-button">
+                <div class="profile-image">
+                    <div class="image">
+                        <img src="/assets/images/ProfileImages/@Model.CurrentUser.ProfilePhoto"
+                             alt="">
+                    </div>
+                </div>
+                <button data-bs-toggle="modal" data-bs-target="#ReplyModal" class="profile-button cool-border hover-medium">
+                    <span>Edit profile</span>
+                </button>
+            </a>
+
+            <div class="modal fade" id="ReplyModal" tabindex="-1" aria-labelledby="CommentModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content background-black" style="min-width:600px; max-height:650px;  max-width:600px; overflow-y:auto">
+                        <div class="modal-body no-padding">
+                            <form method="post" id="postForm" enctype="multipart/form-data">
+                                <div class="post-area">
+                                    <div class="d-flex" style="flex-direction:column;">
+                                        <div>
+                                            <a id="fileButton" class="background-photo" href="#">
+                                                <div class="background-image">
+                                                    <div class="blur d-flex align-items-center justify-content-center"
+                                                         style="width:40px; height:40px; font-size:20px; color:white; background-color:black; border:0px solid black; border-radius:50% !important; position:absolute; top:90px; left:275px;">
+                                                        <i class="fa-solid fa-camera"></i>
+                                                            <input asp-for="CurrentUser.HeaderPhoto" name="HeaderPhoto" type="file" class="textarea form-control" id="fileInput" accept="image/*" style="display:none;">
+                                                        <span asp-validation-for="CurrentUser.HeaderPhoto" class="text-danger"></span>
+                                                    </div>
+                                                    <img id="imagePreview" class="preview-img" src="/assets/images/ProfileImages/HeaderPhotos/@Model.CurrentUser.HeaderPhoto"
+                                                         alt="">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div>
+                                            <a id="fileButton2" class="background-photo" href="#">
+                                                <div class="profile-image" style="margin-top: -12%; margin-bottom: 12px;">
+                                                    <div class="image" style="width: 140px !important; height: 140px !important;">
+                                                        <div class="blur d-flex align-items-center justify-content-center" style="width:40px; height:40px; font-size:20px; color:white; background-color:black; border:0px solid black; border-radius:50% !important; position:absolute; top:180px; left:51px;">
+                                                            <i class="fa-solid fa-camera"></i>
+                                                            <input asp-for="CurrentUser.ProfilePhoto" name="ProfilePhoto" type="file" class="textarea form-control" id="fileInput2" accept="image/*" style="display:none;">
+                                                            <span asp-validation-for="CurrentUser.ProfilePhoto" class="text-danger"></span>
+
+                                                        </div>
+                                                        <img id="imagePreview2" class="preview-img2" src="/assets/images/ProfileImages/@Model.CurrentUser.ProfilePhoto"
+                                                             alt="">
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="text-area" style="flex:1; padding:12px 16px;">
+                                            <input asp-for="CurrentUser.Name" name="Name" class="textarea w-100 background-black cool-border border-radius-0 text-light active-none" style="min-width:100%; max-height:750px; resize:none; font-size:20px; padding:8px 8px 8px 8px;" placeholder="Name"></input>
+                                        </div>
+                                        <div class="text-area" style="flex:1; padding:12px 16px;">
+                                            <textarea asp-for="CurrentUser.Bio" name="Bio" class="textarea w-100 background-black cool-border border-radius-0 text-light active-none" style="min-width:100%;min-height:100px; max-height:750px; resize:none; font-size:20px; padding:12px 8px 8px 8px;" placeholder="Description"></textarea>
+                                        </div>
+                                        <div class="text-area" style="flex:1; padding:12px 16px;">
+                                            <input asp-for="CurrentUser.Location" name="Location" class="textarea w-100 background-black cool-border border-radius-0 text-light active-none" style="min-width:100%; max-height:750px; resize:none; font-size:20px; padding:8px 8px 8px 8px;" placeholder="Location"></input>
+                                        </div>
+                                    </div>
+
+                                    <div class="modal-footer" style="border:none; padding:12px 16px;">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary post-submit" id="ReplyModal-button" disabled asp-action="UpdateProfile" asp-controller="Profile">
+                                            <span>Update</span>
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="names">
+                <div class="username">
+                    <span>@Model.CurrentUser.Name</span>
+                    @if (Model.CurrentUser.IsPremium)
+                    {
+                        <div class="verify-icon-blue">
+                            <i class='bx bxs-badge-check'></i>
+                        </div>
+                    }
+                    else if (Model.CurrentUser.IsVerified)
+                    {
+                        <div class="verify-icon-yellow">
+                            <i class='bx bxs-badge-check'></i>
+                        </div>
+                    }
+                    else if (Model.CurrentUser.IsGovermentVerified)
+                    {
+                        <div class="verify-icon-blue" style="color:#839aaa">
+                            <i class='bx bxs-badge-check'></i>
+                        </div>
+                    }
+                    else
+                    {
+
+                    }
+                </div>
+                <div class="name">
+                    <span>@@@Model.CurrentUser.UserName</span>
+                </div>
+            </div>
+
+            <div class="profile-bio">
+                <span>@Model.CurrentUser.Bio</span>
+            </div>
+
+            <div class="location-date">
+                @if (Model.CurrentUser.Location.Any())
+                {
+                    <div class="location">
+                        <div class="icon">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <span>@Model.CurrentUser.Location</span>
+                    </div>
+                }
+                <div class="create-date">
+                    <div class="icon">
+                        <i class="fa-solid fa-calendar-days"></i>
+                    </div>
+                    <span>Joined @Model.CurrentUser.CreatedDate.ToString("MMM dd, yyyy")</span>
+                </div>
+            </div>
+
+            <div class="counts">
+                <a asp-action="Followers" asp-route-userId="@Model.CurrentUser.Id" asp-route-TabId="Following" class="follow-count">
+                    <span class="count">@Model.CurrentUser.FollowingCount</span>
+                    <span class="text">Following</span>
+                </a>
+                <a asp-action="Followers" asp-route-userId="@Model.CurrentUser.Id" asp-route-TabId="VerifiedFollowers" class="follow-count">
+                    <span class="count">@Model.CurrentUser.FollowerCount</span>
+                    <span class="text">Followers</span>
+                </a>
+            </div>
+
+        </div>
+
+
+
+        <div class="for-side">
+            <div class="for-you">
+                <div class="elements list-group">
+                    <a class="element active" asp-action="Filter" asp-route-TabId="Posts">
+                        <div class="element-inside">
+                            <div class="text @(ViewBag.TabId == "Posts" ? "active" : "")">
+                                <span>Posts</span>
+                                <div class="bottom-line"></div>
+                            </div>
+                        </div>
+                    </a>
+                    <a class="element" asp-action="Filter" asp-route-TabId="Replies">
+                        <div class="element-inside">
+                            <div class="text @(ViewBag.TabId == "Replies" ? "active" : "")">
+                                <span>Replies</span>
+                                <div class="bottom-line"></div>
+                            </div>
+                        </div>
+                    </a>
+                    <a class="element" asp-action="Filter" asp-route-TabId="Likes">
+                        <div class="element-inside">
+                            <div class="text @(ViewBag.TabId == "Likes" ? "active" : "")">
+                                <span> Likes</span>
+                                <div class="bottom-line"></div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="post-content tab-pane" id="nav-tabContent">
+            <div class="post-content tab-pane fade show active" id="Posts" role="tabpanel">
+
+                @await Component.InvokeAsync("ProfilePost")
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<script>
+    document.getElementById('fileButton').addEventListener('click', function () {
+        document.getElementById('fileInput').click();
+    });
+
+    document.getElementById('fileInput').addEventListener('change', function (e) {
+        var fileInput = document.getElementById('fileInput');
+        var fileButton = document.getElementById('fileButton');
+
+        var file = e.target.files[0];
+        if (file) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                var img = document.getElementById('imagePreview');
+                img.src = e.target.result;
+            }
+            reader.readAsDataURL(file);
+        }
+
+        clonedInputGroup.style.display = 'flex';
+        clonedInputGroup.id = '';
+        clonedInputGroup.querySelector('input').value = file.name;
+
+
+        clonedInputGroup.querySelector('button').addEventListener('click', function () {
+            clonedInputGroup.remove();
+            checkImageCount();
+        });
+
+
+    });
+
+    document.getElementById('fileButton2').addEventListener('click', function () {
+        document.getElementById('fileInput2').click();
+    });
+
+    document.getElementById('fileInput2').addEventListener('change', function (e) {
+        var fileInput = document.getElementById('fileInput2');
+        var fileButton = document.getElementById('fileButton2');
+
+        var file = e.target.files[0];
+        if (file) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                var img = document.getElementById('imagePreview2');
+                img.src = e.target.result;
+            }
+            reader.readAsDataURL(file);
+        }
+
+        clonedInputGroup.style.display = 'flex';
+        clonedInputGroup.id = '';
+        clonedInputGroup.querySelector('input').value = file.name;
+
+
+        clonedInputGroup.querySelector('button').addEventListener('click', function () {
+            clonedInputGroup.remove();
+            checkImageCount();
+        });
+
+
+    });
+</script>

@@ -1,0 +1,169 @@
+﻿@using FinalProject.ViewModels.HomeViewModels;
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@model CreatePostViewModel
+
+<div class="content">
+    <div class="for-you">
+        <div class="responsive-top">
+            <a data-bs-toggle="offcanvas" href="#offcanvas" role="button"
+               aria-controls="offcanvasExample">
+                <div class="image">
+                    <img src="/assets/images/ProfileImages/@ViewBag.CurrentUser.ProfilePhoto"
+                         alt="">
+                         
+                </div>
+            </a>
+            <a class="logo" href="#">
+                <div class="logo-container">
+                    <i class="fa-brands fa-x-twitter"></i>
+                </div>
+            </a>
+
+
+            <div class="image disable">
+                <img src="/assets/images/ProfileImages/default.png"
+                     alt="">
+
+            </div>
+        </div>
+        <div class="elements list-group">
+            <a class="element" asp-action="Filter" asp-route-TabId="ForYou">
+                <div class="element-inside">
+                    <div class="text @(ViewBag.TabId == "ForYou" ? "active" : "")">
+                        <span>For you</span>
+                        <div class="bottom-line"></div>
+                    </div>
+                </div>
+            </a>
+            <a class="element" asp-action="Filter" asp-route-TabId="Following">
+                <div class="element-inside">
+                    <div class="text @(ViewBag.TabId == "Following" ? "active" : "")">
+                        <span> Following</span>
+                        <div class="bottom-line"></div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    
+    </div>
+    
+    <div class="post-box">
+        <div class="profile-icon">
+            <div class="image">
+                <img src="/assets/images/ProfileImages/@ViewBag.CurrentUser.ProfilePhoto"
+                     alt="">
+
+            </div>
+        </div>
+        <form method="post" id="postForm" enctype="multipart/form-data">
+            <div class="post-area">
+                <div class="text-area">
+                    <textarea asp-for="Content" name="Content" class="textarea auto-resize" placeholder="What is happening?!"></textarea>
+                </div>
+                
+
+
+                <div id="fileInputs" class="file-inputs">
+                    <div class="input-group mb-3" id="fileNamesTemplate" style="display: none;">
+                        <input type="text" class="form-control" aria-label="File name" aria-describedby="button-addon2" readonly>
+                        <button class="btn btn-danger" type="button" id="button-addon2">Remove</button>
+                    </div>
+                </div>
+
+
+                <div class="buttons">
+                    <div class="media-buttons">
+                        <ul>
+                            <li><a id="fileButton"><i class="fa-solid fa-image"></i><input type="file" class="form-control" asp-for="PostImages" id="fileInput" accept="image/*" multiple style="display:none;"></a></li>
+                            <li><a href="#"><i class="fa-solid fa-film"></i></a></li>
+                            <li><a href="#"><i class="fa-solid fa-square-poll-horizontal"></i></a></li>
+                            <li><a href="#"><i class="fa-regular fa-face-smile"></i></a></li>
+                            <li><a href="#"><i class="fa-solid fa-calendar-days"></i></a></li>
+                            <li><a href="#"><i class="fa-solid fa-location-dot"></i></a></li>
+                        </ul>
+                    </div>
+
+                    <div class="post-button">
+                        <button type="submit" class="btn post-submit" id="post-button" disabled asp-controller="Home" asp-action="CreatePost">
+                            <span>Post</span>
+                        </button>
+
+                    </div>
+
+                </div>
+            </div>
+            
+        </form>
+
+    </div>
+    
+    <div class="" id="nav-tabContent">
+        <div class="post-content tab-pane fade show active" id="for-you" role="tabpanel">
+
+            @await Component.InvokeAsync("Post")
+            
+        </div>       
+    </div>
+</div>
+
+<script>
+    document.getElementById('fileButton').addEventListener('click', function () {
+        document.getElementById('fileInput').click();
+    });
+
+    document.getElementById('fileInput').addEventListener('change', function () {
+        var fileInput = document.getElementById('fileInput');
+        var fileInputsDiv = document.getElementById('fileInputs');
+        var fileNamesTemplate = document.getElementById('fileNamesTemplate');
+        var fileButton = document.getElementById('fileButton');
+
+        if (fileInputsDiv.children.length + fileInput.files.length > 5) {
+            alert('You can only upload up to 4 images.');
+            return;
+        }
+
+        fileInputsDiv.querySelectorAll('.input-group').forEach(function (el) {
+            if (el !== fileNamesTemplate) el.remove();
+        });
+
+        for (var i = 0; i < fileInput.files.length; i++) {
+            var file = fileInput.files[i];
+
+            var clonedInputGroup = fileNamesTemplate.cloneNode(true);
+            clonedInputGroup.style.display = 'flex';
+            clonedInputGroup.id = '';
+            clonedInputGroup.querySelector('input').value = file.name;
+
+            fileInputsDiv.appendChild(clonedInputGroup);
+
+            clonedInputGroup.querySelector('button').addEventListener('click', function () {
+                clonedInputGroup.remove();
+                checkImageCount();
+            });
+        }
+
+        checkImageCount();
+
+    });
+
+    function checkImageCount() {
+        var fileInputsDiv = document.getElementById('fileInputs');
+        var fileButton = document.getElementById('fileButton');
+
+        if (fileInputsDiv.children.length >= 5) {
+            fileButton.style.pointerEvents = 'none';
+            fileButton.style.opacity = '0.5';
+        } else {
+            fileButton.style.pointerEvents = 'auto';
+            fileButton.style.opacity = '1';
+        }
+    }
+
+
+
+
+</script>

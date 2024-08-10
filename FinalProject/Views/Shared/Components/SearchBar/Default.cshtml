@@ -1,0 +1,23 @@
+﻿@using FinalProject.ViewModels.Searc;
+@using FinalProject.ViewModels.Search;
+
+@{
+    Layout = null;
+}
+
+
+@model SearchViewModel
+
+<form method="post" asp-controller="Search" asp-action="Index">
+    <div class="searchbar-container">
+        <div class="searchbar">
+            <div class="search-icon">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+            <div class="search-input">
+                <input asp-for="Search" type="text" placeholder="Search">
+
+            </div>
+        </div>
+    </div>
+</form>

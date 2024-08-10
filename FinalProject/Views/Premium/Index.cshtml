@@ -1,0 +1,86 @@
+﻿
+@{
+    Layout = null;
+}
+
+@model AppUser?
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TwittiX</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+          integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="~/assets\css\LogIn.css">
+</head>
+
+<body>
+    <a asp-action="Index" asp-controller="Home" type="button" class="btn btn-dark" style="position:absolute; top: 16px; left: 16px; border-radius:50%;">
+        <i class="fa-solid fa-x"></i>
+    </a>
+    <div class="d-flex gap-5 justify-content-center">
+        @if (!Model.IsVerified)
+        {
+            <div class="card text-center text-bg-dark" style="width:500px;">
+                <div class="card-header text-primary">
+                    Premium
+                </div>
+                <div class="card-body d-flex flex-column justify-content-between">
+                    <h5 class="card-title">Upgrade to Premium and enjoy an enhanced experience</h5>
+                    <p class="card-text">
+                        Exclusive creator tools, top-tier verification and security, Checkmark, No Ads in For You and Following, Get paid to post,
+                        Larger reply boost, X Pro, Analytics, Write Articles, Creator Subscriptions and much more is available with Premium.
+                        Subscribe now and benefit from all of these advantages.
+
+                    </p>
+                    @if (!Model.IsPremium)
+                    {
+                        <a asp-action="SubscribePremium" class="btn btn-primary">Subscribe & Pay</a>
+                    }
+                    else
+                    {
+                        <a asp-action="CancelSubscription" class="btn btn-danger">Cancel Subscription</a>
+                    }
+
+                </div>
+
+            </div>
+        }
+        
+        <div class="card text-center text-bg-dark" style="width:500px;">
+            <div class="card-header text-warning">
+                Verified Organizations
+            </div>
+            <div class="card-body d-flex flex-column justify-content-between">
+                <h5 class="card-title">Grow faster on X, and get $12,000 USD free ad credit</h5>
+                <p class="card-text">
+                    Get Full Access, Reach more customers organically, affiliate your network, or find your next hire.
+                    Gold checkmark, Priority support, Premium+, Increased reach, Affiliations and much more is available with Verified Organizations.
+                    Subscribe now and benefit from all of these advantages.
+                </p>
+                
+                @if (!Model.IsVerified)
+                {
+                    <a asp-action="VerifiedOrg" class="btn btn-warning">Subscribe & Pay</a>
+                }
+                else
+                {
+                    <a asp-action="CancelSubscription" class="btn btn-danger">Cancel Subscription</a>
+                }
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

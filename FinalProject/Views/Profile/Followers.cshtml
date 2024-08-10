@@ -1,0 +1,92 @@
+﻿
+@{
+    ViewData["Title"] = "Followers";
+}
+
+@model AppUser
+
+<div class="content">
+    <div class="top-side blur">
+        <div class="search-side">
+            <div class="custom-container">
+                <div class="responsive-top">
+                    <a data-bs-toggle="offcanvas" href="#offcanvas" role="button"
+                       aria-controls="offcanvasExample">
+                        <div class="image">
+                            <img src="/assets/images/ProfileImages/@Model.ProfilePhoto"
+                                 alt="">
+
+                        </div>
+                    </a>
+                </div>
+                <div class="back-names">
+                    <div class="back-container">
+                        <button class="go-back" id="backButton">
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </button>
+                    </div>
+                    <div class="text">
+                        <div class="bookmarks">
+                            <span>@Model.Name</span>
+                        </div>
+                        <div class="name">
+                            <span>@@@Model.UserName</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="disable">
+                    <div>
+                        <div class="image">
+                            <img src="/assets/images/ProfileImages/@Model.ProfilePhoto"
+                                 alt="">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-content">     
+        <div class="for-side">
+            <div class="for-you">
+                <div class="elements list-group">
+                    <a class="element active" asp-action="Filter" asp-route-TabId="VerifiedFollowers">
+                        <div class="element-inside">
+                            <div class="text @(ViewBag.TabId == "VerifiedFollowers" ? "active" : "")">
+                                <span>Verified Followers</span>
+                                <div class="bottom-line"></div>
+                            </div>
+                        </div>
+                    </a>
+                    <a class="element" asp-action="Filter" asp-route-TabId="Followers">
+                        <div class="element-inside">
+                            <div class="text @(ViewBag.TabId == "Followers" ? "active" : "")">
+                                <span>Followers</span>
+                                <div class="bottom-line"></div>
+                            </div>
+                        </div>
+                    </a>
+                    <a class="element" asp-action="Filter" asp-route-TabId="Following">
+                        <div class="element-inside">
+                            <div class="text @(ViewBag.TabId == "Following" ? "active" : "")">
+                                <span> Following</span>
+                                <div class="bottom-line"></div>
+                            </div>
+                        </div>
+                    </a>                   
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="nav-tabContent">
+            <div class="post-content tab-pane fade show active" id="Posts" role="tabpanel">
+                @await Component.InvokeAsync("Followers")
+            </div>           
+        </div>
+    </div>
+
+
+</div>
+
+

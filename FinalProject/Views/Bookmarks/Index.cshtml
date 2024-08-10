@@ -1,0 +1,52 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="content">
+    <div class="top-side blur">
+        <div class="search-side">
+            <div class="custom-container">
+                <div class="responsive-top">
+                    <a data-bs-toggle="offcanvas" href="#offcanvas" role="button"
+                       aria-controls="offcanvasExample">
+                        <div class="image">
+                            <img src="https://w7.pngwing.com/pngs/858/581/png-transparent-profile-icon-user-computer-icons-system-chinese-wind-title-column-miscellaneous-service-logo.png"
+                                 alt="">
+
+                        </div>
+                    </a>
+                </div>
+                <div class="text">
+                    <div class="bookmarks">
+                        <span>Bookmarks</span>
+                    </div>
+                    <div class="name">
+                        <span>@@@User.Identity.Name</span>
+                    </div>
+                </div>
+
+                <div class="bookmarks-settings more btn-group dropstart">
+                    <a class="" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-solid fa-ellipsis"></i>
+                    </a>
+                    <ul class="dropdown-menu menu-border menu-transform post-menu">
+                        <li>
+                            <a class="dropdown-item text-bg-dark dark d-flex justify-content-center align-items-center w-100" asp-action="ClearAllBookmarks">
+                                <span class="text text-danger" style="font-size:15px;">Clear all Bookmarks</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-content tab-pane">
+
+        @await Component.InvokeAsync("Bookmark")
+
+    </div>
+
+
+</div>
+

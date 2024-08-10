@@ -1,0 +1,63 @@
+﻿@using FinalProject.ViewModels.List;
+@{
+    Layout = null;
+}
+
+@model ListDiscoverViewModel
+
+@if (Model.Lists != null)
+{
+    @foreach (var list in Model.Lists)
+    {
+        <div class="follows-content">
+            <form asp-action="Status" asp-route-listId="@list.Id">
+                <button type="submit" class="content">
+                    <div class="profile">
+                        <div class="image-square">
+                            <img src="/assets/images/ProfileImages/ListPhotos/@list.ProfilePhoto"
+                                 alt="">
+                        </div>
+
+                        <div class="names-follow">
+                            <div class="names">
+                                <div class="username">
+                                    <span>@list.Name</span>
+                                    @if (list.IsPrivate)
+                                    {
+                                        <div class="private-icon" style="margin-left:4px; font-size:14px;">
+                                            <i class="fa-solid fa-lock"></i>
+                                        </div>
+                                    }
+                                    <span class="members">· @list.MemberCount members</span>
+                                </div>
+                                <div class="name">
+                                    <span>@list.FollowerCount followers</span>
+                                </div>
+
+                            </div>
+                            @if (list.OwnerId != Model.CurrentUser.Id)
+                            {
+                                <div class="follow-button">
+                                    <a asp-action="FollowList" asp-route-listId="@list.Id" class="switch on list-follow">
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                                             viewBox="0 -960 960 960" width="24px" fill="rgb(29, 155, 240)">
+                                            <path d="m624-480 96 96v72H516v228l-36 36-36-36v-228H240v-72l96-96v-264h-48v-72h384v72h-48v264Zm-282 96h276l-66-66v-294H408v294l-66 66Zm138 0Z" />
+                                        </svg>
+                                    </a>
+                                    <a asp-action="FollowList" asp-route-listId="@list.Id" class="switch off active list-follow">
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                                             viewBox="0 -960 960 960" width="24px" fill="rgb(29, 155, 240)">
+                                            <path d="m624-480 96 96v72H516v228l-36 36-36-36v-228H240v-72l96-96v-264h-48v-72h384v72h-48v264Z" />
+                                        </svg>
+                                    </a>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </button>
+            </form>
+        </div>
+
+    }
+}
+

@@ -1,0 +1,807 @@
+﻿@{
+    ViewData["Title"] = "WhoToFollow";
+}
+
+<div class="content">
+    <div class="top-side">
+        <div class="search-side">
+            <div class="custom-container">
+                <div class="back-names">
+                    <div class="back-container">
+                        <button class="go-back" id="backButton">
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </button>
+                    </div>
+                    <div class="text d-flex align-items-center">
+                        <span>Connect</span>
+                    </div>
+                </div>
+                <div class="explore-settings">
+                    <a href="#">
+                        <i class="fa-solid fa-gear"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="for-side">
+            <div class="for-you">
+                <div class="elements list-group">
+                    <a class="element active" asp-action="Filter" asp-route-TabId="Follow">
+                        <div class="element-inside">
+                            <div class="text active">
+                                <span>Who to follow</span>
+                                <div class="bottom-line"></div>
+                            </div>
+                        </div>
+                    </a>
+                    <a class="element" asp-action="Filter" asp-route-TabId="Creators">
+                        <div class="element-inside">
+                            <div class="text">
+                                <span> Creators for you</span>
+                                <div class="bottom-line"></div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-content">
+        <div class="post-content tab-pane fade show active" id="Follow">
+
+            @await Component.InvokeAsync("ShowFollow")
+
+        </div>
+        <div class="post-content tab-pane fade" id="Creators">
+            <div class="who-to-follow">
+                <div class="follows-content">
+                    <button class="content">
+                        <div class="profile">
+                            <div class="image">
+                                <img src="https://pbs.twimg.com/profile_images/1710912026929733632/qbKzAPOc_400x400.jpg"
+                                     alt="">
+                            </div>
+
+                            <div class="names-follow-bio">
+                                <div class="names-follow">
+                                    <div class="names">
+                                        <div class="username">
+                                            <span>OLLDane</span>
+                                        </div>
+                                        <div class="name">
+                                            <span>@@oldane</span>
+                                        </div>
+
+                                    </div>
+                                    <div class="follow-button">
+                                        <a class="switch on follow active">
+                                            <span>
+                                                Follow
+                                            </span>
+                                        </a>
+                                        <a class="switch off unfollow">
+                                            <span>
+                                                Following
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="bio">
+                                    <span>
+                                        solcugazete Resmi Twitter Hesabı | işbirliği, reklam, telif:
+                                        info@@solcugazete.net
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+                    <button class="content">
+                        <div class="profile">
+                            <div class="image">
+                                <img src="https://w7.pngwing.com/pngs/858/581/png-transparent-profile-icon-user-computer-icons-system-chinese-wind-title-column-miscellaneous-service-logo.png"
+                                     alt="">
+                            </div>
+                            <div class="names-follow-bio">
+                                <div class="names-follow">
+                                    <div class="names">
+                                        <div class="username">
+                                            <span>OLLDane</span>
+                                        </div>
+                                        <div class="name">
+                                            <span>@@oldane</span>
+                                        </div>
+
+                                    </div>
+                                    <div class="follow-button">
+                                        <a class="switch on follow active">
+                                            <span>
+                                                Follow
+                                            </span>
+                                        </a>
+                                        <a class="switch off unfollow">
+                                            <span>
+                                                Following
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="bio">
+                                    <span>
+                                        Dünya gündemi, savunma sanayii ve teknoloji odakli haber, yurt
+                                        içi
+                                        veri ve önemli gelişme.
+                                    </span>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </button>
+                    <button class="content">
+                        <div class="profile">
+                            <div class="image">
+                                <img src="https://w7.pngwing.com/pngs/858/581/png-transparent-profile-icon-user-computer-icons-system-chinese-wind-title-column-miscellaneous-service-logo.png"
+                                     alt="">
+                            </div>
+
+                            <div class="names-follow-bio">
+                                <div class="names-follow">
+                                    <div class="names">
+                                        <div class="username">
+                                            <span>OLLDane</span>
+                                        </div>
+                                        <div class="name">
+                                            <span>@@oldane</span>
+                                        </div>
+
+                                    </div>
+                                    <div class="follow-button">
+                                        <a class="switch on follow active">
+                                            <span>
+                                                Follow
+                                            </span>
+                                        </a>
+                                        <a class="switch off unfollow">
+                                            <span>
+                                                Following
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="bio">
+                                    <span>
+                                        Dünya gündemi, savunma sanayii ve teknoloji odakli haber, yurt
+                                        içi
+                                        veri ve önemli gelişme.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+                    <button class="content">
+                        <div class="profile">
+                            <div class="image">
+                                <img src="https://w7.pngwing.com/pngs/858/581/png-transparent-profile-icon-user-computer-icons-system-chinese-wind-title-column-miscellaneous-service-logo.png"
+                                     alt="">
+                            </div>
+
+                            <div class="names-follow-bio">
+                                <div class="names-follow">
+                                    <div class="names">
+                                        <div class="username">
+                                            <span>OLLDane</span>
+                                        </div>
+                                        <div class="name">
+                                            <span>@@oldane</span>
+                                        </div>
+
+                                    </div>
+                                    <div class="follow-button">
+                                        <a class="switch on follow active">
+                                            <span>
+                                                Follow
+                                            </span>
+                                        </a>
+                                        <a class="switch off unfollow">
+                                            <span>
+                                                Following
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="bio">
+                                    <span>
+                                        Dünya gündemi, savunma sanayii ve teknoloji odakli haber, yurt
+                                        içi
+                                        veri ve önemli gelişme.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+                    <button class="content">
+                        <div class="profile">
+                            <div class="image">
+                                <img src="https://w7.pngwing.com/pngs/858/581/png-transparent-profile-icon-user-computer-icons-system-chinese-wind-title-column-miscellaneous-service-logo.png"
+                                     alt="">
+                            </div>
+
+                            <div class="names-follow-bio">
+                                <div class="names-follow">
+                                    <div class="names">
+                                        <div class="username">
+                                            <span>OLLDane</span>
+                                        </div>
+                                        <div class="name">
+                                            <span>@@oldane</span>
+                                        </div>
+
+                                    </div>
+                                    <div class="follow-button">
+                                        <a class="switch on follow active">
+                                            <span>
+                                                Follow
+                                            </span>
+                                        </a>
+                                        <a class="switch off unfollow">
+                                            <span>
+                                                Following
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="bio">
+                                    <span>
+                                        Dünya gündemi, savunma sanayii ve teknoloji odakli haber, yurt
+                                        içi
+                                        veri ve önemli gelişme.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+                    <button class="content">
+                        <div class="profile">
+                            <div class="image">
+                                <img src="https://w7.pngwing.com/pngs/858/581/png-transparent-profile-icon-user-computer-icons-system-chinese-wind-title-column-miscellaneous-service-logo.png"
+                                     alt="">
+                            </div>
+
+                            <div class="names-follow-bio">
+                                <div class="names-follow">
+                                    <div class="names">
+                                        <div class="username">
+                                            <span>OLLDane</span>
+                                        </div>
+                                        <div class="name">
+                                            <span>@@oldane</span>
+                                        </div>
+
+                                    </div>
+                                    <div class="follow-button">
+                                        <a class="switch on follow active">
+                                            <span>
+                                                Follow
+                                            </span>
+                                        </a>
+                                        <a class="switch off unfollow">
+                                            <span>
+                                                Following
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="bio">
+                                    <span>
+                                        Dünya gündemi, savunma sanayii ve teknoloji odakli haber, yurt
+                                        içi
+                                        veri ve önemli gelişme.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+                    <button class="content">
+                        <div class="profile">
+                            <div class="image">
+                                <img src="https://w7.pngwing.com/pngs/858/581/png-transparent-profile-icon-user-computer-icons-system-chinese-wind-title-column-miscellaneous-service-logo.png"
+                                     alt="">
+                            </div>
+
+                            <div class="names-follow-bio">
+                                <div class="names-follow">
+                                    <div class="names">
+                                        <div class="username">
+                                            <span>OLLDane</span>
+                                        </div>
+                                        <div class="name">
+                                            <span>@@oldane</span>
+                                        </div>
+
+                                    </div>
+                                    <div class="follow-button">
+                                        <a class="switch on follow active">
+                                            <span>
+                                                Follow
+                                            </span>
+                                        </a>
+                                        <a class="switch off unfollow">
+                                            <span>
+                                                Following
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="bio">
+                                    <span>
+                                        Dünya gündemi, savunma sanayii ve teknoloji odakli haber, yurt
+                                        içi
+                                        veri ve önemli gelişme.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+                    <button class="content">
+                        <div class="profile">
+                            <div class="image">
+                                <img src="https://w7.pngwing.com/pngs/858/581/png-transparent-profile-icon-user-computer-icons-system-chinese-wind-title-column-miscellaneous-service-logo.png"
+                                     alt="">
+                            </div>
+
+                            <div class="names-follow-bio">
+                                <div class="names-follow">
+                                    <div class="names">
+                                        <div class="username">
+                                            <span>OLLDane</span>
+                                        </div>
+                                        <div class="name">
+                                            <span>@@oldane</span>
+                                        </div>
+
+                                    </div>
+                                    <div class="follow-button">
+                                        <a class="switch on follow active">
+                                            <span>
+                                                Follow
+                                            </span>
+                                        </a>
+                                        <a class="switch off unfollow">
+                                            <span>
+                                                Following
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="bio">
+                                    <span>
+                                        Dünya gündemi, savunma sanayii ve teknoloji odakli haber, yurt
+                                        içi
+                                        veri ve önemli gelişme.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+                    <button class="content">
+                        <div class="profile">
+                            <div class="image">
+                                <img src="https://w7.pngwing.com/pngs/858/581/png-transparent-profile-icon-user-computer-icons-system-chinese-wind-title-column-miscellaneous-service-logo.png"
+                                     alt="">
+                            </div>
+
+                            <div class="names-follow-bio">
+                                <div class="names-follow">
+                                    <div class="names">
+                                        <div class="username">
+                                            <span>OLLDane</span>
+                                        </div>
+                                        <div class="name">
+                                            <span>@@oldane</span>
+                                        </div>
+
+                                    </div>
+                                    <div class="follow-button">
+                                        <a class="switch on follow active">
+                                            <span>
+                                                Follow
+                                            </span>
+                                        </a>
+                                        <a class="switch off unfollow">
+                                            <span>
+                                                Following
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="bio">
+                                    <span>
+                                        Dünya gündemi, savunma sanayii ve teknoloji odakli haber, yurt
+                                        içi
+                                        veri ve önemli gelişme.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+                    <button class="content">
+                        <div class="profile">
+                            <div class="image">
+                                <img src="https://w7.pngwing.com/pngs/858/581/png-transparent-profile-icon-user-computer-icons-system-chinese-wind-title-column-miscellaneous-service-logo.png"
+                                     alt="">
+                            </div>
+
+                            <div class="names-follow-bio">
+                                <div class="names-follow">
+                                    <div class="names">
+                                        <div class="username">
+                                            <span>OLLDane</span>
+                                        </div>
+                                        <div class="name">
+                                            <span>@@oldane</span>
+                                        </div>
+
+                                    </div>
+                                    <div class="follow-button">
+                                        <a class="switch on follow active">
+                                            <span>
+                                                Follow
+                                            </span>
+                                        </a>
+                                        <a class="switch off unfollow">
+                                            <span>
+                                                Following
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="bio">
+                                    <span>
+                                        Dünya gündemi, savunma sanayii ve teknoloji odakli haber, yurt
+                                        içi
+                                        veri ve önemli gelişme.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+                    <button class="content">
+                        <div class="profile">
+                            <div class="image">
+                                <img src="https://w7.pngwing.com/pngs/858/581/png-transparent-profile-icon-user-computer-icons-system-chinese-wind-title-column-miscellaneous-service-logo.png"
+                                     alt="">
+                            </div>
+
+                            <div class="names-follow-bio">
+                                <div class="names-follow">
+                                    <div class="names">
+                                        <div class="username">
+                                            <span>OLLDane</span>
+                                        </div>
+                                        <div class="name">
+                                            <span>@@oldane</span>
+                                        </div>
+
+                                    </div>
+                                    <div class="follow-button">
+                                        <a class="switch on follow active">
+                                            <span>
+                                                Follow
+                                            </span>
+                                        </a>
+                                        <a class="switch off unfollow">
+                                            <span>
+                                                Following
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="bio">
+                                    <span>
+                                        Dünya gündemi, savunma sanayii ve teknoloji odakli haber, yurt
+                                        içi
+                                        veri ve önemli gelişme.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+                    <button class="content">
+                        <div class="profile">
+                            <div class="image">
+                                <img src="https://w7.pngwing.com/pngs/858/581/png-transparent-profile-icon-user-computer-icons-system-chinese-wind-title-column-miscellaneous-service-logo.png"
+                                     alt="">
+                            </div>
+
+                            <div class="names-follow-bio">
+                                <div class="names-follow">
+                                    <div class="names">
+                                        <div class="username">
+                                            <span>OLLDane</span>
+                                        </div>
+                                        <div class="name">
+                                            <span>@@oldane</span>
+                                        </div>
+
+                                    </div>
+                                    <div class="follow-button">
+                                        <a class="switch on follow active">
+                                            <span>
+                                                Follow
+                                            </span>
+                                        </a>
+                                        <a class="switch off unfollow">
+                                            <span>
+                                                Following
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="bio">
+                                    <span>
+                                        Dünya gündemi, savunma sanayii ve teknoloji odakli haber, yurt
+                                        içi
+                                        veri ve önemli gelişme.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+                    <button class="content">
+                        <div class="profile">
+                            <div class="image">
+                                <img src="https://w7.pngwing.com/pngs/858/581/png-transparent-profile-icon-user-computer-icons-system-chinese-wind-title-column-miscellaneous-service-logo.png"
+                                     alt="">
+                            </div>
+
+                            <div class="names-follow-bio">
+                                <div class="names-follow">
+                                    <div class="names">
+                                        <div class="username">
+                                            <span>OLLDane</span>
+                                        </div>
+                                        <div class="name">
+                                            <span>@@oldane</span>
+                                        </div>
+
+                                    </div>
+                                    <div class="follow-button">
+                                        <a class="switch on follow active">
+                                            <span>
+                                                Follow
+                                            </span>
+                                        </a>
+                                        <a class="switch off unfollow">
+                                            <span>
+                                                Following
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="bio">
+                                    <span>
+                                        Dünya gündemi, savunma sanayii ve teknoloji odakli haber, yurt
+                                        içi
+                                        veri ve önemli gelişme.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+                    <button class="content">
+                        <div class="profile">
+                            <div class="image">
+                                <img src="https://w7.pngwing.com/pngs/858/581/png-transparent-profile-icon-user-computer-icons-system-chinese-wind-title-column-miscellaneous-service-logo.png"
+                                     alt="">
+                            </div>
+
+                            <div class="names-follow-bio">
+                                <div class="names-follow">
+                                    <div class="names">
+                                        <div class="username">
+                                            <span>OLLDane</span>
+                                        </div>
+                                        <div class="name">
+                                            <span>@@oldane</span>
+                                        </div>
+
+                                    </div>
+                                    <div class="follow-button">
+                                        <a class="switch on follow active">
+                                            <span>
+                                                Follow
+                                            </span>
+                                        </a>
+                                        <a class="switch off unfollow">
+                                            <span>
+                                                Following
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="bio">
+                                    <span>
+                                        Dünya gündemi, savunma sanayii ve teknoloji odakli haber, yurt
+                                        içi
+                                        veri ve önemli gelişme.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+                    <button class="content">
+                        <div class="profile">
+                            <div class="image">
+                                <img src="https://w7.pngwing.com/pngs/858/581/png-transparent-profile-icon-user-computer-icons-system-chinese-wind-title-column-miscellaneous-service-logo.png"
+                                     alt="">
+                            </div>
+
+                            <div class="names-follow-bio">
+                                <div class="names-follow">
+                                    <div class="names">
+                                        <div class="username">
+                                            <span>OLLDane</span>
+                                        </div>
+                                        <div class="name">
+                                            <span>@@oldane</span>
+                                        </div>
+
+                                    </div>
+                                    <div class="follow-button">
+                                        <a class="switch on follow active">
+                                            <span>
+                                                Follow
+                                            </span>
+                                        </a>
+                                        <a class="switch off unfollow">
+                                            <span>
+                                                Following
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="bio">
+                                    <span>
+                                        Dünya gündemi, savunma sanayii ve teknoloji odakli haber, yurt
+                                        içi
+                                        veri ve önemli gelişme.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+                    <button class="content">
+                        <div class="profile">
+                            <div class="image">
+                                <img src="https://w7.pngwing.com/pngs/858/581/png-transparent-profile-icon-user-computer-icons-system-chinese-wind-title-column-miscellaneous-service-logo.png"
+                                     alt="">
+                            </div>
+
+                            <div class="names-follow-bio">
+                                <div class="names-follow">
+                                    <div class="names">
+                                        <div class="username">
+                                            <span>OLLDane</span>
+                                        </div>
+                                        <div class="name">
+                                            <span>@@oldane</span>
+                                        </div>
+
+                                    </div>
+                                    <div class="follow-button">
+                                        <a class="switch on follow active">
+                                            <span>
+                                                Follow
+                                            </span>
+                                        </a>
+                                        <a class="switch off unfollow">
+                                            <span>
+                                                Following
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="bio">
+                                    <span>
+                                        Dünya gündemi, savunma sanayii ve teknoloji odakli haber, yurt
+                                        içi
+                                        veri ve önemli gelişme.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+                    <button class="content">
+                        <div class="profile">
+                            <div class="image">
+                                <img src="https://w7.pngwing.com/pngs/858/581/png-transparent-profile-icon-user-computer-icons-system-chinese-wind-title-column-miscellaneous-service-logo.png"
+                                     alt="">
+                            </div>
+
+                            <div class="names-follow-bio">
+                                <div class="names-follow">
+                                    <div class="names">
+                                        <div class="username">
+                                            <span>OLLDane</span>
+                                        </div>
+                                        <div class="name">
+                                            <span>@@oldane</span>
+                                        </div>
+
+                                    </div>
+                                    <div class="follow-button">
+                                        <a class="switch on follow active">
+                                            <span>
+                                                Follow
+                                            </span>
+                                        </a>
+                                        <a class="switch off unfollow">
+                                            <span>
+                                                Following
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="bio">
+                                    <span>
+                                        Dünya gündemi, savunma sanayii ve teknoloji odakli haber, yurt
+                                        içi
+                                        veri ve önemli gelişme.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+                    <button class="content">
+                        <div class="profile">
+                            <div class="image">
+                                <img src="https://w7.pngwing.com/pngs/858/581/png-transparent-profile-icon-user-computer-icons-system-chinese-wind-title-column-miscellaneous-service-logo.png"
+                                     alt="">
+                            </div>
+
+                            <div class="names-follow-bio">
+                                <div class="names-follow">
+                                    <div class="names">
+                                        <div class="username">
+                                            <span>OLLDane</span>
+
+                                        </div>
+                                        <div class="name">
+                                            <span>@@oldane</span>
+                                        </div>
+
+                                    </div>
+                                    <div class="follow-button">
+                                        <a class="switch on follow active">
+                                            <span>
+                                                Follow
+                                            </span>
+                                        </a>
+                                        <a class="switch off unfollow">
+                                            <span>
+                                                Following
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="bio">
+                                    <span>
+                                        Dünya gündemi, savunma sanayii ve teknoloji odakli haber, yurt
+                                        içi
+                                        veri ve önemli gelişme.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+

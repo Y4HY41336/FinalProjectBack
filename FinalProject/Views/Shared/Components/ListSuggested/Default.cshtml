@@ -1,0 +1,99 @@
+﻿@using FinalProject.ViewModels.List;
+
+@{
+    Layout = null;
+}
+
+@model ListMembersViewModel
+
+@if (!Model.Users.Any())
+{
+    <div style="margin-top:40%; text-align:center;">
+        <h5>
+            No one left to suggest
+        </h5>
+        <p style="color:gray;">
+            wow you really added everybody
+        </p>
+    </div>
+}
+
+@foreach (var user in Model.Users)
+{
+    <div class="follows-content">
+        <button class="content no-border">
+            <div class="profile">
+                <div class="image">
+                    @if (user.UserName != User.Identity.Name)
+                    {
+                        <a asp-action="Index" asp-controller="customuser" asp-route-userId="@user.Id">
+                            <img src="/assets/images/ProfileImages/@user.ProfilePhoto"
+                                 alt="Profile Icon">
+                        </a>
+                    }
+                    else
+                    {
+                        <a asp-action="Index" asp-controller="profile">
+                            <img src="/assets/images/ProfileImages/@user.ProfilePhoto"
+                                 alt="Profile Icon">
+                        </a>
+                    }
+                </div>
+
+                <div class="names-follow-bio w-100">
+                    <div class="names-follow">
+                        <div class="names">
+                            <div class="username">
+                                <span>@user.Name</span>
+                                @if (user.IsPremium)
+                                {
+                                    <div class="verify-icon-blue">
+                                        <i class='bx bxs-badge-check'></i>
+                                    </div>
+                                }
+                                else if (user.IsVerified)
+                                {
+                                    <div class="verify-icon-yellow">
+                                        <i class='bx bxs-badge-check'></i>
+                                    </div>
+                                }
+                                else if (user.IsGovermentVerified)
+                                {
+                                    <div class="verify-icon-blue" style="color:#839aaa">
+                                        <i class='bx bxs-badge-check'></i>
+                                    </div>
+                                }
+                                else
+                                {
+
+                                }
+                            </div>
+                            <div class="name">
+                                <span>@@@user.UserName</span>
+                            </div>
+
+                        </div>
+                        <div class="follow-button">
+                            <a class="btn btn-danger follow switch on follow-unfollow @(Model.Members.FirstOrDefault(f => f.UserId == user.Id) == null ? "" : "active")" style="border-radius: 20px; background-color:#931924;" asp-action="AddMember" asp-route-userId="@user.Id" asp-route-listId="@ViewBag.ListId">
+                                <span>
+                                    Remove
+                                </span>
+                            </a>
+                            <a class="switch off follow follow-unfollow @(Model.Members.FirstOrDefault(f => f.UserId == user.Id) == null ? "active" : "")" asp-action="AddMember" asp-route-userId="@user.Id" asp-route-listId="@ViewBag.ListId">
+                                <span>
+                                    Add
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="bio">
+                        <span>
+                            @user.Bio
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </button>
+    </div>
+}
+

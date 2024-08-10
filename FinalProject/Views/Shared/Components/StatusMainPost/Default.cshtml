@@ -1,0 +1,296 @@
+﻿@using FinalProject.ViewModels.CustomUser;
+
+@{
+    Layout = null;
+}
+
+@model StatusMainPostViewModel
+
+<div class="main-post post">
+    <div class="content" style="width:100% !important;">
+        <div class="follows-content">
+            <button class="content no-padding" style="width:100% !important;">
+                <div class="profile">
+                    <div class="names-follow-bio w-100">
+                        <div class="names-follow">
+                            <div class="image">
+                                @if (Model.MainPost.User.UserName != User.Identity.Name)
+                                {
+                                    <a asp-action="Index" asp-controller="customuser" asp-route-userId="@Model.MainPost.UserId">
+                                        <img src="/assets/images/ProfileImages/@Model.PostOwner.ProfilePhoto"
+                                             alt="Profile Icon">
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a asp-action="Index" asp-controller="profile">
+                                        <img src="/assets/images/ProfileImages/@Model.PostOwner.ProfilePhoto"
+                                             alt="Profile Icon">
+                                    </a>
+                                }
+                            </div>
+                            <div class="names flex-1">
+                                <div class="username">
+                                    <span>@Model.PostOwner.Name</span>
+                                    @if (@Model.PostOwner.IsPremium)
+                                    {
+                                        <div class="verify-icon-blue">
+                                            <i class='bx bxs-badge-check'></i>
+                                        </div>
+                                    }
+                                    else if (@Model.PostOwner.IsVerified)
+                                    {
+                                        <div class="verify-icon-yellow">
+                                            <i class='bx bxs-badge-check'></i>
+                                        </div>
+                                    }
+                                    else if (@Model.PostOwner.IsGovermentVerified)
+                                    {
+                                        <div class="verify-icon-blue" style="color:#839aaa">
+                                            <i class='bx bxs-badge-check'></i>
+                                        </div>
+                                    }
+                                    else
+                                    {
+
+                                    }
+                                </div>
+                                <div class="name">
+                                    <span>@@@Model.PostOwner.Name</span>
+                                </div>
+
+                            </div>
+                            <div class="follow-button">
+                                @if (Model.CurrentUser.UserName != Model.PostOwner.UserName)
+                                {
+                                    <a class="switch on follow follow-unfollow @(Model.Follows.FirstOrDefault(f => f.FollowedId == Model.PostOwner.Id) == null ? "active" : "")" asp-action="Follow" asp-controller="Home" asp-route-userId="@Model.PostOwner.Id">
+                                        <span>
+                                            Follow
+                                        </span>
+                                    </a>
+                                    <a class="switch off unfollow follow-unfollow @(Model.Follows.FirstOrDefault(f => f.FollowedId == Model.PostOwner.Id) == null ? "" : "active")" asp-action="Follow" asp-controller="Home" asp-route-userId="@Model.PostOwner.Id">
+                                        <span>
+                                            Following
+                                        </span>
+                                    </a>
+                                }
+                                @if (Model.PostOwner.UserName != User.Identity.Name)
+                                {
+                                    <div class="more btn-group dropstart ms-2">
+                                        <div class="more btn-group dropstart">
+                                            <a class="switch on plus active" type="button"
+                                               data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class="fa-solid fa-ellipsis"></i>
+                                            </a>
+
+                                            <ul class="dropdown-menu menu-border menu-transform post-menu">
+
+                                                <li>
+                                                    <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center" href="#">
+                                                        <div class="logo hover-none">
+                                                            <i class="fa-solid fa-star"></i>
+
+                                                        </div>
+                                                        <span class="text">Subscribe</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center" href="#">
+                                                        <div class="logo hover-none">
+                                                            <i class="hover-none fa-solid fa-flag"></i>
+                                                        </div>
+                                                        <span class="text">Report Post</span>
+                                                    </a>
+                                                </li>
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                }
+
+                            </div>
+
+                        </div>
+                        <div class="bio post-text">
+                            <pre style="display:block">@Model.MainPost.Content</pre>
+                        </div>
+                    </div>
+                </div>
+            </button>
+        </div>
+        @foreach (var image in Model.PostImages)
+        {
+            if (image.PostId == Model.MainPost.Id)
+            {
+                <div class="post-image cool-border">
+
+                    <div class="image">
+
+                        <div>
+                            <img src="/assets/images/MediaImages/@image.Image"
+                                 alt="">
+                        </div>
+
+                    </div>
+
+                </div>
+            }
+        }
+        <span class="post-details bottom-border">
+            <span>
+                @Model.MainPost.CreatedDate.ToString("MMM dd, yyyy") · <span class="bright-text">12.3K</span>
+                Views
+            </span>
+        </span>
+
+        <div class="modal fade" id="ReplyModal" tabindex="-1" aria-labelledby="CommentModalLabel" aria-hidden="true">
+            <div class="modal-dialog mt-5">
+                <div class="modal-content background-black" style="width: 600px;">
+                    <div class="modal-body">
+                        <form method="post" id="postForm">
+                            <div class="post-area">
+                                <div class="d-flex">
+                                    <div class="image" style="margin-right:12px;">
+                                        <img src="/assets/images/ProfileImages/default.png"
+                                             alt="">
+                                    </div>
+                                    <div class="text-area" style="flex:1;">
+                                        <textarea name="Content" class="textarea auto-resize w-100 background-black no-border text-light active-none" style="min-width:100%;min-height:100px; max-height:750px; resize:none; font-size:20px;" placeholder="What is happening?!"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="modal-footer" style="border:none;">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary post-submit" id="ReplyModal-button" disabled asp-action="ReplyPost" asp-route-postId="@Model.MainPost.Id">
+                                        <span>Post</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="post-likes">
+            <ul class="d-flex justify-content-between">
+                <li>
+                    <div class="like">
+                        <a class="like-button comment-blue" asp-action="ReplyMainPost" asp-route-postId="@Model.MainPost.Id" data-bs-toggle="modal" data-bs-target="#ReplyModal" type="submit">
+                            <div class="icon">
+                                <div class="bg-color"></div>
+                                <i class="fa-regular fa-comment"></i>
+                            </div>
+                            <div class="count">
+                                <span>@Model.MainPost.ReplyCount</span>
+                            </div>
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <div class="like">
+                        @if (Model.Reposts.FirstOrDefault(b => b.User.Id == Model.CurrentUser.Id && b.PostId == Model.MainPost.Id) == null)
+                        {
+                            <a class="like-button main-retweet-green" type="submit" asp-action="MainRepost" asp-route-postId="@Model.MainPost.Id">
+                                <div class="icon">
+                                    <div class="bg-color"></div>
+                                    <i class="fa-solid fa-retweet"></i>
+                                </div>
+                                <div class="count">
+                                    <span>@Model.MainPost.RepostCount</span>
+                                </div>
+                            </a>
+                        }
+                        else
+                        {
+                            <a class="like-button retweet-green-active main-retweet-green" type="submit" asp-action="MainRepost" asp-route-postId="@Model.MainPost.Id">
+                                <div class="icon">
+                                    <div class="bg-color"></div>
+                                    <i class="fa-solid fa-retweet"></i>
+                                </div>
+                                <div class="count">
+                                    <span>@Model.MainPost.RepostCount</span>
+                                </div>
+                            </a>
+                        }
+
+                    </div>
+                </li>
+                <li>
+                    <div class="like">
+                        @if (Model.Likes.FirstOrDefault(b => b.User.Id == Model.CurrentUser.Id && b.PostId == Model.MainPost.Id) == null)
+                        {
+                            <a class="like-button main-like-red" type="submit" asp-action="MainLike" asp-route-postId="@Model.MainPost.Id">
+                                <div class="icon">
+                                    <div class="bg-color"></div>
+                                    <i class="fa-regular fa-heart heart"></i>
+                                </div>
+                                <div class="count">
+                                    <span>@Model.MainPost.LikeCount</span>
+                                </div>
+                            </a>
+                        }
+                        else
+                        {
+                            <a class="like-button  like-red-active main-like-red" type="submit" asp-action="MainLike" asp-route-postId="@Model.MainPost.Id">
+                                <div class="icon">
+                                    <div class="bg-color"></div>
+                                    <i class="fa-solid fa-heart heart"></i>
+                                </div>
+                                <div class="count">
+                                    <span>@Model.MainPost.LikeCount</span>
+                                </div>
+                            </a>
+                        }
+                    </div>
+                </li>
+                <li>
+                    <div class="like">
+                        <button class="like-button comment-blue">
+                            <div class="icon">
+                                <div class="bg-color"></div>
+                                <i class="fa-solid fa-chart-simple"></i>
+                            </div>
+                            <div class="count">
+                                <span>1.7k</span>
+                            </div>
+                        </button>
+                    </div>
+                </li>
+                <li>
+
+                    <div class="sidemark">
+
+                        @if (Model.Bookmarks.FirstOrDefault(b => b.User.Id == Model.CurrentUser.Id && b.PostId == Model.MainPost.Id) == null)
+                        {
+                            <a class="like-button main-bookmark-blue" asp-action="MainBookmark" asp-route-postId="@Model.MainPost.Id">
+                                <div class="bg-color"></div>
+                                <i class="fa-regular fa-bookmark"></i>
+                            </a>
+                        }
+                        else
+                        {
+                            <a class="like-button bookmark-blue-active main-bookmark-blue" asp-action="MainBookmark" asp-route-postId="@Model.MainPost.Id">
+                                <div class="bg-color"></div>
+                                <i class="fa-solid fa-bookmark"></i>
+                            </a>
+                        }
+                    </div>
+                </li>
+                <li>
+                    <div class="sidemark">
+                        <button class="like-button bookmark-blue">
+                            <div class="bg-color"></div>
+                            <i class="fa-solid fa-arrow-up-from-bracket"></i>
+                        </button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+
+    </div>
+</div>
+

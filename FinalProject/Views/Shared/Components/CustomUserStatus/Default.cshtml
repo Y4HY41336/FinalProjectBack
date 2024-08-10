@@ -1,0 +1,357 @@
+﻿@using FinalProject.ViewModels.HomeViewModels;
+
+
+@{
+    Layout = null;
+}
+
+@model PostViewModel
+
+@foreach (var post in Model.Posts)
+{
+
+    <div class="post">
+        <a class="post-customuser" asp-action="status" asp-controller="customuser" asp-route-postId="@post.Id"></a>
+        <div class="profile-icon post-icon">
+            <div class="image">
+                @if (post.User.UserName != User.Identity.Name)
+                {
+                    <a asp-action="Index" asp-controller="customuser" asp-route-userId="@post.UserId">
+                        <img src="/assets/images/ProfileImages/@post.User.ProfilePhoto"
+                             alt="Profile Icon">
+                    </a>
+                }
+                else
+                {
+                    <a asp-action="Index" asp-controller="profile">
+                        <img src="/assets/images/ProfileImages/@post.User.ProfilePhoto"
+                             alt="Profile Icon">
+                    </a>
+                }
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="post-info">
+                <div class="info">
+                    <div class="username">
+                        @post.User.Name
+                        @if (post.User.IsPremium)
+                        {
+                            <div class="verify-icon-blue">
+                                <i class='bx bxs-badge-check'></i>
+                            </div>
+                        }
+                        else if (post.User.IsVerified)
+                        {
+                            <div class="verify-icon-yellow">
+                                <i class='bx bxs-badge-check'></i>
+                            </div>
+                        }
+                        else if (post.User.IsGovermentVerified)
+                        {
+                            <div class="verify-icon-blue" style="color:#839aaa">
+                                <i class='bx bxs-badge-check'></i>
+                            </div>
+                        }
+                        else
+                        {
+
+                        }
+                    </div>
+                    <div class="name-date">
+                        <div class="name">
+                            @@@post.User.UserName
+                        </div>
+                        <div class="dot">
+                            ·
+                        </div>
+                        <div class="date">
+                            @post.CreatedDate.ToString("MMM dd, yyyy")
+                        </div>
+                    </div>
+                </div>
+                <div class="more btn-group dropstart">
+                    <button class="default-button more-button hover-none" type="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-solid fa-ellipsis default-icon"></i>
+                    </button>
+                    <ul class="dropdown-menu menu-border menu-transform post-menu">
+                        @if (post.User.UserName == User.Identity.Name)
+                        {
+                            <li>
+                                <a class="delete-post dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center" asp-action="DeletePost" asp-route-postId="@post.Id">
+                                    <div class="logo hover-none">
+                                        <i class="fa-solid fa-trash-can text-danger"></i>
+                                    </div>
+                                    <span class="text text-danger">Delete</span>
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            if (User.IsInRole("Admin"))
+                            {
+                                <li>
+                                    <a class="delete-post dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center" asp-controller="Home" asp-action="Ban" asp-route-id="@post.User.UserName">
+                                        <div class="logo hover-none">
+                                            <i class="fa-solid fa-trash-can text-danger"></i>
+                                        </div>
+                                        <span class="text text-danger">Ban @@@post.User.UserName</span>
+                                    </a>
+                                </li>
+                            }
+
+                            <li>
+                                <a asp-action="Follow" asp-controller="Home" asp-route-userId="@post.UserId" class="follow-modal dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center">
+                                    <div class="logo hover-none">
+                                        <i class="hover-none logo fa-solid fa-user-xmark"></i>
+                                    </div>
+
+                                    <span class="text">Follow/Unfollow @@@post.User.UserName</span>
+                                </a>
+                            </li>
+                        }
+
+                    </ul>
+                </div>
+            </div>
+            <div class="post-text">
+                <pre>@post.Content</pre>
+
+            </div>
+
+
+            @foreach (var image in Model.PostImages)
+            {
+                if (image.PostId == post.Id)
+                {
+                    <div class="post-image cool-border">
+
+                        <div class="image">
+
+                            <div>
+                                <img src="/assets/images/MediaImages/@image.Image"
+                                     alt="">
+                            </div>
+
+                        </div>
+
+                    </div>
+                }
+            }
+
+            @if (post.IsQuote)
+            {
+                <div class="post-image cool-border">
+
+                    <div class="image">
+
+                        <div class="post">
+                            <div class="content">
+                                <div class="post-info">
+                                    <div class="info">
+                                        <a class="username">
+                                            @post.CommentedPostId
+                                        </a>
+                                        <div class="name-date">
+                                            <div class="name">
+                                                @@@post.User.UserName
+                                            </div>
+                                            <div class="dot">
+                                                ·
+                                            </div>
+                                            <div class="date">
+                                                May 9, 2022
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="post-text">
+                                    Tomorrow’s video is something I’ve been working on for years..
+                                    an obstacle
+                                    course in the sky lol
+                                </div>
+                                <div class="post-image cool-border">
+                                    <div class="image">
+                                        @foreach (var image in post.Image)
+                                        {
+
+                                            <div>
+                                                <img src="https://pbs.twimg.com/media/GRROnA3bgAAwlaT?format=jpg&name=small"
+                                                     alt="">
+                                            </div>
+                                        }
+
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            }
+
+
+
+
+            
+
+            <div class="post-likes">
+                <ul>
+                    <li>
+                        <div class="modal fade" id="@($"ReplyModal{post.Id}")" tabindex="-1" aria-labelledby="CommentModalLabel" aria-hidden="true">
+                            <div class="modal-dialog mt-5">
+                                <div class="modal-content background-black" style="width: 600px;">
+                                    <div class="modal-body">
+                                        <form method="post" id="postForm">
+                                            <div class="post-area">
+                                                <div class="d-flex">
+                                                    <div class="image" style="margin-right:12px;">
+                                                        <img src="/assets/images/ProfileImages/default.png"
+                                                             alt="">
+                                                    </div>
+                                                    <div class="text-area" style="flex:1;">
+                                                        <textarea name="Content" class="textarea auto-resize w-100 background-black no-border text-light active-none" style="min-width:100%;min-height:100px; max-height:750px; resize:none; font-size:20px;" placeholder="What is happening?!"></textarea>
+                                                    </div>
+                                                </div>
+
+                                                <div class="modal-footer" style="border:none;">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-primary post-submit" id="ReplyModal-button" disabled asp-action="ReplyPost" asp-route-postId="@post.Id">
+                                                        <span>Post</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                        </form>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="like">
+                            <a class="like-button comment-blue" asp-action="ReplyPost" asp-route-postId="@post.Id" data-bs-toggle="modal" data-bs-target="#@($"ReplyModal{post.Id}")" type="submit">
+                                <div class="icon">
+                                    <div class="bg-color"></div>
+                                    <i class="fa-regular fa-comment"></i>
+                                </div>
+                                <div class="count">
+                                    <span>@post.ReplyCount</span>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="like">
+                            @if (Model.Reposts.FirstOrDefault(b => b.User.Id == Model.CurrentUser.Id && b.PostId == post.Id) == null)
+                            {
+                                <a class="like-button retweet-green" type="submit" asp-action="Repost" asp-route-postId="@post.Id">
+                                    <div class="icon">
+                                        <div class="bg-color"></div>
+                                        <i class="fa-solid fa-retweet"></i>
+                                    </div>
+                                    <div class="count">
+                                        <span>@post.RepostCount</span>
+                                    </div>
+                                </a>
+                            }
+                            else
+                            {
+                                <a class="like-button retweet-green-active retweet-green" type="submit" asp-action="Repost" asp-route-postId="@post.Id">
+                                    <div class="icon">
+                                        <div class="bg-color"></div>
+                                        <i class="fa-solid fa-retweet"></i>
+                                    </div>
+                                    <div class="count">
+                                        <span>@post.RepostCount</span>
+                                    </div>
+                                </a>
+                            }
+
+                        </div>
+                    </li>
+                    <li>
+                        <div class="like">
+                            @if (Model.Likes.FirstOrDefault(b => b.User.Id == Model.CurrentUser.Id && b.PostId == post.Id) == null)
+                            {
+                                <a class="like-button like-red" type="submit" asp-action="Like" asp-route-postId="@post.Id">
+                                    <div class="icon">
+                                        <div class="bg-color"></div>
+                                        <i class="fa-regular fa-heart heart"></i>
+                                    </div>
+                                    <div class="count">
+                                        <span>@post.LikeCount</span>
+                                    </div>
+                                </a>
+                            }
+                            else
+                            {
+                                <a class="like-button  like-red-active like-red" type="submit" asp-action="Like" asp-route-postId="@post.Id">
+                                    <div class="icon">
+                                        <div class="bg-color"></div>
+                                        <i class="fa-solid fa-heart heart"></i>
+                                    </div>
+                                    <div class="count">
+                                        <span>@post.LikeCount</span>
+                                    </div>
+                                </a>
+                            }
+                        </div>
+                    </li>
+                    <li>
+                        <div class="like">
+                            <button class="like-button comment-blue">
+                                <div class="icon">
+                                    <div class="bg-color"></div>
+                                    <i class="fa-solid fa-chart-simple"></i>
+                                </div>
+                                <div class="count">
+                                    <span>1.7k</span>
+                                </div>
+                            </button>
+                        </div>
+                    </li>
+                    <li>
+
+                        <div class="sidemark">
+
+                            @if (Model.Bookmarks.FirstOrDefault(b => b.User.Id == Model.CurrentUser.Id && b.PostId == post.Id) == null)
+                            {
+                                <a class="like-button bookmark-blue" asp-action="Bookmark" asp-route-postId="@post.Id">
+                                    <div class="bg-color"></div>
+                                    <i class="fa-regular fa-bookmark"></i>
+                                </a>
+                            }
+                            else
+                            {
+                                <a class="like-button bookmark-blue-active bookmark-blue" asp-action="Bookmark" asp-route-postId="@post.Id">
+                                    <div class="bg-color"></div>
+                                    <i class="fa-solid fa-bookmark"></i>
+                                </a>
+                            }
+                        </div>
+                    </li>
+                    <li>
+                        <div class="sidemark">
+                            <button class="like-button bookmark-blue">
+                                <div class="bg-color"></div>
+                                <i class="fa-solid fa-arrow-up-from-bracket"></i>
+                            </button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+
+        </div>
+    </div>
+
+}
+
+

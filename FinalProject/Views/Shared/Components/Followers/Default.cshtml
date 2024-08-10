@@ -1,0 +1,89 @@
+﻿@using FinalProject.ViewModels.LayoutViewModels;
+
+@{
+    Layout = null;
+}
+
+@model FollowUserViewModel
+
+@foreach (var user in Model.Users)
+{
+    <div class="follows-content">
+        <button class="content no-border">
+            <div class="profile">
+                <div class="image">
+                    @if (user.UserName != User.Identity.Name)
+                    {
+                        <a asp-action="Index" asp-controller="customuser" asp-route-userId="@user.Id">
+                            <img src="/assets/images/ProfileImages/@user.ProfilePhoto"
+                                 alt="Profile Icon">
+                        </a>
+                    }
+                    else
+                    {
+                        <a asp-action="Index" asp-controller="profile">
+                            <img src="/assets/images/ProfileImages/@user.ProfilePhoto"
+                                 alt="Profile Icon">
+                        </a>
+                    }
+                </div>
+
+                <div class="names-follow-bio w-100">
+                    <div class="names-follow">
+                        <div class="names">
+                            <div class="username">
+                                <span>@user.Name</span>
+                                @if (user.IsPremium)
+                                {
+                                    <div class="verify-icon-blue">
+                                        <i class='bx bxs-badge-check'></i>
+                                    </div>
+                                }
+                                else if (user.IsVerified)
+                                {
+                                    <div class="verify-icon-yellow">
+                                        <i class='bx bxs-badge-check'></i>
+                                    </div>
+                                }
+                                else if (user.IsGovermentVerified)
+                                {
+                                    <div class="verify-icon-blue" style="color:#839aaa">
+                                        <i class='bx bxs-badge-check'></i>
+                                    </div>
+                                }
+                                else
+                                {
+
+                                }
+                            </div>
+                            <div class="name">
+                                <span>@@@user.UserName</span>
+                            </div>
+
+                        </div>
+                        @if (user.UserName != User.Identity.Name)
+                        {
+                            <div class="follow-button">
+                                <a class="switch on follow follow-unfollow @(Model.Follows.FirstOrDefault(f => f.FollowedId == user.Id) == null ? "active" : "")" asp-action="Follow" asp-route-userId="@user.Id">
+                                    <span>
+                                        Follow
+                                    </span>
+                                </a>
+                                <a class="switch off unfollow follow-unfollow @(Model.Follows.FirstOrDefault(f => f.FollowedId == user.Id) == null ? "" : "active")" asp-action="Follow" asp-route-userId="@user.Id">
+                                    <span>
+                                        Following
+                                    </span>
+                                </a>
+                            </div>
+                        }
+                    </div>
+                    <div class="bio">
+                        <span>
+                            @user.Bio
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </button>
+    </div>
+}

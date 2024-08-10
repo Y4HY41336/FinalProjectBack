@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewData["Title"] = "Trends";
+}
+
+<div class="content">
+    <div class="top-side bottom-border">
+        <div class="search-side">
+            <div class="custom-container">
+                <div class="back-names">
+                    <div class="back-container">
+                        <button class="go-back" id="backButton">
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </button>
+                    </div>
+                    <div class="text d-flex align-items-center">
+                        <span>Trends</span>
+                    </div>
+                </div>
+                <div class="explore-settings">
+                    <a href="#">
+                        <i class="fa-solid fa-gear"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-content">
+        @await Component.InvokeAsync("ExploreTrend")
+    </div>
+
+
+
+</div>
+

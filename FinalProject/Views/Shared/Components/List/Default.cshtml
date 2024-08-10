@@ -1,0 +1,79 @@
+﻿
+@{
+    Layout = null;
+}
+
+<div class="top-side blur">
+    <div class="search-side">
+        <div class="custom-container">
+            <div class="responsive-top">
+                <a data-bs-toggle="offcanvas" href="#offcanvas" role="button"
+                   aria-controls="offcanvasExample">
+                    <div class="image">
+                        <img src="/assets/images/ProfileImages/default.png"
+                             alt="">
+
+                    </div>
+                </a>
+                <a class="logo" href="#">
+                    <div class="logo-container">
+                        <i class="fa-brands fa-x-twitter"></i>
+                    </div>
+                </a>
+
+
+                <div class="image disable">
+                    <img src="/assets/images/ProfileImages/default.png"
+                         alt="">
+
+                </div>
+            </div>
+            <div class="searchbar">
+                <div class="search-icon">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <div class="search-input">
+                    <input type="search" placeholder="Search">
+
+                </div>
+            </div>
+            <div class="lists-settings">
+                <a href="#">
+                    <i class="fa-regular fa-square-plus"></i>
+                </a>
+                <a href="#">
+                    <i class="fa-solid fa-ellipsis"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="discover-new-lists">
+    <div class="follows-title">
+        Discover new Lists
+    </div>
+
+    @await Component.InvokeAsync("ListDiscover")
+
+    <div class="show-more hover-light">
+        <a href="C:\Users\user\Desktop\Frontend\FinalProject-Front-ReddiX\Doc\suggestedLists.html">
+            <span>
+                Show more
+            </span>
+        </a>
+    </div>
+
+
+
+</div>
+
+<div class="your-lists">
+    <div class="follows-title">
+        Your Lists
+    </div>
+
+    @await Component.InvokeAsync("ListYour")
+
+</div>

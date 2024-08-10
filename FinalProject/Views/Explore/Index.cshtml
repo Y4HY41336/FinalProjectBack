@@ -1,0 +1,1303 @@
+﻿@using FinalProject.ViewModels.Search;
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@model SearchViewModel
+
+<div class="content">
+    <div class="top-side">
+        <div class="search-side">
+            <div class="custom-container">
+                <div class="responsive-top">
+                    <a data-bs-toggle="offcanvas" href="#offcanvas" role="button"
+                       aria-controls="offcanvasExample">
+                        <div class="image">
+                            <img src="https://w7.pngwing.com/pngs/858/581/png-transparent-profile-icon-user-computer-icons-system-chinese-wind-title-column-miscellaneous-service-logo.png"
+                                 alt="">
+
+                        </div>
+                    </a>
+                </div>
+                <form method="post" class="searchbar" asp-controller="Search" asp-action="Index">
+                    <div class="searchbar">
+                        <div class="search-icon">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </div>
+                        <div class="search-input">
+                            <input asp-for="Search" type="text" placeholder="Search">
+
+                        </div>
+                    </div>
+                </form>
+                
+            </div>
+        </div>
+        <div class="for-side">
+            <div class="for-you">
+                <div class="elements list-group">
+                    <a class="element active" asp-action="Filter" asp-route-TabId="ForYou">
+                        <div class="element-inside">
+                            <div class="text active">
+                                <span>For you</span>
+                                <div class="bottom-line"></div>
+                            </div>
+                        </div>
+                    </a>
+                    <a class="element" asp-action="Filter" asp-route-TabId="Trending">
+                        <div class="element-inside">
+                            <div class="text">
+                                <span> Trending</span>
+                                <div class="bottom-line"></div>
+                            </div>
+                        </div>
+                    </a>
+                    <a class="element" asp-action="Filter" asp-route-TabId="News">
+                        <div class="element-inside">
+                            <div class="text">
+                                <span> News</span>
+                                <div class="bottom-line"></div>
+                            </div>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-content">
+        <div class="Foryou-content tab-pane fade show active" id="Foryou">
+            @await Component.InvokeAsync("ExploreTrend")
+
+
+        </div>
+        <div class="Foryou-content tab-pane fade" id="Trending">
+            <div class="trends-for-you no-border">
+                <div class="trends-content">
+                    @await Component.InvokeAsync("ExploreTrend")
+                </div>
+            </div>
+        </div>
+        <div class="Foryou-content tab-pane fade" id="News">
+            <div class="trends-for-you no-border">
+                <div class="trends-content">
+                    <div class="trend hover-light">
+                        <div class="tags">
+                            Trending in World
+                            <div class="more btn-group dropstart">
+                                <button class="default-button more-button hover-none " type="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-solid fa-ellipsis default-icon"></i>
+
+                                </button>
+                                <ul class="dropdown-menu menu-border menu-transform">
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <i class="fa-regular fa-face-frown fs-6"></i>Not
+                                            interested in
+                                            this
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <i class="fa-regular fa-face-frown fs-6"></i>This
+                                            trend
+                                            is
+                                            harmful or spammy
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="text">
+                            <span>
+                                #NeverGonnaGiveYouUp
+                            </span>
+                        </div>
+                        <div class="tags post-count">
+                            14k posts
+                        </div>
+                    </div>
+                    <div class="trend hover-light">
+                        <div class="tags">
+                            Politics
+                            <div class="more btn-group dropstart">
+                                <button class="default-button more-button hover-none " type="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-solid fa-ellipsis default-icon"></i>
+
+                                </button>
+                                <ul class="dropdown-menu menu-border menu-transform">
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <i class="fa-regular fa-face-frown fs-6"></i>Not
+                                            interested in
+                                            this
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <i class="fa-regular fa-face-frown fs-6"></i>This
+                                            trend
+                                            is
+                                            harmful or spammy
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="text">
+                            <span>
+                                #War
+                            </span>
+                        </div>
+                        <div class="tags post-count">
+                            20.4k posts
+                        </div>
+
+                    </div>
+                    <div class="trend hover-light">
+                        <div class="tags">
+                            Gaming
+                            <div class="more btn-group dropstart">
+                                <button class="default-button more-button hover-none " type="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-solid fa-ellipsis default-icon"></i>
+
+                                </button>
+                                <ul class="dropdown-menu menu-border menu-transform">
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <i class="fa-regular fa-face-frown fs-6"></i>Not
+                                            interested in
+                                            this
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <i class="fa-regular fa-face-frown fs-6"></i>This
+                                            trend
+                                            is
+                                            harmful or spammy
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="text">
+                            <span>
+                                #Lol
+                            </span>
+                        </div>
+                        <div class="tags post-count">
+                            14k posts
+                        </div>
+
+                    </div>
+                    <div class="trend hover-light">
+                        <div class="tags">
+                            Music
+                            <div class="more btn-group dropstart">
+                                <button class="default-button more-button hover-none " type="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-solid fa-ellipsis default-icon"></i>
+
+                                </button>
+                                <ul class="dropdown-menu menu-border menu-transform">
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <i class="fa-regular fa-face-frown fs-6"></i>Not
+                                            interested in
+                                            this
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <i class="fa-regular fa-face-frown fs-6"></i>This
+                                            trend
+                                            is
+                                            harmful or spammy
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="text">
+                            <span>
+                                #BtsHate
+                            </span>
+                        </div>
+                        <div class="tags post-count">
+                            14k posts
+                        </div>
+
+                    </div>
+                    <div class="trend hover-light">
+                        <div class="tags">
+                            AnyThing
+                            <div class="more btn-group dropstart">
+                                <button class="default-button more-button hover-none " type="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-solid fa-ellipsis default-icon"></i>
+
+                                </button>
+                                <ul class="dropdown-menu menu-border menu-transform">
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <i class="fa-regular fa-face-frown fs-6"></i>Not
+                                            interested in
+                                            this
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <i class="fa-regular fa-face-frown fs-6"></i>This
+                                            trend
+                                            is
+                                            harmful or spammy
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="text">
+                            <span>
+                                #NewTrend
+                            </span>
+                        </div>
+                        <div class="tags post-count">
+                            6.9k posts
+                        </div>
+
+                    </div>
+                    <div class="trend hover-light">
+                        <div class="tags">
+                            AnyThing
+                            <div class="more btn-group dropstart">
+                                <button class="default-button more-button hover-none " type="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-solid fa-ellipsis default-icon"></i>
+
+                                </button>
+                                <ul class="dropdown-menu menu-border menu-transform">
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <i class="fa-regular fa-face-frown fs-6"></i>Not
+                                            interested in
+                                            this
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <i class="fa-regular fa-face-frown fs-6"></i>This
+                                            trend
+                                            is
+                                            harmful or spammy
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="text">
+                            <span>
+                                #NewTrend
+                            </span>
+                        </div>
+                        <div class="tags post-count">
+                            6.9k posts
+                        </div>
+
+                    </div>
+                    <div class="trend hover-light">
+                        <div class="tags">
+                            AnyThing
+                            <div class="more btn-group dropstart">
+                                <button class="default-button more-button hover-none " type="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-solid fa-ellipsis default-icon"></i>
+
+                                </button>
+                                <ul class="dropdown-menu menu-border menu-transform">
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <i class="fa-regular fa-face-frown fs-6"></i>Not
+                                            interested in
+                                            this
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <i class="fa-regular fa-face-frown fs-6"></i>This
+                                            trend
+                                            is
+                                            harmful or spammy
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="text">
+                            <span>
+                                #NewTrend
+                            </span>
+                        </div>
+                        <div class="tags post-count">
+                            6.9k posts
+                        </div>
+
+                    </div>
+                    <div class="trend hover-light">
+                        <div class="tags">
+                            AnyThing
+                            <div class="more btn-group dropstart">
+                                <button class="default-button more-button hover-none " type="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-solid fa-ellipsis default-icon"></i>
+
+                                </button>
+                                <ul class="dropdown-menu menu-border menu-transform">
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <i class="fa-regular fa-face-frown fs-6"></i>Not
+                                            interested in
+                                            this
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <i class="fa-regular fa-face-frown fs-6"></i>This
+                                            trend
+                                            is
+                                            harmful or spammy
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="text">
+                            <span>
+                                #NewTrend
+                            </span>
+                        </div>
+                        <div class="tags post-count">
+                            6.9k posts
+                        </div>
+
+                    </div>
+                    <div class="trend hover-light">
+                        <div class="tags">
+                            AnyThing
+                            <div class="more btn-group dropstart">
+                                <button class="default-button more-button hover-none " type="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-solid fa-ellipsis default-icon"></i>
+
+                                </button>
+                                <ul class="dropdown-menu menu-border menu-transform">
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <i class="fa-regular fa-face-frown fs-6"></i>Not
+                                            interested in
+                                            this
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <i class="fa-regular fa-face-frown fs-6"></i>This
+                                            trend
+                                            is
+                                            harmful or spammy
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="text">
+                            <span>
+                                #NewTrend
+                            </span>
+                        </div>
+                        <div class="tags post-count">
+                            6.9k posts
+                        </div>
+
+                    </div>
+                    <div class="trend hover-light">
+                        <div class="tags">
+                            AnyThing
+                            <div class="more btn-group dropstart">
+                                <button class="default-button more-button hover-none " type="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-solid fa-ellipsis default-icon"></i>
+
+                                </button>
+                                <ul class="dropdown-menu menu-border menu-transform">
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <i class="fa-regular fa-face-frown fs-6"></i>Not
+                                            interested in
+                                            this
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <i class="fa-regular fa-face-frown fs-6"></i>This
+                                            trend
+                                            is
+                                            harmful or spammy
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="text">
+                            <span>
+                                #NewTrend
+                            </span>
+                        </div>
+                        <div class="tags post-count">
+                            6.9k posts
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="Foryou-content tab-pane fade" id="Sports">
+            <div class="trends-for-you no-border">
+                <div class="trends-content">
+                    <div class="trend hover-light">
+                        <div class="tags">
+                            Trending in World
+                            <div class="more btn-group dropstart">
+                                <button class="default-button more-button hover-none " type="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-solid fa-ellipsis default-icon"></i>
+
+                                </button>
+                                <ul class="dropdown-menu menu-border menu-transform">
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <i class="fa-regular fa-face-frown fs-6"></i>Not
+                                            interested in
+                                            this
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <i class="fa-regular fa-face-frown fs-6"></i>This
+                                            trend
+                                            is
+                                            harmful or spammy
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="text">
+                            <span>
+                                #NeverGonnaGiveYouUp
+                            </span>
+                        </div>
+                        <div class="tags post-count">
+                            14k posts
+                        </div>
+                    </div>
+                    <div class="trend hover-light">
+                        <div class="tags">
+                            Politics
+                            <div class="more btn-group dropstart">
+                                <button class="default-button more-button hover-none " type="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-solid fa-ellipsis default-icon"></i>
+
+                                </button>
+                                <ul class="dropdown-menu menu-border menu-transform">
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <i class="fa-regular fa-face-frown fs-6"></i>Not
+                                            interested in
+                                            this
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <i class="fa-regular fa-face-frown fs-6"></i>This
+                                            trend
+                                            is
+                                            harmful or spammy
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="text">
+                            <span>
+                                #War
+                            </span>
+                        </div>
+                        <div class="tags post-count">
+                            20.4k posts
+                        </div>
+
+                    </div>
+                    <div class="trend hover-light">
+                        <div class="tags">
+                            Gaming
+                            <div class="more btn-group dropstart">
+                                <button class="default-button more-button hover-none " type="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-solid fa-ellipsis default-icon"></i>
+
+                                </button>
+                                <ul class="dropdown-menu menu-border menu-transform">
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <i class="fa-regular fa-face-frown fs-6"></i>Not
+                                            interested in
+                                            this
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <i class="fa-regular fa-face-frown fs-6"></i>This
+                                            trend
+                                            is
+                                            harmful or spammy
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="text">
+                            <span>
+                                #Lol
+                            </span>
+                        </div>
+                        <div class="tags post-count">
+                            14k posts
+                        </div>
+
+                    </div>
+                    <div class="trend hover-light">
+                        <div class="tags">
+                            Music
+                            <div class="more btn-group dropstart">
+                                <button class="default-button more-button hover-none " type="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-solid fa-ellipsis default-icon"></i>
+
+                                </button>
+                                <ul class="dropdown-menu menu-border menu-transform">
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <i class="fa-regular fa-face-frown fs-6"></i>Not
+                                            interested in
+                                            this
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <i class="fa-regular fa-face-frown fs-6"></i>This
+                                            trend
+                                            is
+                                            harmful or spammy
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="text">
+                            <span>
+                                #BtsHate
+                            </span>
+                        </div>
+                        <div class="tags post-count">
+                            14k posts
+                        </div>
+
+                    </div>
+                    <div class="trend hover-light">
+                        <div class="tags">
+                            AnyThing
+                            <div class="more btn-group dropstart">
+                                <button class="default-button more-button hover-none " type="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-solid fa-ellipsis default-icon"></i>
+
+                                </button>
+                                <ul class="dropdown-menu menu-border menu-transform">
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <i class="fa-regular fa-face-frown fs-6"></i>Not
+                                            interested in
+                                            this
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <i class="fa-regular fa-face-frown fs-6"></i>This
+                                            trend
+                                            is
+                                            harmful or spammy
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="text">
+                            <span>
+                                #NewTrend
+                            </span>
+                        </div>
+                        <div class="tags post-count">
+                            6.9k posts
+                        </div>
+
+                    </div>
+                    <div class="trend hover-light">
+                        <div class="tags">
+                            AnyThing
+                            <div class="more btn-group dropstart">
+                                <button class="default-button more-button hover-none " type="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-solid fa-ellipsis default-icon"></i>
+
+                                </button>
+                                <ul class="dropdown-menu menu-border menu-transform">
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <i class="fa-regular fa-face-frown fs-6"></i>Not
+                                            interested in
+                                            this
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <i class="fa-regular fa-face-frown fs-6"></i>This
+                                            trend
+                                            is
+                                            harmful or spammy
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="text">
+                            <span>
+                                #NewTrend
+                            </span>
+                        </div>
+                        <div class="tags post-count">
+                            6.9k posts
+                        </div>
+
+                    </div>
+                    <div class="trend hover-light">
+                        <div class="tags">
+                            AnyThing
+                            <div class="more btn-group dropstart">
+                                <button class="default-button more-button hover-none " type="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-solid fa-ellipsis default-icon"></i>
+
+                                </button>
+                                <ul class="dropdown-menu menu-border menu-transform">
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <i class="fa-regular fa-face-frown fs-6"></i>Not
+                                            interested in
+                                            this
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <i class="fa-regular fa-face-frown fs-6"></i>This
+                                            trend
+                                            is
+                                            harmful or spammy
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="text">
+                            <span>
+                                #NewTrend
+                            </span>
+                        </div>
+                        <div class="tags post-count">
+                            6.9k posts
+                        </div>
+
+                    </div>
+                    <div class="trend hover-light">
+                        <div class="tags">
+                            AnyThing
+                            <div class="more btn-group dropstart">
+                                <button class="default-button more-button hover-none " type="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-solid fa-ellipsis default-icon"></i>
+
+                                </button>
+                                <ul class="dropdown-menu menu-border menu-transform">
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <i class="fa-regular fa-face-frown fs-6"></i>Not
+                                            interested in
+                                            this
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <i class="fa-regular fa-face-frown fs-6"></i>This
+                                            trend
+                                            is
+                                            harmful or spammy
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="text">
+                            <span>
+                                #NewTrend
+                            </span>
+                        </div>
+                        <div class="tags post-count">
+                            6.9k posts
+                        </div>
+
+                    </div>
+                    <div class="trend hover-light">
+                        <div class="tags">
+                            AnyThing
+                            <div class="more btn-group dropstart">
+                                <button class="default-button more-button hover-none " type="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-solid fa-ellipsis default-icon"></i>
+
+                                </button>
+                                <ul class="dropdown-menu menu-border menu-transform">
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <i class="fa-regular fa-face-frown fs-6"></i>Not
+                                            interested in
+                                            this
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <i class="fa-regular fa-face-frown fs-6"></i>This
+                                            trend
+                                            is
+                                            harmful or spammy
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="text">
+                            <span>
+                                #NewTrend
+                            </span>
+                        </div>
+                        <div class="tags post-count">
+                            6.9k posts
+                        </div>
+
+                    </div>
+                    <div class="trend hover-light">
+                        <div class="tags">
+                            AnyThing
+                            <div class="more btn-group dropstart">
+                                <button class="default-button more-button hover-none " type="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-solid fa-ellipsis default-icon"></i>
+
+                                </button>
+                                <ul class="dropdown-menu menu-border menu-transform">
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <i class="fa-regular fa-face-frown fs-6"></i>Not
+                                            interested in
+                                            this
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <i class="fa-regular fa-face-frown fs-6"></i>This
+                                            trend
+                                            is
+                                            harmful or spammy
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="text">
+                            <span>
+                                #NewTrend
+                            </span>
+                        </div>
+                        <div class="tags post-count">
+                            6.9k posts
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="Foryou-content tab-pane fade" id="Entertainment">
+            <div class="trends-for-you no-border">
+                <div class="trends-content">
+                    <div class="trend hover-light">
+                        <div class="tags">
+                            Trending in World
+                            <div class="more btn-group dropstart">
+                                <button class="default-button more-button hover-none " type="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-solid fa-ellipsis default-icon"></i>
+
+                                </button>
+                                <ul class="dropdown-menu menu-border menu-transform">
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <i class="fa-regular fa-face-frown fs-6"></i>Not
+                                            interested in
+                                            this
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <i class="fa-regular fa-face-frown fs-6"></i>This
+                                            trend
+                                            is
+                                            harmful or spammy
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="text">
+                            <span>
+                                #NeverGonnaGiveYouUp
+                            </span>
+                        </div>
+                        <div class="tags post-count">
+                            14k posts
+                        </div>
+                    </div>
+                    <div class="trend hover-light">
+                        <div class="tags">
+                            Politics
+                            <div class="more btn-group dropstart">
+                                <button class="default-button more-button hover-none " type="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-solid fa-ellipsis default-icon"></i>
+
+                                </button>
+                                <ul class="dropdown-menu menu-border menu-transform">
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <i class="fa-regular fa-face-frown fs-6"></i>Not
+                                            interested in
+                                            this
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <i class="fa-regular fa-face-frown fs-6"></i>This
+                                            trend
+                                            is
+                                            harmful or spammy
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="text">
+                            <span>
+                                #War
+                            </span>
+                        </div>
+                        <div class="tags post-count">
+                            20.4k posts
+                        </div>
+
+                    </div>
+                    <div class="trend hover-light">
+                        <div class="tags">
+                            Gaming
+                            <div class="more btn-group dropstart">
+                                <button class="default-button more-button hover-none " type="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-solid fa-ellipsis default-icon"></i>
+
+                                </button>
+                                <ul class="dropdown-menu menu-border menu-transform">
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <i class="fa-regular fa-face-frown fs-6"></i>Not
+                                            interested in
+                                            this
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <i class="fa-regular fa-face-frown fs-6"></i>This
+                                            trend
+                                            is
+                                            harmful or spammy
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="text">
+                            <span>
+                                #Lol
+                            </span>
+                        </div>
+                        <div class="tags post-count">
+                            14k posts
+                        </div>
+
+                    </div>
+                    <div class="trend hover-light">
+                        <div class="tags">
+                            Music
+                            <div class="more btn-group dropstart">
+                                <button class="default-button more-button hover-none " type="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-solid fa-ellipsis default-icon"></i>
+
+                                </button>
+                                <ul class="dropdown-menu menu-border menu-transform">
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <i class="fa-regular fa-face-frown fs-6"></i>Not
+                                            interested in
+                                            this
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <i class="fa-regular fa-face-frown fs-6"></i>This
+                                            trend
+                                            is
+                                            harmful or spammy
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="text">
+                            <span>
+                                #BtsHate
+                            </span>
+                        </div>
+                        <div class="tags post-count">
+                            14k posts
+                        </div>
+
+                    </div>
+                    <div class="trend hover-light">
+                        <div class="tags">
+                            AnyThing
+                            <div class="more btn-group dropstart">
+                                <button class="default-button more-button hover-none " type="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-solid fa-ellipsis default-icon"></i>
+
+                                </button>
+                                <ul class="dropdown-menu menu-border menu-transform">
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <i class="fa-regular fa-face-frown fs-6"></i>Not
+                                            interested in
+                                            this
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <i class="fa-regular fa-face-frown fs-6"></i>This
+                                            trend
+                                            is
+                                            harmful or spammy
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="text">
+                            <span>
+                                #NewTrend
+                            </span>
+                        </div>
+                        <div class="tags post-count">
+                            6.9k posts
+                        </div>
+
+                    </div>
+                    <div class="trend hover-light">
+                        <div class="tags">
+                            AnyThing
+                            <div class="more btn-group dropstart">
+                                <button class="default-button more-button hover-none " type="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-solid fa-ellipsis default-icon"></i>
+
+                                </button>
+                                <ul class="dropdown-menu menu-border menu-transform">
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <i class="fa-regular fa-face-frown fs-6"></i>Not
+                                            interested in
+                                            this
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <i class="fa-regular fa-face-frown fs-6"></i>This
+                                            trend
+                                            is
+                                            harmful or spammy
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="text">
+                            <span>
+                                #NewTrend
+                            </span>
+                        </div>
+                        <div class="tags post-count">
+                            6.9k posts
+                        </div>
+
+                    </div>
+                    <div class="trend hover-light">
+                        <div class="tags">
+                            AnyThing
+                            <div class="more btn-group dropstart">
+                                <button class="default-button more-button hover-none " type="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-solid fa-ellipsis default-icon"></i>
+
+                                </button>
+                                <ul class="dropdown-menu menu-border menu-transform">
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <i class="fa-regular fa-face-frown fs-6"></i>Not
+                                            interested in
+                                            this
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <i class="fa-regular fa-face-frown fs-6"></i>This
+                                            trend
+                                            is
+                                            harmful or spammy
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="text">
+                            <span>
+                                #NewTrend
+                            </span>
+                        </div>
+                        <div class="tags post-count">
+                            6.9k posts
+                        </div>
+
+                    </div>
+                    <div class="trend hover-light">
+                        <div class="tags">
+                            AnyThing
+                            <div class="more btn-group dropstart">
+                                <button class="default-button more-button hover-none " type="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-solid fa-ellipsis default-icon"></i>
+
+                                </button>
+                                <ul class="dropdown-menu menu-border menu-transform">
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <i class="fa-regular fa-face-frown fs-6"></i>Not
+                                            interested in
+                                            this
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <i class="fa-regular fa-face-frown fs-6"></i>This
+                                            trend
+                                            is
+                                            harmful or spammy
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="text">
+                            <span>
+                                #NewTrend
+                            </span>
+                        </div>
+                        <div class="tags post-count">
+                            6.9k posts
+                        </div>
+
+                    </div>
+                    <div class="trend hover-light">
+                        <div class="tags">
+                            AnyThing
+                            <div class="more btn-group dropstart">
+                                <button class="default-button more-button hover-none " type="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-solid fa-ellipsis default-icon"></i>
+
+                                </button>
+                                <ul class="dropdown-menu menu-border menu-transform">
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <i class="fa-regular fa-face-frown fs-6"></i>Not
+                                            interested in
+                                            this
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <i class="fa-regular fa-face-frown fs-6"></i>This
+                                            trend
+                                            is
+                                            harmful or spammy
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="text">
+                            <span>
+                                #NewTrend
+                            </span>
+                        </div>
+                        <div class="tags post-count">
+                            6.9k posts
+                        </div>
+
+                    </div>
+                    <div class="trend hover-light">
+                        <div class="tags">
+                            AnyThing
+                            <div class="more btn-group dropstart">
+                                <button class="default-button more-button hover-none " type="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-solid fa-ellipsis default-icon"></i>
+
+                                </button>
+                                <ul class="dropdown-menu menu-border menu-transform">
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <i class="fa-regular fa-face-frown fs-6"></i>Not
+                                            interested in
+                                            this
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-bg-dark dark d-flex justify-content-start align-items-center"
+                                           href="#">
+                                            <i class="fa-regular fa-face-frown fs-6"></i>This
+                                            trend
+                                            is
+                                            harmful or spammy
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="text">
+                            <span>
+                                #NewTrend
+                            </span>
+                        </div>
+                        <div class="tags post-count">
+                            6.9k posts
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+

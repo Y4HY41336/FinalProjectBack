@@ -1,0 +1,81 @@
+﻿@using FinalProject.ViewModels.Admin;
+@{
+    ViewData["Title"] = "Index";
+}
+
+@model List<UserViewModel>
+
+<div class="content  w-100">
+    <div class="row">
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card" style="background-color:black;">
+                <table class="table" style="--bs-table-bg:black; vertical-align: middle; border-color:rgb(47, 51, 54)">
+                    <thead>
+                        <tr>
+                            <th class="text-light text-center">Photo</th>
+                            <th class="text-light text-center">Username</th>
+                            <th class="text-light text-center">Role</th>
+                            <th class="text-light text-center">Status</th>
+                            <th class="text-light text-center">Actions</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var models in Model)
+                        {
+                            <tr>
+                                <td class="text-center">
+                                    <div class="image">
+                                        <a>
+                                            <img src="/assets/images/ProfileImages/@models.User.ProfilePhoto"
+                                                 alt="Profile Icon">
+                                        </a>
+                                    </div>
+                                </td>
+
+                                <td class="text-light text-center">@models.User.UserName</td>
+                                <td class="text-light text-center">
+                                    @foreach (var role in models.Roles)
+                                    {
+                                        @role
+
+                                        <br />
+                                    }
+                                    </td>
+                                @if (models.User.IsActive)
+                                {
+                                    <td class="text-success  text-center">Active</td>
+                                }
+                                else
+                                {
+                                    <td class="text-danger  text-center">Deactive</td>
+                                }
+
+                                <td class="">
+
+                                    <a class="btn btn-warning" asp-action="ChangeRoles" asp-route-id="@models.User.UserName">Update Role</a>
+
+
+                                    @if (models.User.IsActive)
+                                    {
+                                        <a class="btn btn-danger ban-button" asp-action="Ban" asp-route-id="@models.User.UserName">Ban</a>
+
+                                    }
+                                    else
+                                    {
+                                        <a class="btn btn-success ban-button" asp-action="Ban" asp-route-id="@models.User.UserName">Unban</a>
+                                    }
+
+                                </td>
+                            </tr>
+
+
+
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
