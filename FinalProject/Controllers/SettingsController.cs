@@ -53,7 +53,12 @@ public class SettingsController : Controller
         {
             if (user.UserName != model.UserName && _userManager.Users.Any(u => u.UserName == model.UserName))
             {
-                ModelState.AddModelError("UserName", "This Username already taken");
+                TempData["ErrorMessage"] = "This Username already taken";
+                return View(nameof(Index), model);
+            }
+            if (model.UserName == null)
+            {
+                TempData["ErrorMessage"] = "Username field required";
                 return View(nameof(Index), model);
             }
             user.UserName = model.UserName;
@@ -62,23 +67,33 @@ public class SettingsController : Controller
         {
             if (user.Email != model.Email && _userManager.Users.Any(u => u.Email == model.Email))
             {
-                ModelState.AddModelError("Email", "This email already taken");
+                TempData["ErrorMessage"] = "This Email already taken";
                 return View(nameof(Index), model);
             }
             if (string.IsNullOrEmpty(model.Email))
             {
-                ModelState.AddModelError("Email", "The Email field is required");
+                TempData["ErrorMessage"] = "Email field required";
                 return View(nameof(Index), model);
             }
             user.Email = model.Email;
         }
         else if (type == "Password")
         {
+            if (model.CurrentPassword == null)
+            {
+                TempData["ErrorMessage"] = "Current Password field required";
+                return View(nameof(Index), model);
+            }
             if (model.CurrentPassword != null)
             {
                 if (model.NewPassword == null)
                 {
-                    ModelState.AddModelError("NewPassword", "New password can't stay empty");
+                    TempData["ErrorMessage"] = "New Password field required";
+                    return View(nameof(Index), model);
+                }
+                if (model.ConfirmNewPassword == null)
+                {
+                    TempData["ErrorMessage"] = "Confirm Password field required";
                     return View(nameof(Index), model);
                 }
 

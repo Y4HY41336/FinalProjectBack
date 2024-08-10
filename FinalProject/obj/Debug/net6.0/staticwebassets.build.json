@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "iOkODNh7Q5qSPiIBeFJU56aVoNXFuk6gIbAaD9xSb0k=",
+  "Hash": "k6lBIxpCe1SerZVqCk4mexSeQkHPJJH78ECqRWPyWKY=",
   "Source": "FinalProject",
   "BasePath": "_content/FinalProject",
   "Mode": "Default",
@@ -134,6 +134,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\images\\MediaImages\\083f84e8-bdec-4a2b-b56e-11205d7c07fd-header-default.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\user\\Desktop\\Code\\FinalProject-Back\\FinalProject\\FinalProject\\wwwroot\\assets\\images\\MediaImages\\101cd31b-61a1-46f1-83e0-3952f1a810e6-[FreeTP.Org]Victoria_3_v1.7.5_by_Pioneer.torrent",
+      "SourceId": "FinalProject",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\user\\Desktop\\Code\\FinalProject-Back\\FinalProject\\FinalProject\\wwwroot\\",
+      "BasePath": "_content/FinalProject",
+      "RelativePath": "assets/images/MediaImages/101cd31b-61a1-46f1-83e0-3952f1a810e6-[FreeTP.Org]Victoria_3_v1.7.5_by_Pioneer.torrent",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\images\\MediaImages\\101cd31b-61a1-46f1-83e0-3952f1a810e6-[FreeTP.Org]Victoria_3_v1.7.5_by_Pioneer.torrent"
     },
     {
       "Identity": "C:\\Users\\user\\Desktop\\Code\\FinalProject-Back\\FinalProject\\FinalProject\\wwwroot\\assets\\images\\MediaImages\\1184d612-75f0-4922-af9b-32f3c0eb8e65-header-default.jpg",

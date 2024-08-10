@@ -144,16 +144,7 @@ function initializeEventListeners() {
         })
     })
 
-    BanButton.forEach(BanButton => {
-        BanButton.addEventListener("click", function (e) {
-
-            e.preventDefault();
-
-            let url = this.getAttribute("href");
-
-            fetch(url)
-        })
-    })
+    
 
     FollowModal.forEach(FollowButton => {
         FollowButton.addEventListener("click", function (e) {

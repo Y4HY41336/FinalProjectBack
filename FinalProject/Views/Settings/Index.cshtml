@@ -153,11 +153,13 @@
     }
 
     <div class="text-danger mb-3 mt-3 text-center">
-        <span asp-validation-for="UserName" class="text-danger"></span>
-        <span asp-validation-for="Email" class="text-danger"></span>
-        <span asp-validation-for="CurrentPassword" class="text-danger"></span>
-        <span asp-validation-for="NewPassword" class="text-danger"></span>
-        <span asp-validation-for="ConfirmNewPassword" class="text-danger"></span>
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="text-danger mb-3 mt-3 text-center">
+                @TempData["ErrorMessage"].ToString()
+            </div>
+        }
+        
     </div>
 </div>
 

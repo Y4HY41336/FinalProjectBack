@@ -20,7 +20,7 @@ public class TrendLayoutViewComponent : ViewComponent
     [HttpPost]
     public async Task<IViewComponentResult> InvokeAsync()
     {
-        var trends = await _context.Trends.Include(p => p.PostTrends).Take(10).ToListAsync();
+        var trends = await _context.Trends.Include(p => p.PostTrends).Take(10).OrderByDescending(p => p.PostCount).ToListAsync();
         return View(trends);
     }
 
